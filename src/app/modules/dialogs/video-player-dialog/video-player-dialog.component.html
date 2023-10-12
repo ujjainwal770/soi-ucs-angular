@@ -1,0 +1,21 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-8 video-title">
+            <span>{{videoData?.title?.substring(0, 20)}}</span>
+
+            <span mat-raised-button *ngIf="videoData?.title?.length > 20" [matTooltip]="videoData.title"
+                aria-label="displays a tooltip when focused or hovered over">
+                ...
+            </span>
+        </div>
+        <div class="col-1 offset-3">
+            <mat-icon class="close-btn" (click)="cancel()">close</mat-icon>
+        </div>
+    </div>
+    <div class="video-player-wrapper" *ngIf="videoData?.ugcUploadType === 'Video'">
+        <video width="400" height="240" controls autoplay controlsList="nodownload">
+            <source [src]="videoData.publicVideoUrl" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+</div>

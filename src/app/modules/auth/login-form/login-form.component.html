@@ -1,0 +1,64 @@
+<div class="justify-content-center row">
+    <img src="../../../../assets/images/soucs-logo.png" class="soucs-logo" alt="SOUCS">
+</div>
+
+<div class="top-space row mt-2">
+    <span class="welcome-text">Welcome Back!</span>
+    <span class="note-text mt-3">To keep connected with us please login with your personal info</span>
+</div>
+<form [formGroup]="form">
+    <div class="row top-space text-center ">
+        <div class="col-md-12 login-field">
+            <div class="row">
+                <div class="col-md-12 form-group-margin">
+                    <mat-form-field class="example-full-width">
+                        <mat-label class="mat-label">Email</mat-label>
+                        <input type="text" matInput formControlName="email" placeholder="Email"
+                            (keyup)="handleKeyUp($event)" required>
+                        <mat-error>
+                            Please provide valid email.
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row top-space text-center">
+        <div class="col-md-12 login-field">
+            <div class="row">
+                <div class="col-md-12 form-group-margin">
+                    <mat-form-field class="example-full-width">
+                        <mat-label class="mat-label">Password</mat-label>
+                        <input [type]="hide ? 'password' : 'text'" matInput formControlName="password"
+                            (keyup)="handleKeyUp($event)" placeholder="Password" required>
+                        <button mat-icon-button matSuffix class="hide-pass pull-right" (click)="hide = !hide"
+                            [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                            <mat-icon>{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+                        </button>
+                        <mat-error>
+                            Please provide valid password.
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row top-space suggestion-div d-flex flex-row">
+        <div class="w-50">
+            <mat-checkbox class="remember-me" formControlName="rememberMe" (keyup)="handleKeyUp($event)">Remember me
+            </mat-checkbox>
+        </div>
+        <div class="w-50">
+            <div class="forgot-text" routerLink="/auth/forgot-password">Forgot password ?</div>
+        </div>
+    </div>
+    <div class="row top-space text-center login-field">
+        <button class="app-btn filled green-bg login-btn" type="submit" id="login-btn"
+            (keyup.enter)="handleKeyUp($event)" (click)="submit($event)">Login</button>
+    </div>
+</form>
+
+<div class="row text-center login-field mt-5">
+    <span class="note-text">Don’t have an account?</span>
+    <button class="app-btn unfilled green-b green-outline-btn">Get started</button>
+</div>

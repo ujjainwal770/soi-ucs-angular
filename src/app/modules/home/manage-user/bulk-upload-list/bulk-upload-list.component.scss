@@ -1,0 +1,15 @@
+@import "/src/app/scss/variables";
+
+.link-text {
+    cursor: pointer;
+    color: #29856c;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+.status-box {
+    width: 85%;
+    cursor: auto !important;
+}

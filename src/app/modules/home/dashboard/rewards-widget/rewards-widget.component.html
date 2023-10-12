@@ -1,0 +1,97 @@
+<div class="row top-div-container">
+    <!-- Top 10 rewards -->
+    <div class="col-md-6 div-container first-div">
+        <h3>Top 10 Rewards</h3>
+        <div class="example-container" id="tagTableInfo">
+            <table aria-describedby="tagTableInfo" mat-table [dataSource]="top10Rewards.dataSource" matSort>
+
+                <ng-container matColumnDef="rewardName">
+                    <th id="rewardName" mat-header-cell *matHeaderCellDef> Reward Name </th>
+                    <td mat-cell *matCellDef="let element;let i = index">
+                        {{element.rewardName?.substring(0, 12)}}
+                        <span class="tooltip-hover" mat-raised-button *ngIf="element.rewardName?.length > 12"
+                            [matTooltip]="element.rewardName"
+                            aria-label="displays a tooltip when focused or hovered over">...</span>
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="userSubmissionNo">
+                    <th id="userSubmissionNo" class="width-20-persent" mat-header-cell *matHeaderCellDef>Total user
+                        submissions </th>
+                    <td mat-cell *matCellDef="let element" class="pl-5-per">
+                        <span>{{element.userSubmissionNo}}</span>
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="winnerName">
+                    <th id="winnerName" mat-header-cell *matHeaderCellDef> Winner</th>
+                    <td mat-cell *matCellDef="let element">
+                        {{element.winnerName?.substring(0, 10)}}
+                        <span class="tooltip-hover" mat-raised-button *ngIf="element.winnerName?.length > 10"
+                            [matTooltip]="element.winnerName"
+                            aria-label="displays a tooltip when focused or hovered over">...</span>
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="userType">
+                    <th id="userType" mat-header-cell *matHeaderCellDef> User Type</th>
+                    <td mat-cell *matCellDef="let element">
+                        {{element.userType?.toLowerCase() === 'yes' ? 'UCS' : 'Public'}}
+                    </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="top10Rewards.displayedColumns;sticky:true"></tr>
+                <tr mat-row *matRowDef="let row; columns: top10Rewards.displayedColumns;let i = index;"></tr>
+            </table>
+            <div *ngIf="!top10Rewards.dataSource.data.length" class="no-record-found">
+                No Records Found!
+            </div>
+        </div>
+    </div>
+
+    <!-- Top 10 reward applicansts -->
+    <div class="col-md-6 div-container second-div">
+        <h3>Top 10 Reward Applicants</h3>
+        <div class="example-container" id="tagTableInfo">
+            <table aria-describedby="tagTableInfo" mat-table [dataSource]="top10RewardApplicants.dataSource" matSort>
+
+                <ng-container matColumnDef="userName">
+                    <th id="userName" mat-header-cell *matHeaderCellDef> User Name </th>
+                    <td mat-cell *matCellDef="let element;let i = index">
+                        {{element.userName?.substring(0, 10)}}
+                        <span class="tooltip-hover" mat-raised-button *ngIf="element.userName?.length > 10"
+                            [matTooltip]="element.userName"
+                            aria-label="displays a tooltip when focused or hovered over">...</span>
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="userType">
+                    <th id="userType" mat-header-cell *matHeaderCellDef class="pl-5-per">User Type </th>
+                    <td mat-cell *matCellDef="let element" class="pl-5-per">
+                        {{element?.userType?.toLowerCase() === 'yes' ? 'UCS' : 'Public'}}
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="totalRewardSubmitted">
+                    <th id="totalRewardSubmitted" mat-header-cell *matHeaderCellDef class="pl-5-per">Total Rewards Applied</th>
+                    <td mat-cell *matCellDef="let element" class="pl-15-per">
+                        <span>{{element.totalRewardSubmitted}}</span>
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="totalRewardsWon">
+                    <th id="totalRewardsWon" mat-header-cell *matHeaderCellDef> Total Rewards Won</th>
+                    <td mat-cell *matCellDef="let element" class="pl-10-per">
+                        <span>{{element.totalRewardsWon}}</span>
+                    </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="top10RewardApplicants.displayedColumns;sticky:true"></tr>
+                <tr mat-row *matRowDef="let row; columns: top10RewardApplicants.displayedColumns;let i = index;"></tr>
+            </table>
+            <div *ngIf="!top10RewardApplicants.dataSource.data.length" class="no-record-found">
+                No Records Found!
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,101 @@
+@import "/src/app/scss/variables";
+
+.main-container {
+  position: fixed;
+  height: 100%;
+  // width: 50%;
+}
+.image-div {
+  margin: -10px;
+}
+.soucs-logo {
+  width: 250px;
+  height: 60px;
+  opacity: 1;
+  margin-top: 2%;
+  @media screen and (max-width:768px) {
+    margin-top: 4%;
+  }
+  @media screen and (min-width:2200px) {
+    margin-top: 8%;
+  }
+}
+.welcome-text {
+  font-family: 'Ubuntu-Bold', sans-serif;
+  font-size: 2rem;
+  text-align: center;
+  margin-top:4%;
+  @media screen and (max-width:768px) {
+    margin-top: unset;
+  }
+  @media screen and (min-width:1200px) {
+    margin-top: 2%;
+  }
+}
+.note-text {
+  color: $gray-note;
+  text-align: center;
+  @media screen and (min-width:768px) {
+    margin-top: 6%;
+    margin-bottom: 3%;
+  }
+}
+.login-field {
+  width: 50%;
+  margin: auto;
+  //margin-top: 2%;
+  @media screen and (max-width:768px) {
+    width: 100%;
+    margin-top: unset;
+  }
+}
+label {
+  display: flex ;
+  color: $gray-note;
+}
+.forgot-text {
+  color: $green;
+  text-align: end;
+  cursor: pointer;
+
+}
+.suggestion-div {
+  width: 50%;
+  margin:auto;
+  @media screen and (max-width:768px) {
+    width: unset;
+  }
+}
+.image-text {
+  position: absolute;
+  top: 70%;
+  left: 19%;
+  transform: translate(-50%, -50%);
+  color: $white;
+}
+.image-text-second {
+  position: absolute;
+  top: 70%;
+  left: 19%;
+  transform: translate(-50%, -50%);
+  color: $white;
+}
+.mat-form-field {
+  width: 100%;
+} 
+.login-btn {
+  margin-top: 3%;
+}
+::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background {
+  background-color: $green !important;
+  border-radius: 6px;
+}
+.app-btn {
+  font-family: 'Ubuntu-Bold', sans-serif;
+}
+@media screen and (min-width:1280px) {
+  .login-part-div {
+    margin-top: 10vh;
+  }
+  
+}

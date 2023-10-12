@@ -1,0 +1,11 @@
+.mat-chip.mat-standard-chip{
+    color: #848484;
+    border: 1px solid #AFAFAF;
+    background: transparent;
+    padding: 16px;
+}
+.mat-chip.mat-standard-chip.mat-chip-selected.mat-primary {
+    background-color: #29856C;
+    border: 1px solid #29856C;
+    color: #fff;
+}

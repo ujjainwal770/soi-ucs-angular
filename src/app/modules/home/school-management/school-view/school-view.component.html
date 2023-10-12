@@ -1,0 +1,196 @@
+<div class="container-fluid">
+    <div class="row inner-header-row">
+        <div class="col-lg-12">
+            <div class="row">
+                <div  class="col-6">
+                    <h3>
+                        <mat-icon class="cursor-p" routerLink="/school-management">arrow_back</mat-icon> School Management
+                    </h3>
+                </div>
+                <div class="col-6 edit-btn-container" *ngIf="isEditable">
+                    <span class="edit-btn cursor-p" (click)="gotoSchoolEdit()">
+                        <img src="../../../../assets/images/svg/edit_icon.svg" alt=''>
+                        Edit
+                    </span>
+                </div>           
+        </div>
+        </div>       
+    </div>
+
+    <div class="row sub-container">
+        <div class="row">
+        <div class="col-lg-12">
+            <mat-card class="school-details">
+                <h3>{{selectedSchool['schoolName']}}</h3>
+            </mat-card>
+        </div>
+        </div>
+        <div class="gutter-space-small"></div>
+        <div class="row">
+            <div class="col">
+                    <mat-card class="dashboard-card-students">
+                        <mat-card-title>      
+                            <mat-card-title><h4>{{selectedSchool['totalStudent']}}</h4></mat-card-title>    
+                        </mat-card-title>
+                        <mat-card-content>
+                            <div  class="normal-txt">Total Number of Students</div>
+                        </mat-card-content>
+            
+                    </mat-card>
+            </div>
+            <div class="col">
+                    <mat-card class="dashboard-card-active">
+                        <mat-card-title>      
+                            <mat-card-title><h4>{{selectedSchool['activeStudent']}}</h4></mat-card-title>    
+                        </mat-card-title>
+                        <mat-card-content>
+                            <div  class="normal-txt">Number of Active Students</div>
+                        </mat-card-content>
+            
+                    </mat-card>
+            </div>
+            <div class="col">
+                    <mat-card class="dashboard-card-pending">
+                        <mat-card-title>      
+                            <mat-card-title><h4>{{selectedSchool['pendingStudent']}}</h4></mat-card-title>    
+                        </mat-card-title>
+                        <mat-card-content>
+                            <div  class="normal-txt">Number of Pending Students</div>
+                        </mat-card-content>
+            
+                    </mat-card>
+            </div>
+            <div class="col">
+                    <mat-card class="dashboard-card-Preapproved">
+                        <mat-card-title>      
+                            <mat-card-title><h4>{{selectedSchool['preApproveStudent']}}</h4></mat-card-title>    
+                        </mat-card-title>
+                        <mat-card-content>
+                            <div  class="normal-txt">Number of Pre-approved Students</div>
+                        </mat-card-content>
+            
+                    </mat-card>
+            </div>
+            <div class="col">
+                    <mat-card class="dashboard-card-inactive">
+                        <mat-card-title>      
+                            <mat-card-title><h4> {{selectedSchool['inActiveStudent']}}</h4></mat-card-title>    
+                        </mat-card-title>
+                        <mat-card-content>
+                            <div  class="normal-txt">Number of Inactive Students</div>
+                        </mat-card-content>
+            
+                    </mat-card>
+            </div>
+        </div>
+        <div class="gutter-space-small"></div>
+        <div class="row">
+            <div class="col-lg-12">
+            <mat-card class="school-details">
+                <mat-card-content>
+                    <div class="row">
+                        <div class="col-md-6">
+                        <div class="normal-txt">{{isUniversity==1?"IPEDS ID":"NCES Number"}} : &nbsp;<h4> {{selectedSchool['nces']}}</h4>
+                        </div>
+                        <div class="normal-txt" *ngIf="!isUniversity">School Profile :&nbsp; <h4> {{selectedSchool['schoolProfile']}} school
+                            </h4>
+                        </div>
+                        <div class="normal-txt">Banner School :&nbsp; <h4>{{selectedSchool['banner'] === 'yes' ? 'Yes'
+                                : 'No' }} </h4>
+                        </div>
+                        <div class="normal-txt">Date Created :&nbsp; <h4>{{selectedSchool['creationTime'] | date: 'MM/dd/y' }} </h4>
+                    </div>
+                    <div class="gutter-space-medium"></div>
+
+                    <div class="normal-txt row">
+                        <div class="col-6">Status :  &nbsp;<button class="no-pointer-cursor" [ngClass]="{'status-active' : (selectedSchool.status_text=='Active'),
+                        'status-pending' : (selectedSchool.status_text=='Pending'),
+                            'status-deactive' : selectedSchool.status_text=='Inactive'}">
+                        {{selectedSchool.status_text}}
+                    </button></div></div>
+                    <div class="normal-txt" *ngIf="selectedSchool['status_text']=='Inactive'">Reason - {{selectedSchool['deactivateReason']}}</div>
+                </div>
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <h4> Address</h4>
+                            <span>{{selectedSchool['addressFirst']}},</span>
+                            <span>&nbsp;{{selectedSchool['addressSecond']}}</span> <br>
+                            <span>&nbsp;{{selectedSchool['cityName']}},{{selectedSchool['stateName']}},
+                                {{selectedSchool['zipcode']}}</span>
+                            <span>{{selectedSchool['countryName']}}</span>
+                        </div>
+                    </div>
+                    <div class="gutter-space-medium"></div>
+                    <div class="row mt-4" *ngIf="!isValidZipCode">
+                        <span class="invalid-zip-message">
+                            <mat-icon class="error-mat-icon">error_outline</mat-icon>
+                            The entered zip code is invalid. Friends suggestion may not fucntion properly for the
+                            students. Please make the necessary corrections.
+                        </span>
+                    </div>
+                </div>
+                    </div>
+                        
+                        
+                </mat-card-content>
+            </mat-card>
+        </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+            <mat-card class="school-details mt-3">
+                <mat-card-content>
+                    <div class="row">
+                    <div class="col-md-6">
+                        <div class="row inner-header-row">
+                            <div class="col-lg-12">
+                                <div class="row">
+                                    <div  class="col-6">
+                            <h4>Main Point of Contact</h4>
+                                    </div><div  class="col-6">
+                            <button class="no-pointer-cursor float-left"  [ngClass]="{'status-active' : (selectedSchool.status_text=='Active'),
+                        'status-pending' : (selectedSchool.status_text=='Pending'),
+                            'status-deactive' : selectedSchool.status_text=='Inactive'}">
+                        {{selectedSchool.status_text}}
+                    </button>
+                </div>
+                </div>
+                        </div>
+                        </div>
+                        <div class="gutter-space-medium"></div>
+
+
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="p-header">{{adminInfo['name']}}</div>
+                            <span>{{adminInfo['email']}}</span> <br>
+                            <span>{{adminInfo['phone']}}</span>
+                        </div>
+                    </div>
+
+
+                    <div class="row mt-4 p-10" *ngIf="selectedSchool['school_admin_status']?.toLowerCase() === 'pending'">
+                        <span class="invalid-zip-message">
+                            <mat-icon class="error-mat-icon">error_outline</mat-icon>
+                            School admin yet to activate the account!
+                        </span>
+                        <button class="app-btn filled green-bg large resend-btn" [disabled]="isResendLinkSent"
+                            (click)="confirmationDialog()">
+                            Resend Invite
+                        </button>
+                        <span *ngIf="isResendLinkSent" class='' style="margin-top: 12px;">
+                            <span>Resend invite in </span><span style="font-weight: bold;">{{isResendLinkSent ? "0:"
+                                + timeLeft : ''}}</span> Sec
+                        </span>
+                    </div>
+                    </div>
+                    
+                </div>
+                
+                </mat-card-content>
+            </mat-card>
+        </div>
+        </div>
+    </div>
+</div>

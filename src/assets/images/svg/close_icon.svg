@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+  <g id="close_icon" transform="translate(0.707 0.707)">
+    <rect id="Rectangle_1505" data-name="Rectangle 1505" width="25.175" height="1.049" transform="translate(0.763 0.021) rotate(45)" fill="#fff"/>
+    <path id="Rectangle_1505_-_Outline" data-name="Rectangle 1505 - Outline" d="M.515,0H25.69l.515.515V1.564l-.515.515H.515L0,1.564V.515Zm24.66,1.03H1.03v.019H25.175Z" transform="translate(0.763 -0.707) rotate(45)" fill="#fff"/>
+    <rect id="Rectangle_1506" data-name="Rectangle 1506" width="25.175" height="1.049" transform="translate(0.021 17.823) rotate(-45)" fill="#fff"/>
+    <path id="Rectangle_1506_-_Outline" data-name="Rectangle 1506 - Outline" d="M.515,0H25.69l.515.515V1.564l-.515.515H.515L0,1.564V.515Zm24.66,1.03H1.03v.019H25.175Z" transform="translate(-0.707 17.823) rotate(-45)" fill="#fff"/>
+  </g>
+</svg>

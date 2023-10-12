@@ -1,0 +1,108 @@
+<div class="container-fluid">
+    <div class="row header-row">
+        <div class="col-lg-12">
+            <div class="header-cont">
+                <h2>Canned Messages</h2>
+                <button class="app-btn filled green-bg large cat-btn"
+                    routerLink="/content-management/add-canned-messages">Add Messages
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="sub-container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="filter-result">
+                    <div class="data-table-container" id="adminUserList">
+
+                        <table aria-describedby="adminUserList" mat-table [dataSource]="dataSource" matSort>
+                            <!--Name Column -->
+                            <ng-container matColumnDef="message">
+                                <th id="message" mat-header-cell *matHeaderCellDef (click)="customSorting('message')" mat-sort-header attr.aria-sort="{{'ascending'}}"> Message </th>
+                                <td mat-cell *matCellDef="let element; let i = index" [attr.id]="'message-' + i">
+                                    {{element.message }}
+                                </td>
+                            </ng-container>
+
+                            <!-- Created date Column -->
+                            <ng-container matColumnDef="created_at">
+                                <th id="created_at" mat-header-cell *matHeaderCellDef (click)="customSorting('created_at')" mat-sort-header> Created Date
+                                </th>
+                                <td mat-cell *matCellDef="let element; let i = index" [attr.id]="'created_at-' + i">
+                                    {{element.created_at | date: 'MM/dd/y' }}
+                                </td>
+                            </ng-container>
+
+                            <!-- Color Column -->
+                            <ng-container matColumnDef="hasColor">
+                                <th id="hasColor" mat-header-cell *matHeaderCellDef (click)="customSorting('hasColor')" mat-sort-header> Color
+                                </th>
+                                <td mat-cell *matCellDef="let element; let i = index" [attr.id]="'hasColor-' + i">
+                                    <div class="round-color-box" [style.background-color]="element.hasColor"></div>
+                                </td>
+                            </ng-container>
+
+                            <!-- Status Column -->
+                            <ng-container matColumnDef="publish">
+                                <th id="publish" class="pl-15" mat-header-cell *matHeaderCellDef (click)="customSorting('publish')" mat-sort-header> Status
+                                </th>
+                                <td mat-cell *matCellDef="let element; let i = index" [attr.id]="'publish-' + i">
+                                    <span class="status-active status-padding" *ngIf="element.publish === 1">
+                                        Published
+                                    </span>
+                                    <span class="status-deactive status-padding" *ngIf="element.publish !== 1">
+                                        Unpublished
+                                    </span>
+
+                                    <span></span>
+                                </td>
+                            </ng-container>
+
+                            <!-- Action Column -->
+                            <ng-container matColumnDef="actions">
+                                <th id="actions" mat-header-cell *matHeaderCellDef class="action-cell"> Actions
+                                </th>
+                                <td mat-cell *matCellDef="let row ; let i = index" [attr.id]="'actions-' + i">
+                                    <button mat-icon-button [matMenuTriggerFor]="menu"
+                                        aria-label="Example icon-button with a menu">
+                                        <mat-icon>more_vert</mat-icon>
+                                    </button>
+                                    <mat-menu #menu="matMenu">
+
+                                        <button *ngIf="row.publish === 1"
+                                            (click)="openUnpublishConfirmationDialog(row.id)" mat-menu-item>
+                                            <mat-icon class="material-icons-outlined">unpublished</mat-icon>
+                                            <span>Unpublish</span>
+                                        </button>
+
+                                        <button *ngIf="row.publish !== 1"
+                                            (click)="openRepublishConfirmationDialog(row.id)" mat-menu-item>
+                                            <mat-icon class="material-icons-outlined">check_circle</mat-icon>
+                                            <span>Publish</span>
+                                        </button>
+                                    </mat-menu>
+                                </td>
+                            </ng-container>
+
+                            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                        </table>
+
+                        <div *ngIf="!dataSource.data.length" class="no-record-found">
+                            <span style="color: #4C356E; font-style: italic; display: inline-flex;">
+                                <img alt='' style="margin-right: 5px;"
+                                    src="../../assets/images/svg/record_not_found_info_icon.svg">
+                                There are no records here at the moment.
+                            </span>
+                        </div>
+
+                        <mat-paginator #paginator [pageSizeOptions]="pageSizes" showFirstLastButtons [length]="count"
+                            (page)="handlePage($event)" aria-label="Select page of periodic elements">
+                        </mat-paginator>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

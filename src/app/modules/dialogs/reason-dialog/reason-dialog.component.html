@@ -1,0 +1,29 @@
+<form [formGroup]='reasonForm'>
+    <div class="row float-right">
+        <mat-icon (click)="cancel()">close</mat-icon>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="col-md-12 d-flex justify-content-center">
+                <span class="font-weight-bold heading-font">{{pgtitle}}</span>
+            </div>
+           
+            <mat-form-field>
+                <mat-label for="reason">Reason</mat-label>
+                <input id="reason" name="reason" formControlName="reason" matInput
+                    placeholder="Reason" required>
+                <mat-error
+                    *ngIf="getFieldRef('reason') && getFieldRef('reason').invalid && getFieldRef('reason').touched && !getFieldRef('reason').errors?.maxlength">
+                    Please enter valid reason.</mat-error>
+                <mat-error
+                    *ngIf="getFieldRef('reason').errors?.maxlength">
+                    200 max char limit.</mat-error>
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="gutter-space"></div>
+    <div class="row button-div justify-content-center">
+        <button class="app-btn unfilled green-b green-outline-btn" (click)="cancel()">No </button>
+        <button class="app-btn filled green-bg large" (click)="submit()" >Submit</button>
+    </div>
+</form>

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30">
+  <g id="icon_report" transform="translate(-333 -262)">
+    <circle id="Ellipse_563" data-name="Ellipse 563" cx="15" cy="15" r="15" transform="translate(333 262)" fill="#eaeaea"/>
+    <path id="warning-standard-solid" d="M15.592,13.873,9.5,2.7a1.413,1.413,0,0,0-2.481,0L.94,13.873a1.407,1.407,0,0,0,1.24,2.093H14.351a1.407,1.407,0,0,0,1.24-2.076ZM7.7,5.477a.614.614,0,0,1,1.227,0v5.244a.614.614,0,0,1-1.227,0Zm.614,8.675a.787.787,0,1,1,.789-.787.788.788,0,0,1-.789.787Z" transform="translate(340.238 268.034)" fill="#dd4040"/>
+  </g>
+</svg>

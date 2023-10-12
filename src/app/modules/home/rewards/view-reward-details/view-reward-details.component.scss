@@ -1,0 +1,106 @@
+table {
+    width: 100%;
+}
+
+.status-active {
+    background: #DDFDF4 0% 0% no-repeat padding-box;
+    border-radius: 13px;
+    border: none;
+    color: #267D66;
+    text-transform: capitalize;
+    width: 65%;
+    cursor: auto;
+}
+
+.status-deactive {
+    background: #E8E8E8 0% 0% no-repeat padding-box;
+    border-radius: 13px;
+    color: #666666;
+    text-transform: capitalize;
+    border: none;
+    width: 75%;
+    cursor: auto;
+}
+
+.status-pending {
+    background: #F4EED3 0% 0% no-repeat padding-box;
+    border-radius: 13px;
+    color: #806A00;
+    text-transform: capitalize;
+    border: none;
+    width: 75%;
+    cursor: auto;
+}
+
+.rewardImage {
+    width: auto;
+
+    img {
+        width: 180px;
+        height: 130px;
+        object-fit: fill;
+        border-radius: 5px;
+        background: #c9c9c9;
+    }
+}
+
+.text-strong {
+    font-weight: bold;
+}
+
+.reward-title {
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.align-right {
+    text-align: right;
+}
+
+.date-status {
+    .date-ended {
+        background: #FFEDEE 0% 0% no-repeat padding-box;
+        color: #D8181E;
+        padding: 5px 15px;
+        border-radius: 13px;
+    }
+
+    .date-closing-soon {
+        background: #F4EED3 0% 0% no-repeat padding-box;
+        color: #806A00;
+        padding: 5px 15px;
+        border-radius: 13px;
+    }
+
+    .date-ongoing {
+        background: #DDFDF4 0% 0% no-repeat padding-box;
+        color: #267D66;
+        padding: 5px 15px;
+        border-radius: 13px;
+    }
+}
+
+.reward-desc {
+    font-size: 13px;
+}
+
+.row-with-winner {
+    background-color: #DDFDF4;
+}
+
+.winner-txt-container {
+    color: #267D66;
+
+    .text {
+        font-weight: bold;
+    }
+
+    mat-icon {
+        vertical-align: middle;
+        font-size: 20px;
+    }
+
+    .winner-text {
+        font-weight: bold;
+    }
+}

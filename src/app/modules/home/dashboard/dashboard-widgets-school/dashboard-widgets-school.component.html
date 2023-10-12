@@ -1,0 +1,50 @@
+<mat-grid-list cols="3" rowHeight="150px" >
+    <mat-grid-tile colspan="1" rowspan="1">
+        <mat-card class="dashboard-card">
+            <mat-card-title-group>
+                <img mat-card-sm-image src="../../assets/images/users-icon.png" class="card-images users-icon" alt="UCS Schools">
+                <mat-card-title class="card-title">
+                   Students
+                </mat-card-title>
+                <mat-card-subtitle class="card-subtitle">Registered</mat-card-subtitle>
+                
+
+            </mat-card-title-group>
+            <mat-card-content class="dashboard-card-content">
+                <div>{{studentCount}}</div>
+            </mat-card-content>
+
+        </mat-card>
+    </mat-grid-tile>
+    <mat-grid-tile colspan="1" rowspan="1">
+        <mat-card class="dashboard-card">
+            <mat-card-title-group>
+                <mat-card-title class="card-title">
+                    Pending
+                </mat-card-title>
+                <mat-card-subtitle class="card-subtitle">Student Approvals</mat-card-subtitle>
+                <img mat-card-sm-image src="../../assets/images/school_icon.png" class="card-images school_icon" alt="Users">
+
+            </mat-card-title-group>
+            <mat-card-content class="dashboard-card-content">
+                <div>{{studentPendingCount}}</div>
+            </mat-card-content>
+        </mat-card>
+    </mat-grid-tile>
+    <!-- <mat-grid-tile colspan="1" rowspan="1">
+        <mat-card class="dashboard-card">
+            <mat-card-title-group>
+                <mat-card-title class="card-title">
+                    Application
+                </mat-card-title>
+                <mat-card-subtitle class="card-subtitle">Downloads</mat-card-subtitle>
+                <img mat-card-sm-image src="../../assets/images/download_icon.png" class="card-images download_icon" alt="Downloads">
+
+            </mat-card-title-group>
+            <mat-card-content class="dashboard-card-content">
+                <div>{{card3Content}}</div>
+            </mat-card-content>
+
+        </mat-card>
+    </mat-grid-tile> -->
+</mat-grid-list>

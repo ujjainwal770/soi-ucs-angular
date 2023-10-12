@@ -1,0 +1,68 @@
+<div class="container-fluid">
+    <div class="row inner-header-row">
+        <div class="col-lg-12">
+            <h3>
+                <mat-icon class="cursor-p" routerLink="/manage-events">arrow_back</mat-icon> RSVP Status
+            </h3>
+        </div>
+    </div>
+    <div class="sub-container">
+    <div class="row">
+            <div class="col-lg-12">
+                <div class="filter-result">
+                    <div class="data-table-container" id="tableParticipantsList"> 
+                        <table aria-describedby="tableParticipantsList" mat-table [dataSource]="dataSource" matSort>
+                            <ng-container matColumnDef="full_name" >
+                                <th id="full_name"  mat-header-cell *matHeaderCellDef (click)="customSorting('full_name')" mat-sort-header> Name </th>
+                                <td mat-cell *matCellDef="let element" class="full_name" >
+                                    {{element.full_name }}
+                                </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="email">
+                                <th id="email" mat-header-cell *matHeaderCellDef (click)="customSorting('email')" mat-sort-header> Email ID
+                                </th>
+                                <td mat-cell *matCellDef="let element">
+                                    {{element.email }}
+                                </td>
+                            </ng-container>
+
+
+
+                            <ng-container matColumnDef="participant_event_status">
+                                <th id="participant_event_status" class="pl-15" mat-header-cell *matHeaderCellDef > Status
+                                </th>
+                                <td mat-cell *matCellDef="let element">
+                                    <span class="status-active status-padding" *ngIf="element.participant_event_status === 'ACCEPT'">
+                                       Accepted
+                                    </span>
+                                    <span class="status-deactive status-padding " *ngIf="element.participant_event_status == 'PENDING'">
+                                        No Response
+                                    </span>
+                                    <span class="status-pending status-padding " *ngIf="element.participant_event_status == 'REJECT'">
+                                        Declined
+                                    </span>
+                                </td>
+                            </ng-container>
+
+                          
+
+                            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                        </table>
+                        <!-- <div *ngIf="!dataSource.data.length" class="no-record-found">
+                            <span style="color: #4C356E; font-style: italic; display: inline-flex;">
+                                <img alt='' style="margin-right: 5px;"
+                                    src="../../assets/images/svg/record_not_found_info_icon.svg">
+                                    No Broadcast Messages here. Send new message and it will appear here.                            </span>
+                        </div> -->
+                        <mat-paginator *ngIf="dataSource.data.length" #paginator [pageSizeOptions]="pageSizes" showFirstLastButtons [length]="count"
+                        (page)="handlePage($event)" aria-label="Select page of periodic elements">
+                    </mat-paginator>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+   
+</div>

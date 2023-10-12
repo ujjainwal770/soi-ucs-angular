@@ -1,0 +1,277 @@
+@import "/src/app/scss/variables";
+
+.grid-tabular-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: $white;
+    background-clip: border-box;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+.btn{
+    padding: 4px !important;
+}
+.mat-button-toggle-group{
+    border-radius: 15px;
+    margin-left: 15px;
+}
+
+.filter-section {
+    background-color: $white;
+    box-shadow: 0px 10px 15px $table-box-shadow-color;
+    border-radius: 5px;
+    opacity: 1;
+    border: none;
+}
+
+table {
+    width: 100%;
+    background: $white 0% 0% no-repeat padding-box;
+    box-shadow: 0px 10px 15px $table-box-shadow-color;
+    border-radius: 5px;
+    opacity: 1;
+    border: none;
+}
+
+table td[class*=col-],
+table th[class*=col-] {
+    position: static;
+    display: table-cell;
+    float: none;
+}
+.message {
+    word-wrap: break-word !important;
+    white-space: unset !important;
+    flex: 0 0 28% !important;
+    width: 40% !important;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+  
+    word-break: break-word;
+  
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+  }
+
+th.mat-sort-header-sorted {
+    color: black;
+}
+
+tr.mat-header-row {
+    background: #E8E8E8 !important;
+}
+
+::ng-deep .mat-header-cell {
+    font-family: 'Ubuntu-Bold', sans-serif;
+    font-size: 0.875rem;
+}
+::ng-deep .mat-menu-panel {
+    min-height: auto;
+}
+
+::ng-deep .mat-cell {
+    font-family: 'Ubuntu-Regular', sans-serif;
+    font-size: 0.875rem;
+}
+
+.table-bordered tbody tr:nth-of-type(odd) {
+    background-color: rgba(0, 0, 0, .05);
+}
+
+.table-bordered {
+    border-collapse: collapse;
+    border-bottom: 1px solid #d1d4d6 !important;
+    width: 95%;
+}
+
+.dataTables_length label::after {
+    content: 'Items per page';
+}
+
+.green-outline-btn {
+    background-color: $white;
+    border: 1px solid $green;
+    border-radius: 25px;
+    height: 44px;
+    width: 100px;
+    font-family: 'Ubuntu-Bold', sans-serif;
+}
+
+.green-btn {
+    background-color: $green;
+    color: $white;
+    border-radius: 25px;
+    width: 154px;
+    height: 44px;
+    margin-left: 85%;
+}
+
+.action-section {
+    width: 55%;
+
+    .mat-form-field {
+        width: 100%;
+    }
+}
+
+.search-action {
+    width: 45%;
+}
+
+.page-label-header {
+    position: absolute;
+}
+
+.custom-status {
+    width: 80%;
+    cursor: auto;
+}
+
+.app-btn.filled.large {
+    min-width: 11rem;
+    float: right !important;
+}
+
+.action-button-col {
+    display: flex;
+    flex-direction: row;
+}
+
+::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background {
+    background-color: $green !important;
+}
+
+::ng-deep .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+    background-color: $green ;
+}
+
+.pr-10 {
+    padding-right: 10px;
+}
+.status-padding {
+    padding: 5px 15px;;
+}
+.event-heading{
+    background-color:#fff;
+    padding: 1rem;
+  //  margin: 0 0px 1rem;
+}
+.icon-display {
+    transform: scale(1.5);
+ }
+ .event-badge {
+    margin-bottom: 5px;
+    margin-top: 0px;
+    margin-left: 10px;
+    margin-right: 10px;
+    display: inline-block;
+    width: -webkit-fill-available;
+    padding: 3px 7px;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 15px;
+    text-align: left;
+    white-space: nowrap;
+    vertical-align: middle;
+    border-radius: 10px;
+    white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+ }
+ .event-badge-second{
+    margin-bottom: 5px;
+    margin-top: 0px;
+    margin-left: 10px;
+    margin-right: 1px;
+    display: inline-block;
+    width: 60%;
+    padding: 3px 7px;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 15px;
+    text-align: left;
+    white-space: nowrap;
+    vertical-align: middle;
+    border-radius: 10px;
+    white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+ }
+ .event-badge-count{
+    margin-bottom: 5px;
+    margin-top: 0px;
+    margin-left: 1px;
+    margin-right: 10px;
+    display: inline-block;
+    width: 20%;
+    padding: 3px 7px;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 15px;
+    text-align: left;
+    white-space: nowrap;
+    vertical-align: middle;
+    border-radius: 10px;
+    background-color:#34234B
+
+ }
+ .inline{
+    display: inline;
+ }
+ .grey-badge{
+    background-color:#868686
+
+ }
+ .pink-badge{
+    background-color:#E00B87
+ }
+
+ ::ng-deep .modal-content {
+    border-radius: 10px; /* Adjust the value as per your preference */
+  }
+
+  ::ng-deep .modal-header {
+    color: white;
+    background-color: #C3644D; /* Replace this with your desired background color */
+    border-radius: 10px 10px 0 0; /* Only apply border-radius to the top corners */
+  }
+
+  .dotted-alert {
+    color: #4D86B7;
+    background: #E8F3FD;
+    padding: 10px;
+    border-radius: 10px !important;
+    border: 1.5px dashed #8AC9FF !important; /* Replace with the desired primary color or use Bootstrap's primary color class directly, e.g., border-primary */
+  }
+  .time-container-inline {
+    display: flex;
+  }
+  
+  .time-container {
+    display: flex;
+    align-items: center;
+    margin-right: 20px; /* Add some spacing between containers */
+  }
+  
+  .time-text {
+    margin: 0;
+    padding-left: 5px; /* Add some spacing between icon and text */
+  }
+  .cal-cell-top {
+    min-width: 130px !important;
+    max-width: 130px !important;
+    min-height: 78px;
+    flex: 1;
+}
+  
+  
+  
+  
+  
+  
+  

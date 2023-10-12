@@ -1,0 +1,607 @@
+.app-main-container {
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
+  overflow-x: hidden;
+  height: 100%;
+}
+
+// Side Nav
+.mat-drawer-content {
+  margin-top: 4rem;
+
+  .content-wrapper {
+    display: block;
+    height: auto;
+    padding: 0 10px;
+    margin-top: 1.5rem;
+    margin-bottom: 10rem;
+    width: 100%;
+  }
+}
+
+.sidenav {
+  width: 230px;
+  margin-top: 65px;
+}
+
+
+// page main header
+.header-row {
+  .header-cont {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    h2 {
+      margin-right: auto;
+      margin-bottom: 0;
+      font-weight: 700;
+    }
+  }
+
+}
+
+// page inner header
+.inner-header-row {
+  h3 {
+    font-family: 'Ubuntu-Bold', sans-serif;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    font-weight: 700;
+
+    .mat-icon {
+      margin-right: 0.5rem;
+    }
+  }
+}
+
+.sub-container {
+  margin-top: 1rem !important;
+
+  .section-heading {
+    background-color: #fff;
+    padding: 1rem;
+    margin: 0 0px 1rem;
+
+    h5 {
+      font-family: "Ubuntu-Bold", sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      margin: 0;
+    }
+  }
+}
+
+// filter block
+.filter-block {
+  background-color: $white;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 1.5rem;
+  box-shadow: 0px 10px 15px $shadow-color;
+}
+
+
+
+
+// Mat Card 
+.mat-card {
+  font-family: "Ubuntu-Bold", sans-serif;
+
+  .mat-card-header {
+    .mat-card-header-text {
+      margin: 0;
+
+      .mat-card-title {
+        font-size: 1rem;
+        font-weight: 700;
+      }
+    }
+  }
+}
+
+// Mat Tab
+.mat-tab-group {
+  .mat-tab-header {
+    background-color: $white;
+
+    .mat-tab-label-active {
+      color: $green;
+      opacity: 1;
+    }
+  }
+
+  .mat-tab-body-wrapper {
+    margin-top: 1rem;
+
+    .mat-tab-body {
+      overflow: hidden;
+    }
+
+    .mat-tab-body-content {
+      overflow: hidden;
+      padding: 0px 0 20px;
+    }
+  }
+
+  .mat-ink-bar {
+    background-color: $green !important;
+  }
+}
+
+// App Button
+.app-btn {
+  border-radius: 15px;
+  border-width: 0px;
+  font-family: 'Ubuntu-Regular', sans-serif;
+  position: relative;
+
+  .mat-icon {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+  }
+
+  &.filled {
+    padding: 6px 20px;
+
+    &.green-bg {
+      background-color: $green;
+      color: $white;
+      transition: all 200ms ease-in-out;
+
+      &:hover:not([disabled]) {
+        box-shadow: $buttonBoxShadow;
+        transition: all 200ms ease-in-out;
+      }
+    }
+
+    &.gray-bg {
+      background-color: $light-gray;
+      color: $white;
+      transition: all 200ms ease-in-out;
+
+      &:hover:not([disabled]) {
+        box-shadow: $buttonBoxShadow;
+        transition: all 200ms ease-in-out;
+      }
+    }
+
+    &.large {
+      min-width: 8rem;
+    }
+
+    &.small {
+      min-width: 1rem;
+    }
+  }
+
+  &.unfilled {
+    border-width: 1px;
+    border-style: solid;
+    background-color: $white;
+    transition: background-color 200ms ease-in-out;
+
+    &.large {
+      min-width: 8rem;
+    }
+
+    &.green-b {
+      border-color: $green;
+      color: $green;
+
+      &:hover:not([disabled]) {
+        background-color: $green;
+        color: $white;
+        transition: all 200ms ease-in-out;
+      }
+    }
+
+    &.discard-b {
+      border-color: $gray-note;
+      color: $gray-note;
+      border-radius: 25px;
+      padding: 6px 20px;
+
+      // font-family: 'Ubuntu-bold';
+      &:hover:not([disabled]) {
+        background-color: #757575;
+        color: $white;
+        transition: all 200ms ease-in-out;
+      }
+    }
+
+    &.red-b {
+      border-color: $lightRed;
+      color: $lightRed;
+
+      &:hover {
+        background-color: $lightRed;
+        color: $white;
+        transition: all 200ms ease-in-out;
+      }
+    }
+
+    &.compact {
+      font-size: 14px;
+      padding: 2px 10px;
+    }
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+}
+
+button.app-btn.filled.green-bg:disabled {
+  cursor: not-allowed;
+  border-color: $green;
+  opacity: 50%;
+}
+
+button.app-btn.unfilled.green-b.green-outline-btn:disabled {
+  cursor: not-allowed;
+  color: $gray;
+  border-color: $gray;
+}
+
+// Side Nav Drawer
+.mat-drawer-inner-container {
+  overflow: auto !important;
+  overflow-x: hidden !important;
+  background-color: $purple ;
+
+  .mat-list-item-content {
+    font-family: 'Ubuntu-Regular', sans-serif;
+    font-size: 0.875rem;
+    padding: 0 9px !important;
+  }
+}
+
+.mat-drawer-inner-container::-webkit-scrollbar {
+  width: 0.1rem;
+}
+
+.mat-drawer-inner-container::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+.mat-drawer-inner-container::-webkit-scrollbar-thumb {
+  background-color: #cccccc;
+  outline: 0.5px solid #f8f9fa;
+}
+
+// Data Table 
+.data-table-container {
+  box-shadow: $box-shadow;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+// Mat Menu
+.mat-menu-panel {
+  .mat-menu-content {
+    button {
+      line-height: 33px;
+      height: auto;
+    }
+  }
+}
+
+.main {
+  // margin-left: 50px;
+  margin-top: 65px;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  background-color: $bg-color;
+}
+
+.app-header {
+  position: fixed;
+  z-index: 2;
+  width: 100%;
+  box-shadow: 0px 3px 6px #0000001A;
+  background-color: $white;
+
+  .menu-icon {
+    margin-right: 1.5rem;
+    margin-left: 0.2rem;
+  }
+}
+
+.app-body {
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
+  overflow-x: hidden;
+  // margin-top: 55px;
+}
+
+.login-btn {
+  border-radius: 25px;
+  height: 44px;
+  background-color: $green;
+  text-align: center;
+  color: $white;
+  border: none;
+}
+
+.green-outline-btn {
+  border-radius: 25px;
+  height: 44px;
+  background-color: $white;
+  text-align: center;
+  color: $green;
+  border: 1px solid $green;
+}
+
+.sidenav-container {
+  .mat-list-item {
+    .mat-list-item-content {
+      width: 100%;
+    }
+  }
+}
+
+.card-details {
+  h4 {
+    font-family: $ubuntu-bold, sans-serif !important;
+    margin-bottom: 0px;
+    font-size: 20px;
+
+    .active {
+      background-color: $light-blue;
+      color: $dark-green;
+      font-size: 12px;
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-family: $ubuntu-regular;
+    }
+
+    .inactive {
+      background-color: $dark-gray;
+      color: $darker-gray;
+      font-size: 12px;
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-family: $ubuntu-regular;
+    }
+  }
+
+  h5 {
+    font-family: $ubuntu-bold, sans-serif !important;
+    margin-bottom: 0px;
+    font-size: 1rem;
+  }
+
+  address {
+    font-family: $ubuntu-regular !important;
+    font-size: 1rem;
+  }
+}
+
+// Data table styling
+table.mat-table {
+  width: 100%;
+  background: $white 0% 0% no-repeat padding-box;
+  box-shadow: 0px 10px 15px $table-box-shadow-color;
+  border-radius: 5px;
+  opacity: 1;
+  border: none;
+
+  tr {
+    &.mat-header-row {
+      background: $dark-gray !important;
+    }
+  }
+
+  td[class*=col-],
+  th[class*=col-] {
+    position: static;
+    display: table-cell;
+    float: none;
+  }
+
+  th {
+    &.mat-sort-header-sorted {
+      color: black;
+    }
+
+    &.mat-header-cell {
+      font-family: 'Ubuntu-Bold', sans-serif;
+      font-size: 0.875rem;
+      color: black;
+    }
+  }
+
+  td {
+    &.mat-cell {
+      font-family: 'Ubuntu-Regular', sans-serif;
+      font-size: 13px;
+    }
+  }
+}
+
+/* in global css document: */
+/* this makes it so that sort header arrow is always shown: */
+.mat-sort-header-arrow.ng-trigger.ng-trigger-arrowPosition {
+  opacity: 1 !important;
+  color: #757575;
+
+}
+
+/* Hide the default sort arrow display: */
+.mat-sort-header-stem {
+  display: none !important;
+}
+
+.mat-sort-header-pointer-left,
+.mat-sort-header-pointer-right {
+  display: none !important;
+}
+
+.mat-sort-header-pointer-middle {
+  width: 0px !important;
+  height: 0px !important;
+}
+
+/* show two carets on top of each other when not sorted takes place: */
+.mat-sort-header-arrow {
+
+  // transform: translateY(-50%) !important;
+  .mat-sort-header-indicator {
+    &::before {
+      content: "\25C0 \25B6";
+      font-size: 8px;
+      letter-spacing: 1px;
+
+      position: absolute;
+      opacity: 1 !important;
+      color: #757575 !important;
+      transform: translate(-10%, 20%) rotate(90deg) !important;
+    }
+  }
+}
+
+/* show ascending caret when sorted ascending:*/
+[aria-sort="ascending"] {
+  .mat-sort-header-arrow {
+    .mat-sort-header-indicator {
+      &::before {
+        content: "\25C0";
+        font-size: 8px;
+        letter-spacing: 1px;
+
+        position: absolute;
+        color: #757575 !important;
+        opacity: 1 !important;
+        transform: translate(0, 10%) rotate(90deg) !important;
+      }
+    }
+  }
+}
+
+/* show descending caret when sorted descending: */
+[aria-sort="descending"] {
+  .mat-sort-header-arrow {
+    .mat-sort-header-indicator {
+      &::before {
+        content: "\25B6";
+        font-size: 8px;
+        letter-spacing: 1px;
+
+        position: absolute;
+        color: #757575 !important;
+        opacity: 1 !important;
+        transform: translate(0, -10%) rotate(90deg) !important;
+      }
+    }
+  }
+}
+
+.status-active {
+  background: #DDFDF4 0% 0% no-repeat padding-box;
+  border-radius: 13px;
+  border: none;
+  color: #267D66;
+  text-transform: capitalize;
+  width: 100%;
+  cursor: auto;
+}
+
+.status-deactive {
+  background: #E8E8E8 0% 0% no-repeat padding-box;
+  border-radius: 13px;
+  color: #666666;
+  text-transform: capitalize;
+  border: none;
+  width: 100%;
+  cursor: auto;
+  font-family: 'Ubuntu-Regular';
+}
+
+.status-pending {
+  background: #F4EED3 0% 0% no-repeat padding-box;
+  border-radius: 13px;
+  color: #806A00;
+  text-transform: capitalize;
+  border: none;
+  width: 100%;
+  cursor: auto;
+  font-family: 'Ubuntu-Regular';
+}
+
+.status-partial {
+  background: #F4EED3 0% 0% no-repeat padding-box;
+  border-radius: 13px;
+  color: #f56804;
+  text-transform: capitalize;
+  border: none;
+  width: 100%;
+  cursor: auto;
+  font-family: 'Ubuntu-Regular';
+}
+
+.status-reject {
+  background: #FFEDEE 0% 0% no-repeat padding-box;
+  border-radius: 13px;
+  color: #D8181E;
+  text-transform: capitalize;
+  border: none;
+  width: 100%;
+  cursor: auto;
+  font-family: 'Ubuntu-Regular';
+}
+
+.status-pre-approved {
+  background: #CBE8FD 0% 0% no-repeat padding-box;
+  border-radius: 13px;
+  color: #295B80;
+  text-transform: capitalize;
+  border: none;
+  width: 100%;
+  cursor: auto;
+  font-family: 'Ubuntu-Regular';
+}
+
+.status-migration-request {
+  background: #FFEDEE 0% 0% no-repeat padding-box;
+  border-radius: 13px;
+  border: none;
+  color: #7d267d;
+  text-transform: capitalize;
+  width: 100%;
+  cursor: auto;
+}
+
+.status-password-expired {
+  background: #f6ebee 0% 0% no-repeat padding-box;
+  border-radius: 13px;
+  color: #666666;
+  text-transform: capitalize;
+  border: none;
+  width: 100%;
+  cursor: auto;
+  font-family: 'Ubuntu-Regular';
+}
+
+.no-record-found {
+  color: #4C356E;
+  font-style: italic;
+  text-align: center;
+  margin: 20px;
+
+  img {
+    margin-right: 5px;
+  }
+}
+
+.a-link {
+  cursor: pointer;
+  color: #0052CC;
+  text-decoration: underline;
+}

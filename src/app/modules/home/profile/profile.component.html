@@ -1,0 +1,135 @@
+<div class="container-fluid ">
+    <div class="container-fluid profile-details">
+        <div class="row inner-header-row">
+            <div class="col-lg-12">
+                <h3>View Profile</h3>
+            </div>
+        </div>
+
+        <div class="row sub-container">
+            <div class="row">
+                <div class="col-lg-12 section-heading">
+                    <h5 *ngIf="adminType === 'SCHOOL_ADMIN'">School Details</h5>
+                    <h5 *ngIf="adminType !== 'SCHOOL_ADMIN'">User Details</h5>
+                </div>
+            </div>
+        </div>
+
+        <!-- School Admin detail -->
+        <div class="row" *ngIf="(adminType === 'SCHOOL_ADMIN')">
+            <div class="col-md-6">
+                <mat-card>
+                    <mat-card-header>
+                        <mat-card-title>Contact Info</mat-card-title>
+                    </mat-card-header>
+
+                    <mat-card-content>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <h4>School Name</h4>
+                                <span class="normal-txt">{{schoolAdminProfileDetails.school?.schoolName}} </span><br>
+                                <span class="normal-txt">Private School</span>
+                            </div>
+                        </div>
+
+                        <div class="gutter-space-medium"></div>
+                        <div class="row">
+                            <div class="col-lg-12 normal-txt">
+                                <h4>NCES</h4>
+                                <span class="normal-txt">{{schoolAdminProfileDetails.school?.nces}} </span>
+                            </div>
+                        </div>
+
+                        <div class="gutter-space-medium"></div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <h4>ID</h4>
+                                <span class="normal-txt">{{schoolAdminProfileDetails.school?.id}} </span>
+                            </div>
+                        </div>
+
+                        <div class="gutter-space-medium"></div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <h4>Address</h4>
+                                <span class="normal-txt">{{schoolAdminProfileDetails.school?.addressFirst}} </span><br>
+                                <span class="normal-txt">{{schoolAdminProfileDetails.school?.addressSecond}} </span><br>
+                                <span class="normal-txt">{{schoolAdminProfileDetails.school?.cityName}}, </span>
+                                <span class="normal-txt">{{schoolAdminProfileDetails.school?.stateName}}, </span>
+                                <span class="normal-txt">{{schoolAdminProfileDetails.school?.zipcode}} </span><br>
+                                <span class="normal-txt">{{schoolAdminProfileDetails.school?.countryName}} </span>
+                            </div>
+                        </div>
+
+                    </mat-card-content>
+                </mat-card>
+            </div>
+            <div class="col-md-6">
+                <mat-card>
+                    <mat-card-header>
+                        <mat-card-title>Main Point of Contact</mat-card-title>
+                    </mat-card-header>
+
+                    <mat-card-content>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <h4>Name</h4>
+                                <span class="normal-txt">{{schoolAdminProfileDetails.user?.name}}</span>
+                            </div>
+                        </div>
+
+                        <div class="gutter-space-medium"></div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <h4>Email</h4>
+                                <span class="normal-txt">{{schoolAdminProfileDetails.user?.email}} </span>
+                            </div>
+                        </div>
+
+                        <div class="gutter-space-medium"></div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <h4>Phone</h4>
+                                <span class="normal-txt">{{schoolAdminProfileDetails.user?.phone}} </span>
+                            </div>
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+
+            </div>
+        </div>
+
+        <!-- SOUCS Admin detail-->
+        <div class="row" *ngIf="adminType !== 'SCHOOL_ADMIN'">
+            <div class="col-md-12">
+                <mat-card>
+                    <mat-card-content>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <h4>Name</h4>
+                                <span class="normal-txt">{{soucsAdminProfileDetails?.firstName}}
+                                    {{soucsAdminProfileDetails?.lastName}} </span>
+                            </div>
+                        </div>
+
+                        <div class="gutter-space-medium"></div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <h4>Email</h4>
+                                <span class="normal-txt">{{soucsAdminProfileDetails?.email}} </span>
+                            </div>
+                        </div>
+
+                        <div class="gutter-space-medium"></div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <h4>Role</h4>
+                                <span class="normal-txt">{{soucsAdminProfileDetails?.roleName}} </span>
+                            </div>
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+
+            </div>
+        </div>
+    </div>

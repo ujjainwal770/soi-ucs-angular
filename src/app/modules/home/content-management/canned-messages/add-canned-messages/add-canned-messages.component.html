@@ -1,0 +1,66 @@
+<div class="container-fluid">
+    <div class="row inner-header-row">
+        <div class="col-lg-12">
+            <h3>
+                <mat-icon class="cursor-p" routerLink="/content-management/canned-messages">arrow_back</mat-icon> Add
+                Messages
+            </h3>
+        </div>
+    </div>
+
+    <div class="row sub-container">
+        <div class="row">
+            <div class="col-md-12">
+                <mat-card class="add-canned-messages">
+                    <mat-card-content>
+                        <form [formGroup]='addCannedMessageForm'>
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <mat-form-field class="search-txtbox">
+                                        <!-- Email -->
+                                        <mat-label>Enter Message Text</mat-label>
+                                        <input matInput placeholder="Message" #cannedMessage
+                                            formControlName="messageText" name="message" maxlength="15">
+                                        <mat-hint align="end" class="font-italic p-1">{{cannedMessage.value.length}} /
+                                            15</mat-hint>
+                                        <mat-error
+                                            *ngIf="getFieldR('messageText')?.invalid && getFieldR('messageText').touched">
+                                            Please enter a message.
+                                        </mat-error>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row mt-2 color-picker-container">
+                                <div class="col-lg-3 color-picker-label">
+                                    <span>Pick Message Color</span>
+                                </div>
+                                <div class="col-lg-1 color-picker">
+                                    <ng-template #popTemplate>
+                                        <div class="row">
+                                            <div *ngFor="let color of availableColors" class="col-3 round-color-box"
+                                                [style.background-color]="color.hasColor"
+                                                (click)="setSelectedColor(color); pop.hide()"></div>
+                                        </div>
+                                    </ng-template>
+                                    <button type="button" class="btn btn-default color-picker-btn round-color-box"
+                                        [popover]="popTemplate" #pop="bs-popover" [outsideClick]="true"
+                                        [adaptivePosition]="true" container="body" boundariesElement="viewport"
+                                        placement="bottom" [style.background-color]="selectedColor.hashColor">
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="row mt-3">
+                                <div class="col-lg-12">
+                                    <button class="app-btn filled green-bg large publish-btn"
+                                        [disabled]="(addCannedMessageForm.invalid || selectedColor.colorId === 0)"
+                                        (click)="publish()">Publish
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+</div>

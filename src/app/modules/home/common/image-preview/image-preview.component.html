@@ -1,0 +1,9 @@
+<div class="pop-img-container">
+    <div id="myModal" class="modal" (click)="onDismissImagePopup()">
+        <div class="close float-right">
+            <mat-icon (click)="onDismissImagePopup()">close</mat-icon>
+        </div>
+        <img class="modal-content" id="img01" [src]="popupImageUrl" (click)="$event.stopPropagation()" alt=''>
+        <div id="caption"></div>
+    </div>
+</div>

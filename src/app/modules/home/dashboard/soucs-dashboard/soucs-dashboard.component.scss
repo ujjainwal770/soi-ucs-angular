@@ -1,0 +1,39 @@
+@import "/src/app/scss/variables";
+.grid-container {
+    margin: 10px;
+  }
+  
+  
+.canvas-border {
+  // border-radius: 4px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background: #fff;
+}
+.label-header {
+  font-weight: bold;
+  font-size:1.1rem;
+}
+
+.mat-card-header-text {
+  margin: auto !important;
+}
+.div-container {
+  background: $white;
+  width: 46.5%;
+  padding: 1%;
+  box-shadow: 0px 10px 15px #cfd9e348;
+  //margin-right: 3%;
+  
+}
+.top-div-container {
+    margin: auto;
+}
+.left-div {
+  margin-right: 2%;  
+  margin-left: 2.5%;
+}
+
+
+  
+  

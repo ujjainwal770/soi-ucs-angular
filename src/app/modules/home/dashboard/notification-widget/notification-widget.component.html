@@ -1,0 +1,83 @@
+<div class="row widget-title">
+    <div class="col-md-9">
+        <h3>Notifications</h3>
+    </div>
+    <div class="col-md-3">
+        <a class="notification-view-all" routerLink="/push-notification">View All</a>
+    </div>
+</div>
+<div class="example-container" id="tagTableInfo">
+    <table aria-describedby="tagTableInfo" mat-table [dataSource]="dataSource" matSort>
+
+        <!-- Message Column -->
+        <ng-container matColumnDef="title">
+            <th class="p-2" id="first_name" mat-header-cell *matHeaderCellDef> Message
+            </th>
+            <td class="p-1" mat-cell *matCellDef="let element">
+                <div class="notification-message" (click)="messageAction(element)">
+                    <img class="message-icon" src="{{getNotificationIcon(element.notification_id)}}" />
+                    <span [ngClass]="{'read-message' : (element.is_read=='yes'),
+                            'unread-message' : element.is_read=='no'}">
+                        {{element.body.substring(0, 12)}}
+                    </span>
+                    <span mat-raised-button *ngIf="element.body.length > 12" [matTooltip]="element.body"
+                        aria-label="displays a tooltip when focused or hovered over">...</span>
+                </div>
+            </td>
+        </ng-container>
+
+        <!-- Message timing Column -->
+        <ng-container matColumnDef="creation_time">
+            <th class="p-1" id="creation_time" mat-header-cell *matHeaderCellDef></th>
+            <td class="p-1" mat-cell *matCellDef="let element">
+                <div class="row notification-timing m-0">
+                    <div class="col-lg-6 p-0">
+                        <span class="date">
+                            <mat-icon class="material-icons-outlined">calendar_month</mat-icon>
+                            {{element.creation_time | date: 'MM-dd-Y'}}
+                        </span>
+                    </div>
+                    <div class="col-lg-6 p-0">
+                        <span class="time">
+                            <mat-icon class="material-icons-outlined">schedule</mat-icon>
+                            {{element.creation_time | date: 'h:mm a'}}
+                        </span>
+                    </div>
+                </div>
+            </td>
+        </ng-container>
+
+        <!-- Action column -->
+        <ng-container matColumnDef="actions">
+            <th class="padding-10" id="actions" mat-header-cell *matHeaderCellDef>
+                Actions </th>
+            <td class="padding-10 center-align" mat-cell *matCellDef="let row">
+                <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                    <mat-icon>more_vert</mat-icon>
+                </button>
+                <mat-menu #menu="matMenu">
+                    <button mat-menu-item *ngIf="row.is_read=='yes'" (click)="changeReadStatus(row.id,'no')">
+                        <mat-icon class="material-icons-outlined">
+                            markunread</mat-icon>
+                        <span>Mark as unread</span>
+                    </button>
+                    <button mat-menu-item *ngIf="row.is_read=='no'" (click)="changeReadStatus(row.id,'yes')">
+                        <mat-icon class="material-icons-outlined">drafts</mat-icon>
+                        <span>Mark as read</span>
+                    </button>
+                    <button mat-menu-item (click)="dismissNotification(row.id,'inactive')">
+                        <mat-icon class="material-icons-outlined">delete</mat-icon>
+                        <span>Delete</span>
+                    </button>
+                </mat-menu>
+
+            </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns;sticky:true"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;let i = index;"></tr>
+    </table>
+
+    <div *ngIf="!dataSource.data.length" class="no-record-found">
+        No Messages Found!
+    </div>
+</div>

@@ -1,0 +1,80 @@
+@import "/src/app/scss/variables";
+.float-btn {
+    float: left;
+}
+
+.mat-row .mat-cell {
+    border-bottom: 1px solid transparent;
+    border-top: 1px solid transparent;
+    font-family: 'Ubuntu-Bold';
+    cursor: pointer;
+}
+
+.mat-row:hover .mat-cell {
+    // border-color: currentColor;
+    background-color: #C4CED8;
+}
+.mat-table {
+    background: #EFF2F5;
+    width: 100%;
+    border-radius: 5px 5px 0px 0px;
+}
+tr.mat-header-row {
+    display: none;
+}
+.table-row-hightlighter {
+    font-weight: bold;
+    background-color: #C4CED8;
+}
+td i {
+    color:$red
+}
+.tag-scrollable {
+    width: 100% ;
+    overflow: auto;
+    overflow-x: hidden;
+    white-space: wrap;
+    height: 40vh;
+}
+.matchip {
+    // display: inline-block;
+    font-family: 'Ubuntu-Regular';
+    margin: 10px !important;
+    color:$gray-note
+}
+.data-table-container {
+    height: 60vh;
+    overflow: auto;
+    overflow-x: hidden;
+}
+.mat-chip-list-wrapper .mat-standard-chip {
+    margin: 8px !important;
+}
+.tag-scrollable::-webkit-scrollbar,.data-table-container::-webkit-scrollbar {
+    width: 0.3rem;
+}
+.tag-scrollable::-webkit-scrollbar-track,.data-table-container::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+.tag-scrollable::-webkit-scrollbar-thumb,.data-table-container::-webkit-scrollbar-thumb {
+    background-color: #cccccc;
+    outline: 0.5px solid #f8f9fa;
+}
+.close-search-icon{
+    cursor: pointer;
+}
+.remove-tag-div {
+    float: right;
+    color: $red;
+    font-family: 'Ubuntu-Medium';
+    cursor: pointer;
+    margin-right: 1%;
+
+}
+.remove-tag-div .mat-icon {
+    padding-left: 1% !important;
+}
+.search-div {
+    width: 50vw;
+}

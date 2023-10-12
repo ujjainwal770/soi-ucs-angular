@@ -1,0 +1,70 @@
+<div class="row">
+    <div class="col-lg-12">
+        <div class="filter-result">
+            <div class="data-table-container" id="commentTabList">
+
+                <table aria-describedby="commentTabList" mat-table [dataSource]="dataSource" matSort>
+                    <!-- Commented by column -->
+                    <ng-container matColumnDef="commented_by">
+                        <th id="commented_by" mat-header-cell *matHeaderCellDef (click)="customSorting('full_name')" mat-sort-header>
+                            Commented By </th>
+                        <td mat-cell *matCellDef="let element; let i = index" [attr.id]="'commented_by-' + i">
+                            {{element.commented_by}}
+                        </td>
+                    </ng-container>
+
+                    <!-- Comment date Column -->
+                    <ng-container matColumnDef="comment_date">
+                        <th id="comment_date" mat-header-cell *matHeaderCellDef (click)="customSorting('created_at')" mat-sort-header>
+                            Comment Date </th>
+                        <td mat-cell *matCellDef="let element; let i = index" [attr.id]="'comment_date-' + i">
+                            {{element.comment_date |date:'MM/dd/Y' }}
+                        </td>
+                    </ng-container>
+
+                    <!-- Comment message Column -->
+                    <ng-container matColumnDef="comment">
+                        <th id="comment" mat-header-cell *matHeaderCellDef (click)="customSorting('message')" mat-sort-header>
+                            Comments </th>
+                        <td mat-cell *matCellDef="let element; let i = index" [attr.id]="'comment-' + i">
+                            {{element.comment}}
+                        </td>
+                    </ng-container>
+
+                    <!-- Sent Date Column -->
+                    <ng-container matColumnDef="actions">
+                        <th id="actions" mat-header-cell *matHeaderCellDef (click)="customSorting('full_name')" mat-sort-header>
+                            Action </th>
+                        <td mat-cell *matCellDef="let element; let i = index" [attr.id]="'actions-' + i">
+                            <button mat-icon-button [matMenuTriggerFor]="menu"
+                                aria-label="Example icon-button with a menu" disabled="true">
+                                <mat-icon>more_vert</mat-icon>
+                            </button>
+                            <mat-menu #menu="matMenu">
+                                <button mat-menu-item></button>
+                            </mat-menu>
+                        </td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns">
+                    </tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+                    </tr>
+                </table>
+
+                <div *ngIf="!dataSource.data.length" class="no-record-found">
+                    <span style="color: #4C356E; font-style: italic; display: inline-flex;">
+                        <img alt='' style="margin-right: 5px;"
+                            src="../../assets/images/svg/record_not_found_info_icon.svg">
+                        There are no records here at the moment.
+                    </span>
+                </div>
+
+                <mat-paginator #paginator [pageSizeOptions]="pageSizes" showFirstLastButtons [length]="count"
+                    (page)="handlePage($event)" aria-label="Select page of periodic elements">
+                </mat-paginator>
+
+            </div>
+        </div>
+    </div>
+</div>

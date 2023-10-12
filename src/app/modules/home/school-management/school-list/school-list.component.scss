@@ -1,0 +1,220 @@
+@import "/src/app/scss/variables";
+
+.grid-tabular-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: $white;
+    background-clip: border-box;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.filter-section {
+    background-color: $white;
+    box-shadow: 0px 10px 15px $table-box-shadow-color;
+    border-radius: 5px;
+    opacity: 1;
+    border: none;
+}
+
+// table.mat-table td.mat-cell {
+//     width: 15%;
+//     overflow-wrap: break-word;
+// }
+
+.table-bordered tbody tr:nth-of-type(odd) {
+    background-color: rgba(0, 0, 0, .05);
+}
+
+.table-bordered {
+    border-collapse: collapse;
+    border-bottom: 1px solid #d1d4d6 !important;
+    width: 95%;
+}
+.table-container {
+    width: 100vw; // <!-- THIS WORKS for horizontal scrolling (all columns visibile)
+    // width: 100%; // <!-- THIS DOESNT for horizontal scrolling (no scrollbars)
+    // width: 2800px; // <!-- THIS ALSO DOESNT for horizontal scrolling (no scrollbars)
+}
+.data-table-container{
+    border-radius: 5px;
+    overflow: auto;
+}
+
+// .mat-table {
+//     display: table;
+//     width: 100%;
+//     overflow-x: scroll;
+// }
+
+@for $index from 0 through 200 {
+    $size: $index * 2;
+
+    .table-column-#{$size} {
+        // flex: 0 1 #{$size}#{"px"};
+        min-width: #{$size}#{"px"};
+    }
+} 
+
+.dataTables_length label::after {
+    content: 'Items per page';
+}
+
+.green-outline-btn {
+    background-color: $white;
+    border: 1px solid $green;
+    border-radius: 25px;
+    height: 44px;
+    width: 100px;
+}
+
+.green-btn {
+    background-color: $green;
+    color: $white;
+    border-radius: 25px;
+    width: 154px;
+    height: 44px;
+    margin-left: 85%;
+}
+
+.action-section {
+    width: 55%;
+
+    .mat-form-field {
+        width: 100%;
+    }
+}
+
+.search-action {
+    width: 45%;
+}
+
+.page-label-header {
+    position: absolute;
+}
+
+.invalid-zip-message {
+    color: #E61E25;
+    display: inline-flex;
+    padding: 10px;
+    background: #FCE8EA;
+    border-radius: 5px;
+}
+
+.zip-code-error-mat-icon {
+    color: #E61E25;
+    font-size: 20px;
+    padding-top: 5px;
+}
+
+:host ::ng-deep {
+    .popover-body {
+        padding: 5px;
+    }
+}
+
+.no-pointer-cursor {
+    cursor: auto !important;
+}
+
+.ml-20 {
+    margin-left: 20px;
+}
+
+.ml-10 {
+    margin-left: 10px;
+}
+
+.pr-5 {
+    padding-right: 5px;
+}
+.pl-5 {
+    padding-left: 5px;
+}
+
+.align-center {
+    text-align: center;
+}
+:host ::ng-deep .mat-sort-header-content {
+    text-align: left !important;
+  }
+
+// th.mat-header-cell, td.mat-cell, td.mat-footer-cell {
+//     padding-left: 5px;
+// }
+
+.mass-resend-info {
+    color: #4C356E;
+    font-style: italic;
+    font-size: 14px;
+    display: inherit;
+
+    mat-icon {
+        font-size: 17px;
+        padding: 2px;
+        text-align: right;
+        margin-right: 2px;
+    }
+}
+.status-active {
+    background: #DDFDF4 0% 0% no-repeat padding-box;
+    border-radius: 13px;
+    border: none;
+    color: #267D66;
+    text-transform: capitalize;
+    margin-right: 20px !important;
+    width: -webkit-fill-available;
+    cursor: auto;
+  }
+  
+  .status-deactive {
+    background: #E8E8E8 0% 0% no-repeat padding-box;
+    border-radius: 13px;
+    color: #666666;
+    text-transform: capitalize;
+    border: none;
+    margin-right: 20px !important;
+    width: -webkit-fill-available;
+    cursor: auto;
+    font-family: 'Ubuntu-Regular';
+  }
+  
+  .status-pending {
+    background: #F4EED3 0% 0% no-repeat padding-box;
+    border-radius: 13px;
+    color: #806A00;
+    text-transform: capitalize;
+    border: none;
+    margin-right: 20px !important;
+    width: -webkit-fill-available;
+    cursor: auto;
+    font-family: 'Ubuntu-Regular';
+  }
+  :host ::ng-deep {
+    .popover-body {
+        width: 300px;
+        z-index: 99999;
+    }
+    .popover {
+        position: absolute;
+        z-index: 99999;
+        .popover-arrow {
+          position: absolute;
+        }
+      }
+}
+.mat-column-sticky {
+    z-index: 0 !important; /* Reset the z-index to its default value */
+  }
+
+
+::ng-deep .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+    background-color: $pink !important;
+    border-radius: 0px;
+}
+::ng-deep .mat-checkbox-indeterminate.mat-accent .mat-checkbox-frame {
+    border-color: transparent !important
+}

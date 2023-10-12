@@ -1,0 +1,16 @@
+<div class="app-main-container" *ngIf="isRolefetched">
+    <app-header class="app-header">
+        <div (click)="drawer.toggle()" class="menu-icon cursor-p" mat-icon-button
+            aria-label="Example icon-button with menu icon">
+            <mat-icon>{{opened ? 'close' : 'sort'}}</mat-icon>
+        </div>
+    </app-header>
+    <mat-drawer-container class="drawer-container" autosize>
+        <mat-drawer #drawer mode="side" [(opened)]="opened">
+            <app-navigation class="sidebar" [applicableNavItemNames]="applicableNavItemNames"></app-navigation>
+        </mat-drawer>
+        <div class="content-wrapper">
+            <router-outlet></router-outlet>
+        </div>
+    </mat-drawer-container>
+</div>

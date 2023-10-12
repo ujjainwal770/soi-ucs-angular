@@ -1,0 +1,28 @@
+<div class="container-fluid">
+    <div class="row float-right">
+        <mat-icon (click)="cancel()">close</mat-icon>
+    </div>
+    <div class="row">
+        <div class="col-md-12 d-flex justify-content-center">
+            <span class="font-weight-bold heading-font">{{pgtitle}}</span>
+        </div>
+        <div class="gutter-space" *ngIf="pgtitle"></div>
+        <div class="col-md-12 d-flex justify-content-center">
+            <span class="message-font">{{message}}</span>
+        </div>
+    </div>
+    <div class="gutter-space"></div>
+    <ng-container *ngIf="dialogType === 'yesNo'">
+        <div class="row button-div justify-content-center">
+            <button class="app-btn unfilled large" (click)="cancel()">No </button>
+            <button class="app-btn filled green-bg large" (click)="save()">Yes</button>
+        </div>
+    </ng-container>
+
+    <ng-container *ngIf="dialogType === 'confirm'">
+        <div class="row button-div justify-content-center">
+            <button class="app-btn filled green-bg large custom-btn" (click)="save()">Confirm</button>
+        </div>
+    </ng-container>
+
+</div>

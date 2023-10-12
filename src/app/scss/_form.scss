@@ -1,0 +1,51 @@
+.mat-form-field  {
+  font-family: "Ubuntu-Regular", sans-serif;
+  width: 100%;
+}
+
+
+.form-control {
+  margin: 0;
+  padding: 5px 5px;
+  //border-width: 0px 0px 1px 0px;
+  color: $form-control-text-color;
+  background-color: $form-control-bg-color;
+  border-color: $form-control-border-color;
+  font-size: $form-control-text-size;
+  border: none !important;
+  border-bottom: 1px solid $gray-note !important;
+  height: 1px;
+}
+.card-form-content {
+  .form-group{
+    margin-bottom: 5px;
+  }
+}
+.form-group label,
+.form-group-label{
+  font-size: $form-control-text-size;
+  color: $gray-note;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+::-webkit-inner-spin-button,
+::-webkit-calendar-picker-indicator {
+  display: none;
+  -webkit-appearance: none;
+}
+.mat-checkbox-checked.mat-accent .mat-checkbox-background {
+  background-color: $green !important;
+  border-radius: 6px;
+}
+.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+  border-color:$green;
+
+}
+.mat-radio-button.mat-accent .mat-radio-inner-circle {
+  background-color:$green
+}

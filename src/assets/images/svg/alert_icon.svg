@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="90" height="90" viewBox="0 0 90 90">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Rectangle_11168" data-name="Rectangle 11168" width="90" height="90" transform="translate(158 293)" fill="#fff"/>
+    </clipPath>
+  </defs>
+  <g id="delet_account_icon" transform="translate(-158 -293)" clip-path="url(#clip-path)">
+    <g id="Group_17598" data-name="Group 17598" transform="translate(138.27 275.885)">
+      <path id="Polygon_36" data-name="Polygon 36" d="M50.384,0A42.857,42.857,0,0,1,87.4,21.263h0a42.857,42.857,0,0,1,0,43.189h0A42.857,42.857,0,0,1,50.384,85.714h-.768A42.857,42.857,0,0,1,12.6,64.452h0a42.857,42.857,0,0,1,0-43.189h0A42.857,42.857,0,0,1,49.616,0Z" transform="translate(42.857 0) rotate(30)" fill="#d0524e" opacity="0.239"/>
+      <path id="Polygon_37" data-name="Polygon 37" d="M41.57,0A35.714,35.714,0,0,1,72.464,17.8h0a35.714,35.714,0,0,1,0,35.837h0a35.714,35.714,0,0,1-30.894,17.8h-.284a35.714,35.714,0,0,1-30.894-17.8h0a35.714,35.714,0,0,1,0-35.837h0A35.714,35.714,0,0,1,41.287,0Z" transform="translate(46.709 10.472) rotate(30)" fill="#d0524e"/>
+      <path id="Union_195" data-name="Union 195" d="M0,42.952a4.239,4.239,0,0,1,4.286-4.19,4.191,4.191,0,1,1,0,8.381A4.239,4.239,0,0,1,0,42.952ZM0,29.238V4.286a4.286,4.286,0,0,1,8.572,0V29.238a4.286,4.286,0,1,1-8.572,0Z" transform="translate(60.444 37.829)" fill="#fff"/>
+    </g>
+  </g>
+</svg>

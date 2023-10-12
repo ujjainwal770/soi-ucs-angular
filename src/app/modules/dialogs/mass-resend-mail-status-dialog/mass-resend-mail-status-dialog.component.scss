@@ -1,0 +1,54 @@
+@import "/src/app/scss/variables";
+
+.container-fluid {
+    width: 350px;
+    height: 400px;
+    padding: 0px;
+    font-family: 'Ubuntu-Regular';
+    overflow: hidden;
+
+    .heading-text {
+        font-family: 'Ubuntu-Bold';
+        display: contents;
+        font-size: 20px;
+        margin-top: 25px;
+    }
+
+    .error-msg {
+        display: inline-flex;
+        color: red;
+
+        mat-icon {
+            margin-right: 5px;
+        }
+    }
+
+    .table-div {
+        margin-top: 10px;
+        height: 275px;
+        overflow-y: auto;
+        padding-bottom: 20px;
+    }
+}
+
+.font-bold {
+    font-family: 'Ubuntu-Bold';
+    font-size: 15px;
+}
+
+.font-italic {
+    font-style: italic;
+}
+
+.close-btn {
+    background: #ffffff;
+    color: #757575;
+    border: 1px solid #757575;
+    border-radius: 25px;
+    width: auto;
+    padding: 5px 20px;
+}
+
+a {
+    color: #0052CC;
+}

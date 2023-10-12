@@ -1,0 +1,95 @@
+@import "/src/app/scss/variables";
+
+.data-table-scrollable {
+    height: 40vh;
+    overflow-y: scroll;
+}
+
+.container {
+    margin: auto;
+}
+
+table {
+    width: 100%;
+}
+
+.example-container {
+    height: 300px;
+    max-width: 100%;
+    overflow: auto;
+    width: 95%;
+    margin: auto;
+}
+
+.div-container {
+    background: $white;
+    width: 46.5%;
+    padding: 1%;
+    box-shadow: 0px 10px 15px #cfd9e348;
+    //margin-right: 3%;
+}
+
+.top-div-container {
+    margin: auto;
+    margin-top: 2%;
+}
+
+.first-div {
+    margin-right: 2%;
+    margin-left: 2.5%;
+}
+
+.example-container::-webkit-scrollbar {
+    width: 0rem;
+}
+
+.example-container::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+.example-container::-webkit-scrollbar-thumb {
+    background-color: #cccccc;
+    outline: 0.5px solid #f8f9fa;
+}
+
+.heading-label {
+    font-family: 'Ubuntu-Bold';
+    margin: auto;
+    width: 95%;
+    margin-bottom: 3%;
+    font-size: 1rem;
+    margin-top: 1%;
+
+    .mat-radio-group {
+        margin-left: 15%;
+    }
+}
+
+::ng-deep.mat-radio-label-content {
+    font-size: 14px !important;
+}
+
+.material-icons {
+    color: #E5A812;
+}
+
+.points-sec {
+    margin: auto;
+    font-family: 'UBUNTU-BOLD';
+}
+
+table.mat-table td.mat-cell {
+    font-family: 'Ubuntu-Medium' !important;
+}
+
+::ng-deep.mat-radio-label-content {
+    padding-right: 16px !important;
+}
+
+.cdk-column-stateName {
+    width: 14%;
+}
+
+.cdk-column-No {
+    width: 10%;
+}

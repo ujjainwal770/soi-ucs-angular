@@ -1,0 +1,42 @@
+.container-fluid {
+    min-height: 200px;
+    max-width: 450px;
+    min-width: 400px;
+}
+
+.heading-font {
+    font-family: 'Ubuntu-Bold';
+    font-size: 20px;
+    margin-top: 10%;
+}
+
+.message-font {
+    font-family: 'Ubuntu-Medium';
+    text-align: center;
+    font-size: 15px;
+}
+
+.unfilled {
+    margin-right: 25px;
+    width: 8rem;
+}
+
+.filled {
+    width: 5rem;
+}
+
+.button-div button {
+    border-radius: 25px;
+}
+
+.float-right {
+    float: right;
+
+    .mat-icon {
+        cursor: pointer;
+    }
+}
+
+.custom-btn {
+    padding: 10px 20px;
+}

@@ -1,0 +1,54 @@
+<form [formGroup]='editAdminForm' (ngSubmit)="submit()">
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>Main Point of Contact Details</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <div class="row">
+                <div class="col-lg-6">
+                    <mat-form-field>
+                        <mat-label for="mainName">Name</mat-label>
+                        <input id="mainName" name="mainName" formControlName="mainName" matInput placeholder="Name"
+                            required>
+                        <mat-error *ngIf="getFieldRef('mainName')?.invalid && getFieldRef('mainName')?.touched">
+                            Please enter Name</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <mat-form-field>
+                        <mat-label for="mainEmail">Email</mat-label>
+                        <input id="mainEmail" name="mainEmail" formControlName="mainEmail" matInput placeholder="Email"
+                            required>
+                        <mat-error *ngIf="getFieldRef('mainEmail')?.invalid && getFieldRef('mainEmail')?.touched">
+                            Please enter valid email id</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <mat-form-field>
+                        <mat-label for="mainPhone">Phone</mat-label>
+                        <input id="mainPhone" name="mainPhone" formControlName="mainPhone" matInput placeholder="Phone"
+                            [maxlength]="10" required>
+                        <mat-error
+                            *ngIf="getFieldRef('mainPhone')?.invalid && getFieldRef('mainPhone')?.errors?.required && getFieldRef('mainPhone')?.touched">
+                            Please enter Phone Number</mat-error>
+                        <mat-error
+                            *ngIf="getFieldRef('mainPhone')?.invalid && getFieldRef('mainPhone')?.errors?.pattern">
+                            Please enter 10 digit phone number</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+        </mat-card-content>
+        <div class="gutter-space"></div>
+        <div class="row">
+            <div class="col-lg-12 align-c sticky-action-row">
+                <button class="app-btn unfilled discard-b large" routerLink="/school-management">Discard</button>
+
+                <button class="app-btn filled green-bg large" [disabled]="isEditSaved">Save</button>
+            </div>
+        </div>
+    </mat-card>
+</form>

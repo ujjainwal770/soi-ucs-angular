@@ -1,0 +1,352 @@
+<div class="container-fluid">
+    <div class="row inner-header-row">
+        <div class="col-lg-12">
+            <h3>
+                <mat-icon class="cursor-p" routerLink="/app-users/user-list">arrow_back</mat-icon> Edit User Details
+            </h3>
+        </div>
+    </div>
+    <div class="row sub-container">
+        <div class="row">
+            <div class="col-lg-12 section-heading">
+                <h5>User Details</h5>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <form [formGroup]='editUserForm'>
+                <mat-card>
+                    <mat-card-content>
+                        <div class="row">
+
+                            <!-- Common fields for ucs and public user -->
+                            <ng-container>
+                                <!-- First Name -->
+                                <div class="col-sm-6">
+                                    <mat-form-field>
+                                        <mat-label for="firstName">First Name</mat-label>
+                                        <input id="firstName" name="firstName" #firstName formControlName="firstName"
+                                            matInput placeholder="First Name" required>
+                                        <mat-error
+                                            *ngIf="getFieldRef('firstName')?.invalid && getFieldRef('firstName')?.touched">
+                                            Please enter First Name</mat-error>
+                                    </mat-form-field>
+                                </div>
+
+                                <!-- Last Name -->
+                                <div class="col-sm-6">
+                                    <mat-form-field>
+                                        <mat-label for="lastName">Last Name</mat-label>
+                                        <input id="lastName" name="lastName" #lastName formControlName="lastName"
+                                            matInput placeholder="Last Name" required>
+                                        <mat-error
+                                            *ngIf="getFieldRef('lastName')?.invalid && getFieldRef('lastName')?.touched">
+                                            Please enter Last Name</mat-error>
+                                    </mat-form-field>
+                                </div>
+
+                                <!-- DOB -->
+                                <div class="col-sm-6">
+                                    <mat-form-field>
+                                        <mat-label for="dob">DOB (MM/DD/YYYY)</mat-label>
+                                        <input matInput [matDatepicker]="dobPicker" [max]="maxDate" [min]="minYearOld"
+                                            placeholder="MM/DD/YYYY" #dob formControlName="dob" name="dob" required>
+                                        <mat-datepicker-toggle matSuffix [for]="dobPicker"></mat-datepicker-toggle>
+                                        <mat-datepicker #dobPicker></mat-datepicker>
+                                        <mat-error *ngIf="getFieldRef('dob')?.invalid && getFieldRef('dob').touched">
+                                            Please select a valid DOB.
+                                        </mat-error>
+                                    </mat-form-field>
+                                </div>
+
+                                <!-- Email -->
+                                <div class="col-sm-6">
+                                    <mat-form-field>
+                                        <mat-label for="email">Email</mat-label>
+                                        <input id="email" type="email" name="email" #email formControlName="email"
+                                            matInput placeholder="Email" required readonly class="readonly">
+                                        <mat-error
+                                            *ngIf="getFieldRef('email')?.invalid && getFieldRef('email')?.touched">
+                                            Please enter a valid Email</mat-error>
+                                    </mat-form-field>
+                                </div>
+
+                                <!-- User Type -->
+                                <div class="col-sm-6">
+                                    <mat-form-field>
+                                        <mat-label for="userType">User Type</mat-label>
+                                        <mat-select id="userType" name="userType" formControlName="userType" required
+                                            (selectionChange)="onUserTypeChanged()">
+                                            <mat-option value="ucs"> UCS User </mat-option>
+                                            <mat-option value="public"> Public User </mat-option>
+                                        </mat-select>
+                                        <mat-error
+                                            *ngIf="getFieldRef('userType')?.invalid && getFieldRef('userType')?.touched">
+                                            Please select User Type</mat-error>
+                                    </mat-form-field>
+                                </div>
+
+                                <!-- Registered On -->
+                                <div class="col-sm-6">
+                                    <mat-form-field>
+                                        <mat-label for="registeredOn">Registered On</mat-label>
+                                        <input matInput placeholder="Registered On" #registeredOn
+                                            formControlName="registeredOn" name="registeredOn" required readonly
+                                            class="readonly">
+                                        <mat-error
+                                            *ngIf="getFieldRef('registeredOn')?.invalid && getFieldRef('registeredOn').touched">
+                                            Please select the Date of Registration.
+                                        </mat-error>
+                                    </mat-form-field>
+                                </div>
+
+                                <!-- Account Status -->
+                                <div class="col-sm-6">
+                                    <mat-form-field>
+                                        <mat-label for="accountStatus">Account Status</mat-label>
+                                        <input id="accountStatus" type="accountStatus" accountStatus="accountStatus"
+                                            #email formControlName="accountStatus" matInput placeholder="Account Status"
+                                            required readonly class="readonly">
+                                        <mat-error
+                                            *ngIf="getFieldRef('accountStatus')?.invalid && getFieldRef('accountStatus')?.touched">
+                                            Please select an Account Status</mat-error>
+                                    </mat-form-field>
+                                </div>
+
+                                <!-- Number of Badges Earned -->
+                                <div class="col-sm-6">
+                                    <mat-form-field>
+                                        <mat-label for="noOfBadgeEarned">Number of Badges Earned</mat-label>
+                                        <input id="noOfBadgeEarned" name="noOfBadgeEarned" #noOfBadgeEarned
+                                            formControlName="noOfBadgeEarned" matInput
+                                            placeholder="Number of Badges Earned" required readonly class="readonly">
+                                        <mat-error
+                                            *ngIf="getFieldRef('noOfBadgeEarned')?.invalid && getFieldRef('noOfBadgeEarned')?.touched">
+                                            Please enter number of Badges Earned</mat-error>
+                                    </mat-form-field>
+                                </div>
+
+                                <!-- Total Points -->
+                                <div class="col-sm-6">
+                                    <mat-form-field>
+                                        <mat-label for="totalPoints">Total Points</mat-label>
+                                        <input id="totalPoints" name="totalPoints" #totalPoints
+                                            formControlName="totalPoints" matInput placeholder="Total Points" required
+                                            readonly class="readonly">
+                                        <mat-error
+                                            *ngIf="getFieldRef('totalPoints')?.invalid && getFieldRef('totalPoints')?.touched">
+                                            Please enter Total Points</mat-error>
+                                    </mat-form-field>
+                                </div>
+
+                                <!-- Total number of Inclusion Played -->
+                                <div class="col-sm-6">
+                                    <mat-form-field>
+                                        <mat-label for="noOfInclusionPlayed">Total number of Inclusion
+                                            Played</mat-label>
+                                        <input id="noOfInclusionPlayed" name="noOfInclusionPlayed" #noOfInclusionPlayed
+                                            formControlName="noOfInclusionPlayed" matInput
+                                            placeholder="Total number of Inclusion Played" required readonly
+                                            class="readonly">
+                                        <mat-error
+                                            *ngIf="getFieldRef('noOfInclusionPlayed')?.invalid && getFieldRef('noOfInclusionPlayed')?.touched">
+                                            Please enter number of Inclusion Played</mat-error>
+                                    </mat-form-field>
+                                </div>
+
+                                <!-- Recent Inclusion Result -->
+                                <div class="col-sm-6">
+                                    <mat-form-field>
+                                        <mat-label for="recentInclusionResult">Recent Inclusion Result</mat-label>
+                                        <input id="recentInclusionResult" name="recentInclusionResult"
+                                            #recentInclusionResult formControlName="recentInclusionResult" matInput
+                                            placeholder="Recent Inclusion Result" required readonly class="readonly">
+                                        <mat-error
+                                            *ngIf="getFieldRef('recentInclusionResult')?.invalid && getFieldRef('recentInclusionResult')?.touched">
+                                            Please enter Recent Inclusion Result</mat-error>
+                                    </mat-form-field>
+                                </div>
+                                <div class="offset-sm-6"></div>
+                                <div class="gutter-space-small"></div>
+                            </ng-container>
+
+                            <!-- Reusable templates -->
+                            <ng-container>
+                                <!-- StateName template -->
+                                <ng-template #stateNameTemplate>
+                                    <mat-form-field>
+                                        <mat-label for="stateName">State</mat-label>
+                                        <mat-select id="stateName" name="stateName" formControlName="stateName"
+                                            (selectionChange)="fetchSchoolByState();resetUcsSpecificFields()"
+                                            [disabled]="isUcsUser && userData?.reqSchoolId>0">
+                                            <mat-option *ngFor="let state of stateList"
+                                                [value]="state.abbreviation">{{state.name}}</mat-option>
+                                        </mat-select>
+                                        <mat-error
+                                            *ngIf="getFieldRef('stateName')?.invalid && getFieldRef('stateName')?.touched">
+                                            Please select a state</mat-error>
+                                    </mat-form-field>
+                                </ng-template>
+
+                                <!-- Zip template -->
+                                <ng-template #zipTemplate>
+                                    <mat-form-field>
+                                        <mat-label for="zipCode">Zip Code</mat-label>
+                                        <input id="zipCode" name="zipCode" #zipCode formControlName="zipCode" matInput
+                                            placeholder="Zip Code" [readonly]="isUcsUser" pattern="^[0-9]{5,5}$"
+                                            maxlength="5" [ngClass]="{'readonly': isUcsUser}"
+                                            (input)="getStateAndCityByZip()">
+                                        <mat-error
+                                            *ngIf="(getFieldRef('zipCode')?.invalid || getFieldRef('zipCode')?.errors?.dbError) && getFieldRef('zipCode')?.touched">
+                                            Please enter a valid US Zip Code</mat-error>
+                                    </mat-form-field>
+                                </ng-template>
+
+                                <!-- City template -->
+                                <ng-template #cityTemplate>
+                                    <mat-form-field>
+                                        <mat-label for="cityName">City</mat-label>
+                                        <input id="cityName" name="cityName" #cityName formControlName="cityName"
+                                            matInput placeholder="City Name" readonly class="readonly">
+                                        <mat-error
+                                            *ngIf="getFieldRef('cityName')?.invalid && getFieldRef('cityName')?.touched">
+                                            Please enter city name</mat-error>
+                                    </mat-form-field>
+                                </ng-template>
+
+                                <!-- Country template -->
+                                <ng-template #countryTemplate>
+                                    <mat-form-field [ngClass]="{'readonly': userData?.reqSchoolId>0}">
+                                        <mat-label for="country">Country</mat-label>
+                                        <mat-select id="country" name="country" formControlName="country" required>
+                                            <mat-option value='USA'> United States </mat-option>
+                                        </mat-select>
+                                        <mat-error
+                                            *ngIf="getFieldRef('country')?.invalid && getFieldRef('country')?.touched">
+                                            Please select User Status</mat-error>
+                                    </mat-form-field>
+                                </ng-template>
+
+                                <!-- SchoolName template -->
+                                <ng-template #schoolNameTemplate>
+                                    <mat-form-field>
+                                        <mat-label for="schoolId">School Name</mat-label>
+                                        <mat-select id="schoolId" name="schoolId" formControlName="schoolId" required
+                                            (selectionChange)="onSchoolChange()"
+                                            [disabled]="isUcsUser && userData?.reqSchoolId>0">
+                                            <mat-option *ngFor="let school of schoolList"
+                                                [value]="school.id">{{school.schoolName}}</mat-option>
+                                            <mat-option *ngIf="schoolList==0" value='' [disabled]="schoolList==0">No
+                                                school found</mat-option>
+                                        </mat-select>
+                                        <mat-error
+                                            *ngIf="getFieldRef('schoolId')?.invalid && getFieldRef('schoolId')?.touched">
+                                            Please select a School</mat-error>
+                                    </mat-form-field>
+                                </ng-template>
+                            </ng-container>
+
+                            <!-- Fields visible only for UCS User -->
+                            <ng-container *ngIf="isUcsUser">
+                                <div class="col-sm-12" *ngIf="userData?.reqSchoolId > 0">
+                                    <div class="alert alert-info school-migration-info">
+                                        <mat-icon>info_outline</mat-icon>
+                                        <span>School Migration request to {{userData?.reqSchoolName}} is under pending status and will be updated here
+                                            once the School Admin approves it.</span>
+                                    </div>
+                                </div>
+                                <!-- state Name -->
+                                <div class="col-sm-2">
+                                    <ng-container *ngTemplateOutlet="stateNameTemplate">
+                                        State Name
+                                    </ng-container>
+                                </div>
+
+                                <!-- School Name -->
+                                <div class="col-sm-4">
+                                    <ng-container *ngTemplateOutlet="schoolNameTemplate">
+                                        School Name
+                                    </ng-container>
+                                </div>
+
+                                <!-- Zip -->
+                                <div class="col-sm-3">
+                                    <ng-container *ngTemplateOutlet="zipTemplate">
+                                        Zip Code
+                                    </ng-container>
+                                </div>
+
+                                <!-- City -->
+                                <div class="col-sm-3">
+                                    <ng-container *ngTemplateOutlet="cityTemplate">
+                                        City
+                                    </ng-container>
+                                </div>
+
+                                <!-- Country -->
+                                <div class="col-sm-6">
+                                    <ng-container *ngTemplateOutlet="countryTemplate">
+                                        Country
+                                    </ng-container>
+                                </div>
+
+                                <!-- NCES ID -->
+                                <div class="col-sm-6">
+                                    <mat-form-field>
+                                        <mat-label for="nces">NCES ID</mat-label>
+                                        <input id="nces" name="nces" #nces formControlName="nces" matInput
+                                            placeholder="nces" required readonly class="readonly">
+                                        <mat-error *ngIf="getFieldRef('nces')?.invalid && getFieldRef('nces')?.touched">
+                                            Please enter NCES ID</mat-error>
+                                    </mat-form-field>
+                                </div>
+                            </ng-container>
+
+                            <!-- Fields visible only for public User -->
+                            <ng-container *ngIf="!isUcsUser">
+                                <!-- Zip -->
+                                <div class="col-sm-2">
+                                    <ng-container *ngTemplateOutlet="zipTemplate">
+                                        Zip Code
+                                    </ng-container>
+                                </div>
+
+                                <!-- state Name -->
+                                <div class="col-sm-2">
+                                    <ng-container *ngTemplateOutlet="stateNameTemplate">
+                                        State Name
+                                    </ng-container>
+                                </div>
+
+                                <!-- City -->
+                                <div class="col-sm-2">
+                                    <ng-container *ngTemplateOutlet="cityTemplate">
+                                        City
+                                    </ng-container>
+                                </div>
+
+                                <!-- Country -->
+                                <div class="col-sm-6">
+                                    <ng-container *ngTemplateOutlet="countryTemplate">
+                                        Country
+                                    </ng-container>
+                                </div>
+                            </ng-container>
+                        </div>
+
+                        <!-- Buttons -->
+                        <div class="gutter-space"></div>
+                        <div class="row">
+                            <div class="col-lg-12 align-c sticky-action-row">
+                                <button class="app-btn unfilled discard-b large"
+                                    routerLink="/app-users/user-list">Cancel</button>
+                                <button class="app-btn filled green-bg large ml-15" (click)="save()">Save</button>
+                            </div>
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+            </form>
+        </div>
+    </div>
+</div>

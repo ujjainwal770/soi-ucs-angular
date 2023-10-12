@@ -1,0 +1,248 @@
+<div>
+
+    <!-- Show full image as popup -->
+    <ng-container *ngIf="isShowImagePopup">
+        <app-image-preview [imageUrl]="popupImageUrl" (dismissPopup)="onDismissImagePopup()"></app-image-preview>
+    </ng-container>
+
+    <!-- Filter Section-->
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="filter-block box-radius">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <form [formGroup]='crowdsourcingFormGroup'>
+                            <div class="row">
+                                <div class="col-lg-2 offset-lg-3">
+                                    <mat-form-field class="filter-by-status">
+                                        <mat-label>Filter by User Type</mat-label>
+                                        <mat-select formControlName="filterByUserType"
+                                            (selectionChange)="resetFilter()">
+                                            <mat-option *ngFor="let option of filterBy.userTypeOptions"
+                                                value="{{option.value}}">
+                                                {{option.name}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="col-lg-2">
+                                    <mat-form-field class="filter-by-status">
+                                        <mat-label>Filter by Media Type</mat-label>
+                                        <mat-select formControlName="filterByMediaType"
+                                            (selectionChange)="resetFilter()">
+                                            <mat-option *ngFor="let option of filterBy.mediaTypeOptions"
+                                                value="{{option.value}}">
+                                                {{option.name}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-lg-2">
+                                    <mat-form-field class="search-by">
+                                        <mat-label>Search by</mat-label>
+                                        <mat-select formControlName="searchBy" (selectionChange)="getSearch()">
+                                            <mat-option *ngFor="let option of filterBy.searchOptions"
+                                                value="{{option.value}}">
+                                                {{option.name}} </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-lg-3">
+                                    <mat-form-field class="search-txtbox">
+                                        <mat-label>Enter {{getSearchTxt()}}</mat-label>
+                                        <input matInput placeholder="Enter {{getSearchTxt()}}" #searchTxtBox
+                                            formControlName="searchText" name="search-by">
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="filter-result">
+                <div class="data-table-container" id="crowdsourceGalleryList">
+
+                    <!-- Grid View -->
+                    <ng-container *ngIf="viewStyle === 'grid_view'">
+                        <div class="row grid-view-container">
+                            <div class="col-lg-12">
+                                <mat-grid-list [cols]="noOfGridCols" gutterSize="15px" rowHeight="5:6"
+                                    (window:resize)="onWindowResize()">
+                                    <mat-grid-tile *ngFor="let data of galleryTableData">
+                                        <div class="grid-view-image-container" (click)="openUrl(data);"
+                                            [style.background-image]="'url('+ getThumbnail(data.thumbnailImgUrl) + ')'">
+                                            <div class="row" (click)="$event.stopPropagation()">
+                                                <div class="col-lg-3">
+                                                    <span *ngIf="data.ugcUploadType === 'Video'"
+                                                        (click)="openUrl(data);">
+                                                        <img src="../../../../assets/images/svg/play_icon.svg" alt=''>
+                                                    </span>
+                                                </div>
+                                                <div class="offset-lg-5 col-lg-4">
+                                                    <div class="view-detail-menu-container">
+                                                        <button mat-icon-button class="grid-view-action-menu"
+                                                            [matMenuTriggerFor]="menu"
+                                                            aria-label="Example icon-button with a menu">
+                                                            <mat-icon>more_vert</mat-icon>
+                                                        </button>
+                                                        <mat-menu #menu="matMenu">
+                                                            <button mat-menu-item *ngFor="let item of actionMenu"
+                                                                (click)="userAction(item['path'], data)">
+                                                                <mat-icon>{{item['icon']}}</mat-icon>
+                                                                <span>{{item['name']}}</span>
+                                                            </button>
+                                                        </mat-menu>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row grid-view-footer-container">
+                                                <div class="col-lg-12">
+                                                    <div class="row">
+                                                        <div class="col-lg-12">
+                                                            <img class="blob-img"
+                                                                [src]="data.blob ? data.blob : staticImage.blobPlaceholder"
+                                                                alt=''>
+                                                            <span class="name-title">{{data.full_name}}</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </mat-grid-tile>
+                                </mat-grid-list>
+                            </div>
+                        </div>
+                    </ng-container>
+
+                    <!-- List View -->
+                    <ng-container *ngIf="viewStyle === 'list_view'">
+                        <table aria-describedby="crowdsourceGalleryList" mat-table [dataSource]="dataSource" matSort>
+                            <!--Thumbnail Column -->
+                            <ng-container matColumnDef="thumbnailImgUrl">
+                                <th id="thumbnailImgUrl" mat-header-cell *matHeaderCellDef> Thumbnails
+                                </th>
+                                <td mat-cell *matCellDef="let element; let i = index" [attr.id]="'thumbnailImgUrl-' + i">
+                                    <span (click)="openUrl(element)">
+                                        <span class="list-view-thmbnl-play-btn"
+                                            *ngIf="element.ugcUploadType === 'Video'">
+                                            <img [src]="staticImage.playIcon" alt=''>
+                                        </span>
+                                        <span class="list-veiw-thuhmnail">
+                                            <img class="list-thumbnail-img" [src]="element.thumbnailImgUrl" alt=''>
+                                        </span>
+                                    </span>
+                                </td>
+                            </ng-container>
+
+                            <!-- Published By Column -->
+                            <ng-container matColumnDef="full_name">
+                                <th id="full_name" mat-header-cell *matHeaderCellDef (click)="customSorting('full_name')" mat-sort-header> Published by </th>
+                                <td mat-cell *matCellDef="let element; let i = index" [attr.id]="'full_name-' + i">
+                                    <span class="a-link" (click)="userAction('view', element)">
+                                        {{element.full_name}}
+                                    </span>
+                                </td>
+                            </ng-container>
+
+                            <!-- Media Type Column -->
+                            <ng-container matColumnDef="ugcUploadType">
+                                <th id="ugcUploadType" mat-header-cell *matHeaderCellDef (click)="customSorting('ugcUploadType')" mat-sort-header> Media Type
+                                </th>
+                                <td mat-cell *matCellDef="let element; let i = index" [attr.id]="'ugcUploadType-' + i"> {{element.ugcUploadType}} </td>
+                            </ng-container>
+
+                            <!-- Published On Column -->
+                            <ng-container matColumnDef="createdAt">
+                                <th id="createdAt" mat-header-cell *matHeaderCellDef (click)="customSorting('createdAt')" mat-sort-header> Published on
+                                </th>
+                                <td mat-cell *matCellDef="let element; let i = index" [attr.id]="'createdAt-' + i">
+                                    {{element.createdAt | date: 'MM/dd/y'}}
+                                </td>
+                            </ng-container>
+
+                            <!-- Challenge Associated Column -->
+                            <ng-container matColumnDef="title">
+                                <th id="title" mat-header-cell *matHeaderCellDef (click)="customSorting('title')" mat-sort-header> Challenge Associated
+                                </th>
+                                <td mat-cell *matCellDef="let element; let i = index" [attr.id]="'title-' + i">
+                                    {{element.title?.substring(0, 30)}}
+                                    <span mat-raised-button *ngIf="element.title?.length > 30"
+                                        [matTooltip]="element.title"
+                                        aria-label="displays a tooltip when focused or hovered over">
+                                        ....
+                                    </span>
+                                </td>
+                            </ng-container>
+
+                            <!-- Vibes Column -->
+                            <ng-container matColumnDef="vibesCount">
+                                <th id="vibesCount" mat-header-cell *matHeaderCellDef (click)="customSorting('vibesCount')" mat-sort-header> Vibes </th>
+                                <td mat-cell *matCellDef="let element; let i = index" [attr.id]="'vibesCount-' + i" class="pl-15">
+                                    {{element.vibesCount}}
+                                </td>
+                            </ng-container>
+
+                            <!-- Comments Column -->
+                            <ng-container matColumnDef="commentsCount">
+                                <th id="commentsCount" mat-header-cell *matHeaderCellDef (click)="customSorting('commentsCount')" mat-sort-header> Comments </th>
+                                <td mat-cell *matCellDef="let element; let i = index" [attr.id]="'commentsCount-' + i" class="pl-30">
+                                    {{element.commentsCount}}
+                                </td>
+                            </ng-container>
+
+                            <!-- Reprots Column -->
+                            <ng-container matColumnDef="reportsCount">
+                                <th id="reportsCount" mat-header-cell *matHeaderCellDef (click)="customSorting('reportsCount')" mat-sort-header> Reports </th>
+                                <td mat-cell *matCellDef="let element; let i = index" [attr.id]="'reportsCount-' + i" class="report-count">
+                                    <span
+                                        [ngClass]="{'report-count-not-exist': element.reportsCount === 0, 'report-count-exist': element.reportsCount > 0}">
+                                        {{element.reportsCount}}
+                                    </span>
+                                </td>
+                            </ng-container>
+
+                            <!-- Action Column -->
+                            <ng-container matColumnDef="actions">
+                                <th id="actions" mat-header-cell *matHeaderCellDef class="action-cell"> Actions </th>
+                                <td mat-cell *matCellDef="let row ; let i = index" [attr.id]="'actions-' + i">
+                                    <button mat-icon-button [matMenuTriggerFor]="menu"
+                                        aria-label="Example icon-button with a menu">
+                                        <mat-icon>more_vert</mat-icon>
+                                    </button>
+                                    <mat-menu #menu="matMenu">
+                                        <button mat-menu-item *ngFor="let item of actionMenu"
+                                            (click)="userAction(item['path'], row)">
+                                            <mat-icon>{{item['icon']}}</mat-icon>
+                                            <span>{{item['name']}}</span>
+                                        </button>
+                                    </mat-menu>
+                                </td>
+                            </ng-container>
+
+                            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                        </table>
+                    </ng-container>
+
+                    <div *ngIf="!dataSource.data.length" class="no-record-found">
+                        <span style="color: #4C356E; font-style: italic; display: inline-flex;">
+                            <img alt='' style="margin-right: 5px;"
+                                src="../../assets/images/svg/record_not_found_info_icon.svg">
+                            There are no records here at the moment.
+                        </span>
+                    </div>
+
+                    <mat-paginator #paginator [pageSizeOptions]="pageSizes" showFirstLastButtons [length]="count"
+                        (page)="handlePage($event)" aria-label="Select page of periodic elements">
+                    </mat-paginator>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

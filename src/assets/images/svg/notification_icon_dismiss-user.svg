@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30">
+  <g id="icon_dismiss-user" transform="translate(4798 924)">
+    <circle id="Ellipse_490" data-name="Ellipse 490" cx="15" cy="15" r="15" transform="translate(-4798 -924)" fill="#f4eed3"/>
+    <rect id="Rectangle_6335" data-name="Rectangle 6335" width="16" height="7" transform="translate(-4791 -912)" fill="#fff"/>
+    <path id="Subtraction_47" data-name="Subtraction 47" d="M6,18.156a6,6,0,1,1,4.729-9.693l-4.1,9.66A6.1,6.1,0,0,1,6,18.156Zm-1.8-6.6a.6.6,0,0,0-.426,1.028l1.2,1.2a.6.6,0,0,0,.851,0l3-3a.6.6,0,1,0-.852-.851L5.4,12.509l-.774-.779A.6.6,0,0,0,4.2,11.553Z" transform="translate(-4793 -921.155)" fill="#4cbc23"/>
+    <path id="Intersection_23" data-name="Intersection 23" d="M5.832,10.3,9.07,2.673A6,6,0,1,1,5.832,10.3Zm7.411.449a.546.546,0,1,0,.771-.772l-1.8-1.8,1.8-1.8a.545.545,0,1,0-.771-.771l-1.8,1.8-1.8-1.8a.545.545,0,1,0-.771.771l1.8,1.8-1.8,1.8a.546.546,0,1,0,.771.772l1.8-1.8Z" transform="translate(-4790.447 -917.185)" fill="#dd4040"/>
+    <rect id="Rectangle_6334" data-name="Rectangle 6334" width="1" height="21" rx="0.5" transform="matrix(0.921, 0.391, -0.391, 0.921, -4779.729, -919.582)" fill="#806a13"/>
+  </g>
+</svg>

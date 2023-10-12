@@ -1,0 +1,37 @@
+@import "/src/app/scss/variables";
+
+.container-fluid {
+    width: 280px;
+    height: 300px;
+    padding: 0px;
+    font-family: 'Ubuntu-Regular';
+
+    .heading-text {
+        font-family: 'Ubuntu-Bold';
+        display: contents;
+        font-size: 20px;
+        margin-top: 25px;
+    }
+
+    .message-font {
+        font-size: 15px;
+        color: $black;
+    }
+}
+
+.cancel-btn {
+    cursor: pointer !important;
+    margin-left: 10px;
+}
+
+.confirm-btn {
+    width: auto;
+    padding: 10px 25px 10px 25px;
+    border-radius: 50px;
+}
+
+.selected-school-mat-icon {
+    font-size: 17px;
+    padding-top: 3px;
+    margin-left: 5px;
+}

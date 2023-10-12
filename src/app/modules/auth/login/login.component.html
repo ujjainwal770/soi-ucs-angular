@@ -1,0 +1,22 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12 col-sm-12 main-container">
+      <div class="col-md-5 col-sm-5 image-div">
+        <div class="col-md-12 h-100 w-100">
+          <img alt="login" src="../../../../assets/images/login-pg.jpg" class="login-pg-img h-100 w-100">
+          <div class="image-text">
+            <div class="welcome-text">Hello, Friends!</div>
+            <div class="image-text-second">Welcome back to the Admin Portal! Here you can manage your student list. You can also see how engaged your students are with the app! If you have any questions or concerns, please email info@generationunified.org</div>
+          </div>
+          
+        </div>
+      </div>
+      <div class="col-md-7 login-part-div">
+        <app-login-form *ngIf="currentUrl === '/auth/login'"></app-login-form>
+        <app-forgot-password *ngIf="currentUrl === '/auth/forgot-password'"></app-forgot-password>
+        <app-change-password *ngIf="currentUrl === '/auth/change-password'"></app-change-password>
+        <app-set-password *ngIf="setPasswordUrl === '/auth/set-password/' || setPasswordUrl === '/auth/reset-password/'" [title]="title"></app-set-password>
+      </div>
+    </div>
+  </div>
+</div>

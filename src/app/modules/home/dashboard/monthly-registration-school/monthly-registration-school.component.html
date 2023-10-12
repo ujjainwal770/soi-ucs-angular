@@ -1,0 +1,15 @@
+<h3>Monthly Approved Students</h3>
+<button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+    <img src="../../assets/images/icon-filter.png" class="filter-icon" alt="More" title="Select Year">
+</button>
+<mat-menu #menu="matMenu" xPosition="before">
+    <button (click)="getAnalytics(option)" *ngFor="let option of years" mat-menu-item>{{option}}</button>
+</mat-menu>
+<div class="selectd-yr">For the year <span>{{selectedYearRange}}</span></div>
+
+<div class="chartjs-container">
+    <canvas baseChart class="canvas-bar-chart" [datasets]="barChartData" [labels]="barChartLabels"
+        [options]="barChartOptions" [plugins]="barChartPlugins" [legend]="barChartLegend" #myChart
+        [colors]="barChartColors" [chartType]="barChartType">
+    </canvas>
+</div>

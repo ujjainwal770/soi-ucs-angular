@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30">
+  <g id="icon_school_migration_request" transform="translate(4850 924)">
+    <circle id="Ellipse_563" data-name="Ellipse 563" cx="15" cy="15" r="15" transform="translate(-4850 -924)" fill="#cceaf8"/>
+    <g id="Group_13235" data-name="Group 13235" transform="translate(0.113 0.029)">
+      <g id="school-svgrepo-com" transform="translate(-4845.113 -917.176)">
+        <path id="Path_29090" data-name="Path 29090" d="M15.644,14.452V7.873L8.9,5.043V3.759h.653v.585h2.3V2.315H10.693V1.731H8.9V1.726a.585.585,0,0,0-1.169,0V4.981L.585,7.873v6.579H0v1.753H6.876V11.873H9.763v4.332h6.465V14.452h-.584ZM3.92,11.872H5.5V13.42H3.92Zm-2.509,0H3.025V13.42H1.41Zm6.7-2.321A1.136,1.136,0,1,1,9.249,8.415,1.136,1.136,0,0,1,8.113,9.551Zm5.227,2.321h1.616V13.42H13.34Zm-2.51,0h1.616V13.42H10.83Z" transform="translate(0 0)" fill="#0063a5"/>
+      </g>
+      <g id="arrows-svgrepo-com" transform="translate(-4835 -938.976)">
+        <path id="Path_29102" data-name="Path 29102" d="M118.066,24.28l-2.845-2.206a.606.606,0,0,0-.978.479v.6h-2.858a.606.606,0,0,0-.606.606v2a.606.606,0,0,0,.606.606h2.858v.6a.606.606,0,0,0,.978.479l2.845-2.206a.606.606,0,0,0,0-.958Z" transform="translate(-106.301)" fill="#0063a5" stroke="#cceaf8" stroke-width="1"/>
+        <path id="Path_29103" data-name="Path 29103" d="M6.916,136.983H4.058v-.6a.606.606,0,0,0-.978-.479L.235,138.111a.606.606,0,0,0,0,.958l2.845,2.206a.606.606,0,0,0,.978-.479v-.6H6.916a.606.606,0,0,0,.606-.606v-2A.606.606,0,0,0,6.916,136.983Z" transform="translate(0 -109.23)" fill="#0063a5" stroke="#cceaf8" stroke-width="1"/>
+      </g>
+    </g>
+  </g>
+</svg>

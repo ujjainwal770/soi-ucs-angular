@@ -1,0 +1,188 @@
+
+@import "/src/app/scss/variables";
+.school-details {
+    h4 {
+        margin: 0;
+    }
+
+    height: 100%;
+}
+
+::ng-deep.mat-checkbox-inner-container {
+    width: 13px !important;
+    height: 14px !important;
+}
+
+.normal-txt {
+    flex-direction: row;
+    display: flex;
+    font-size: 0.875rem;
+}
+
+span {
+    font-family: 'Ubuntu-Medium';
+}
+
+.p-header {
+    font-size: 19px;
+    font-family: 'Ubuntu-Bold';
+    margin-bottom: 2%;
+}
+
+.invalid-zip-message {
+    color: #E61E25;
+    display: inline-flex;
+    padding: 10px;
+    background: #FCE8EA;
+    border-radius: 5px;
+    .error-mat-icon {
+        margin-right: 5px;
+    }
+}
+
+.resend-btn {
+    width: auto;
+    margin-top: 20px;
+    max-width: 120px;
+}
+
+.p-10 {
+    padding: 10px;
+}
+.edit-btn-container {
+    text-align: right;
+    padding-right: 3%;
+    padding-top: 5px;
+
+    .edit-btn {
+        color: #29856C;
+        display: inline-flex;
+
+        img {
+            margin-right: 10px;
+        }
+    }
+}
+.status-active {
+    background: #DDFDF4 0% 0% no-repeat padding-box;
+    border-radius: 13px;
+    border: none;
+    color: #267D66;
+    text-transform: capitalize;
+    width: 30%;
+    font-size: 1rem;
+    font-weight: normal;
+    font-family: $ubuntu-regular;
+    cursor: auto;
+}
+.status-deactive {
+    background: #E8E8E8 0% 0% no-repeat padding-box;
+    border-radius: 13px;
+    color:#666666;
+    text-transform: capitalize;
+    border: none;
+    width: 40%;
+    font-size: 1rem;
+    font-weight: normal;
+    font-family: $ubuntu-regular;
+    cursor: auto;
+}
+.status-pending {
+    background: #F4EED3 0% 0% no-repeat padding-box;
+    border-radius: 13px;
+    color:#806A00;
+    text-transform: capitalize;
+    border: none;
+    width: 40%;
+     font-size: 1rem;
+  font-weight: normal;
+  font-family: $ubuntu-regular;
+    cursor: auto;
+}
+.dashboard-card-students {
+    height: 100%;
+    border-radius: 5px;
+    border-left: 5px solid #6B6DE2;
+    box-shadow: 0px 10px 15px #CFD9E348;
+}
+.dashboard-card-active {
+    height: 100%;
+    border-radius: 5px;
+    border-left: 5px solid #489F88;
+    box-shadow: 0px 10px 15px #CFD9E348;
+}
+.dashboard-card-pending {
+    height: 100%;
+    border-radius: 5px;
+    border-left: 5px solid #C9AE42;
+    box-shadow: 0px 10px 15px #CFD9E348;
+}
+.dashboard-card-Preapproved {
+    height: 100%;
+    border-radius: 5px;
+    border-left: 5px solid #9F5DA6;
+    box-shadow: 0px 10px 15px #CFD9E348;
+}
+.dashboard-card-inactive {
+    height: 100%;
+    border-radius: 5px;
+    border-left: 5px solid #D8181E;
+    box-shadow: 0px 10px 15px #CFD9E348;
+}
+
+.home-card-content {
+    display: flex;
+    justify-content: space-between;
+}
+  
+.more-button {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+}
+  
+.card-content {
+    text-align: left;
+    font-size: 16px;
+    .content-value {
+        margin-left: 10px;
+    }
+    
+}
+.card-images {
+    top: -7%;
+    left: 6%;
+    width: 17%;
+    height: 60%;
+    box-shadow: 0px 10px 15px #cfd9e348;
+    border-radius: 5px;
+    opacity: 1;
+    object-fit: none;
+    position: absolute;
+    &.school_icon {
+        background: #29856C;
+    }
+    &.users-icon {
+        background: #007DB8;
+    }
+    &.download_icon {
+        background: #92278F;
+    }
+}
+
+.content-title{
+    font-family: 'Ubuntu-Regular';
+    font-size: 0.89rem;
+    color:$gray-note;
+}
+.card-subtitle {
+    //margin-left: 6vw;
+    margin-top: -9px !important;
+}
+.mat-card-subtitle {
+    margin-bottom: unset !important;
+}
+
+.pl-10 {
+    padding-left: 10px;
+}

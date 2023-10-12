@@ -1,0 +1,153 @@
+<div class="container-fluid">
+    <div class="row inner-header-row">
+        <div class="col-lg-12">
+            <h3>
+                <mat-icon class="cursor-p" routerLink="/app-users/report-abuse">arrow_back</mat-icon> Report Abuse
+                Details
+            </h3>
+        </div>
+    </div>
+    <div class="row sub-container view-abuse-details">
+        <div class="row">
+            <div class="col-lg-12 section-heading">
+                <h5>User Information</h5>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <mat-card class="card-details">
+                    <mat-card-header>
+                        <mat-card-title>Personal Information</mat-card-title>
+                    </mat-card-header>
+
+                    <mat-card-content>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <h4>{{selectedUserReportData.first_name}} {{selectedUserReportData.last_name}} <span
+                                        class="{{selectedUserReportData.account_status === 'active' ? 'active' : 'inactive'}}">{{selectedUserReportData.account_status
+                                        === 'active' ? 'Active' : 'Inactive'}}</span></h4>
+                                <h5 *ngIf="selectedUserReportData.ucs_status === 'yes'">
+                                    {{selectedSchoolReportData.schoolName}}</h5>
+                            </div>
+                        </div>
+                        <div class="gutter-space-small"></div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <h5>Date of Birth</h5>
+                                <span class="normal-txt">{{selectedUserReportData.date_of_birth| date:
+                                    'MM/dd/Y' |convertToLocalDate}}</span>
+                            </div>
+                        </div>
+                        <div class="gutter-space-small"></div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <h5>Email</h5>
+                                <span class="normal-txt">{{selectedUserReportData.email}}</span>
+                            </div>
+                        </div>
+                        <div class="gutter-space-small"></div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <h5>Phone Number</h5>
+                                <span class="normal-txt">{{selectedUserReportData.phone}}</span>
+                            </div>
+                        </div>
+                        <div class="gutter-space-small"></div>
+                        <div class="row">
+                            <div class="col-lg-12 align-r">
+                                <button *ngIf="selectedUserReportData.account_status === 'active'"
+                                    class="app-btn filled gray-bg large"
+                                    (click)="changeStatus(selectedUserReportData.user_id, 'deactivated')">
+                                    Inactive
+                                </button>
+                                <button *ngIf="selectedUserReportData.account_status === 'deactivated'"
+                                    class="app-btn filled green-bg large"
+                                    (click)="changeStatus(selectedUserReportData.user_id, 'active')">
+                                    Active
+                                </button>
+                            </div>
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+            <div class="col-md-6">
+
+                <mat-card class="card-details">
+                    <mat-card-header>
+                        <mat-card-title>Other Information</mat-card-title>
+                    </mat-card-header>
+
+                    <mat-card-content>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <h4>
+                                    {{selectedUserReportData.ucs_status === 'yes' ? 'UCS User' : 'Public User'}}
+                                </h4>
+                                <span class="normal-txt">No. Of Report -
+                                    {{selectedUserReportData.reportabusecount}}</span>
+                            </div>
+                        </div>
+                        <div class="gutter-space-small"></div>
+                        <div class="row" *ngIf="selectedUserReportData.ucs_status === 'yes'">
+                            <div class="col-lg-12">
+                                <h5>School Address</h5>
+                                <address>
+                                    {{selectedSchoolReportData?.addressFirst}} <br>
+                                    {{selectedSchoolReportData?.addressSecond}}
+                                </address>
+                            </div>
+                        </div>
+
+                    </mat-card-content>
+                </mat-card>
+
+            </div>
+        </div>
+        <div class="gutter-space"></div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="filter-result">
+                    <div class="data-table-container" id="AppUserList">
+                        <table aria-describedby="AppUserList" mat-table [dataSource]="dataSource" matSort>
+                            <!--Reported On Column -->
+                            <ng-container matColumnDef="creation_time">
+                                <th id="reportedOn" mat-header-cell *matHeaderCellDef mat-sort-header> Reported On </th>
+                                <td mat-cell *matCellDef="let element"> {{element.creation_time | date: 'MM/dd/y' }}
+                                </td>
+                            </ng-container>
+
+                            <!-- Reported By Column -->
+                            <ng-container matColumnDef="reported_by">
+                                <th id="reportedBy" mat-header-cell *matHeaderCellDef mat-sort-header> Reported By </th>
+                                <td mat-cell *matCellDef="let element"> {{getReportedByName(element.reported_by)}} </td>
+                            </ng-container>
+
+                            <!-- Reason Column -->
+                            <ng-container matColumnDef="reason">
+                                <th id="reason" class="width-25-percent" mat-header-cell *matHeaderCellDef
+                                    mat-sort-header> Reason </th>
+                                <td mat-cell *matCellDef="let element"> {{element.reason}} </td>
+                            </ng-container>
+
+                            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                        </table>
+
+                        <div *ngIf="!dataSource.data.length" class="no-record-found">
+                            <span style="color: #4C356E; font-style: italic; display: inline-flex;">
+                                <img alt='' style="margin-right: 5px;"
+                                    src="../../assets/images/svg/record_not_found_info_icon.svg">
+                                There are no records here at the moment.
+                            </span>
+                        </div>
+
+                        <mat-paginator #paginator [pageSizeOptions]="pageSizes" showFirstLastButtons [length]="count"
+                            (page)="handlePage($event)" aria-label="Select page of periodic elements">
+                        </mat-paginator>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

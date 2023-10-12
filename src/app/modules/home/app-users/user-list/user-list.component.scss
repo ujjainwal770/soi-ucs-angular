@@ -1,0 +1,66 @@
+table {
+    width: 100%;
+}
+
+.status-active {
+    background: #DDFDF4 0% 0% no-repeat padding-box;
+    border-radius: 13px;
+    border: none;
+    color: #267D66;
+    text-transform: capitalize;
+    width: 65%;
+    cursor: auto;
+}
+
+.status-deactive {
+    background: #E8E8E8 0% 0% no-repeat padding-box;
+    border-radius: 13px;
+    color: #666666;
+    text-transform: capitalize;
+    border: none;
+    width: 75%;
+    cursor: auto;
+}
+
+.status-pending {
+    background: #F4EED3 0% 0% no-repeat padding-box;
+    border-radius: 13px;
+    color: #806A00;
+    text-transform: capitalize;
+    border: none;
+    width: 75%;
+    cursor: auto;
+}
+
+#AppUserList {
+    .abuse-icon {
+        position: absolute;
+        left: 25px;
+    }
+}
+
+table.mat-table[_ngcontent-ykp-c257] td.mat-cell[_ngcontent-ykp-c257] {
+    width: 15%;
+    overflow-wrap: break-word;
+    text-align: center;
+}
+
+.pl-30 {
+    padding-left: 30px;
+}
+
+.pl-20 {
+    padding-left: 20px;
+}
+
+.pl-10 {
+    padding-left: 10px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+:host ::ng-deep td {
+    padding-right: 15px !important;
+}

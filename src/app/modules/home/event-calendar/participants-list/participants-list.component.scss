@@ -1,0 +1,45 @@
+.container {
+    width: 100%;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.main-container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 70px;
+    flex: 1;
+}
+.status-padding {
+    padding: 5px 15px;;
+}
+.status-active {
+    background: #DDFDF4 0% 0% no-repeat padding-box;
+    border-radius: 13px;
+    border: none;
+    color: #267D66;
+    text-transform: capitalize;
+    width: 65%;
+    cursor: auto;
+}
+.status-deactive {
+    background: #E8E8E8 0% 0% no-repeat padding-box;
+    border-radius: 13px;
+    color:#666666;
+    text-transform: capitalize;
+    border: none;
+    width: 75%;
+    cursor: auto;
+}
+.status-pending {
+    color: #D8181E;
+    background: #FFEDEE 0% 0% no-repeat padding-box;
+    border-radius: 13px;
+    text-transform: capitalize;
+    border: none;
+    width: 75%;
+    cursor: auto;
+}

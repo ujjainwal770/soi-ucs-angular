@@ -1,0 +1,5 @@
+<!-- Dashboard for Soucs admin -->
+<app-soucs-dashboard *ngIf="!localStorage.get('UserData')"></app-soucs-dashboard>
+
+<!-- Dashboard for school admin -->
+<app-school-dashboard *ngIf="localStorage.get('UserData')"></app-school-dashboard>

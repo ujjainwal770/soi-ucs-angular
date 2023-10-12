@@ -1,0 +1,186 @@
+<div class="container-fluid">
+    <div class="row header-row">
+        <div class="col-lg-12">
+            <div class="header-cont">
+                <h2>Dismissed Students</h2>
+            </div>
+        </div>
+    </div>
+    <div class="sub-container">
+        <div class="row">
+            <div class="col-lg-12">
+                <!-- Filter Section-->
+                <div class="filter-block box-radius">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <form [formGroup]='dismissedStudentsFormGroup'>
+                                <div class="row">
+                                    <div class="col-lg-3 offset-5">
+                                        <mat-form-field class="search-by">
+                                            <mat-label>Search by</mat-label>
+                                            <mat-select formControlName="searchBy" (selectionChange)="getSearch()">
+                                                <mat-option *ngFor="let option of searchOptions"
+                                                    value="{{option.value}}">
+                                                    {{option.name}} </mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <mat-form-field class="search-txtbox">
+                                            <mat-label>Enter {{getSearchTxt()}}</mat-label>
+                                            <input matInput placeholder="Enter {{searchbyTxt}}" #searchTxtBox
+                                                formControlName="searchText" name="search-by">
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+                <!-- Filter Section end-->
+            </div>
+        </div>
+        <div class="gutter-space"></div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="filter-result">
+                    <div class="data-table-container" id="adminUserList">
+                        <table aria-describedby="adminUserList" mat-table [dataSource]="dataSource" matSort>
+                            <!--Name Column -->
+                            <ng-container matColumnDef="first_name">
+                                <th id="first_name" mat-header-cell *matHeaderCellDef (click)="customSorting('full_name')" mat-sort-header> Name </th>
+                                <td mat-cell *matCellDef="let element; let i = index" [attr.id]="'first_name-' + i">
+                                    <span class="a-link" (click)="userAction(element.user_id)">
+                                        {{(element.first_name + ' ' + element.last_name).substring(0, 10)}}
+                                        <span mat-raised-button
+                                            *ngIf="(element.first_name + ' ' + element.last_name).length > 10"
+                                            [matTooltip]="(element.first_name + ' ' + element.last_name)"
+                                            aria-label="displays a tooltip when focused or hovered over">
+                                            ...
+                                        </span>
+                                    </span>
+
+                                </td>
+                            </ng-container>
+
+                            <!-- Email Column -->
+                            <ng-container matColumnDef="email">
+                                <th id="email" mat-header-cell *matHeaderCellDef (click)="customSorting('email')" mat-sort-header> Email </th>
+                                <td mat-cell *matCellDef="let element; let i = index" [attr.id]="'email-' + i"> {{element.email.substring(0, 10)}}
+                                    <span mat-raised-button *ngIf="element.email.length > 10"
+                                        [matTooltip]="element.email"
+                                        aria-label="displays a tooltip when focused or hovered over">
+                                        ...
+
+                                    </span>
+
+                                </td>
+                            </ng-container>
+
+                            <!-- School Name Column -->
+                            <ng-container matColumnDef="school_name">
+                                <th id="school_name" mat-header-cell *matHeaderCellDef (click)="customSorting('schoolName')" mat-sort-header> School Name
+                                </th>
+                                <td mat-cell *matCellDef="let element; let i = index" [attr.id]="'school_name-' + i">
+                                    {{element.school_name.substring(0, 10)}}
+                                    <span mat-raised-button *ngIf="element.school_name.length > 10"
+                                        [matTooltip]="element.school_name"
+                                        aria-label="displays a tooltip when focused or hovered over">
+                                        ...
+                                    </span>
+                                </td>
+                            </ng-container>
+
+                            <!-- NCES ID Column -->
+                            <ng-container matColumnDef="nces_id">
+                                <th id="nces_id" mat-header-cell *matHeaderCellDef (click)="customSorting('nces')" mat-sort-header> NCES ID</th>
+                                <td mat-cell *matCellDef="let element; let i = index" [attr.id]="'nces_id-' + i">
+                                    {{element.nces_id}}
+                                </td>
+                            </ng-container>
+
+                            <!-- State Name Column -->
+                            <ng-container matColumnDef="state_name">
+                                <th id="state_name" mat-header-cell *matHeaderCellDef (click)="customSorting('stateName')" mat-sort-header> State</th>
+                                <td mat-cell *matCellDef="let element; let i = index" [attr.id]="'state_name-' + i" class="pl-10">
+                                    {{element.state_name}}
+                                </td>
+                            </ng-container>
+
+                            <!-- School Admin Name -->
+                            <ng-container matColumnDef="school_admin_name">
+                                <th id="school_admin_name" mat-header-cell *matHeaderCellDef (click)="customSorting('schoolAdminname')" mat-sort-header> School
+                                    Admin </th>
+                                <td mat-cell *matCellDef="let element; let i = index" [attr.id]="'school_admin_name-' + i">
+                                    {{element.school_admin_name.substring(0, 10)}}
+                                    <span mat-raised-button *ngIf="element.school_admin_name.length > 10"
+                                        [matTooltip]="element.school_admin_name"
+                                        aria-label="displays a tooltip when focused or hovered over">
+                                        ...
+                                    </span>
+                                </td>
+                            </ng-container>
+
+                            <!-- Dismissal Reason -->
+                            <ng-container matColumnDef="dismissReason">
+                                <th id="dismissReason" mat-header-cell *matHeaderCellDef (click)="customSorting('dismissReason')" mat-sort-header> Dismissal
+                                    Reason </th>
+                                <td mat-cell *matCellDef="let element; let i = index" [attr.id]="'dismissReason-' + i"> {{element.dismissReason.substring(0, 15)}}
+                                    <span mat-raised-button *ngIf="element.dismissReason.length > 15"
+                                        [matTooltip]="element.dismissReason"
+                                        aria-label="displays a tooltip when focused or hovered over">...
+                                    </span>
+                                </td>
+                            </ng-container>
+
+                            <!-- Account status Column -->
+                            <ng-container matColumnDef="account_status">
+                                <th id="account_status" mat-header-cell *matHeaderCellDef (click)="customSorting('account_status')" mat-sort-header> Account
+                                    Status </th>
+                                <td mat-cell *matCellDef="let element; let i = index" [attr.id]="'account_status-' + i">
+                                    <button [ngClass]="{'status-active' : (element.account_status=='active'),
+                                         'status-deactive' : element.account_status=='deactivated'}">
+                                        {{element.account_status === 'deactivated' ? 'Inactive' : 'Active'}}
+                                    </button>
+                                </td>
+                            </ng-container>
+
+                            <!-- Action Column -->
+                            <ng-container matColumnDef="actions">
+                                <th id="actions" mat-header-cell *matHeaderCellDef class="action-cell"> Actions </th>
+                                <td mat-cell *matCellDef="let row ; let i = index" [attr.id]="'actions-' + i">
+                                    <button mat-icon-button [matMenuTriggerFor]="menu"
+                                        aria-label="Example icon-button with a menu">
+                                        <mat-icon>more_vert</mat-icon>
+                                    </button>
+                                    <mat-menu #menu="matMenu">
+                                        <button (click)="userAction(row.user_id)" mat-menu-item>
+                                            <mat-icon>remove_red_eye</mat-icon>
+                                            <span>View Details</span>
+                                        </button>
+
+                                    </mat-menu>
+                                </td>
+                            </ng-container>
+
+                            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                        </table>
+
+                        <div *ngIf="!dataSource.data.length" class="no-record-found">
+                            <span style="color: #4C356E; font-style: italic; display: inline-flex;">
+                                <img alt='' style="margin-right: 5px;"
+                                    src="../../assets/images/svg/record_not_found_info_icon.svg">
+                                There are no records here at the moment.
+                            </span>
+                        </div>
+                        <mat-paginator #paginator [pageSizeOptions]="pageSizes" showFirstLastButtons [length]="count"
+                            (page)="handlePage($event)" aria-label="Select page of periodic elements">
+                        </mat-paginator>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

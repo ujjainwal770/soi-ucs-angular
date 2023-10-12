@@ -1,0 +1,8 @@
+.update-btn {
+    float: right;
+}
+
+::ng-deep.mat-datepicker-content .mat-calendar {
+    width: unset !important;
+    height: unset !important;
+}

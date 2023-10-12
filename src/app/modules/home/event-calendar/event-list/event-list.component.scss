@@ -1,0 +1,55 @@
+.description {
+    word-wrap: break-word !important;
+    white-space: unset !important;
+    flex: 0 0 28% !important;
+    width: 40% !important;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+  
+    word-break: break-word;
+  
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+  }
+  .title {
+    word-wrap: break-word !important;
+    white-space: unset !important;
+    flex: 0 0 28% !important;
+    width: 20% !important;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+  
+    word-break: break-word;
+  
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+  }
+  .mass-resend-info {
+    color: #4C356E;
+    font-style: italic;
+    font-size: 14px;
+    display: inherit;
+
+    mat-icon {
+        font-size: 17px;
+        padding: 2px;
+        text-align: right;
+        margin-right: 2px;
+    }
+}
+.header-row .header-cont h2, .header-row .header-cont .h2 {
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  font-weight: 700;
+  margin-right: auto;
+  margin-bottom: 0;
+  font-weight: 700;
+}
+.header-row .header-cont h2 .mat-icon, .header-row .header-cont .h2 .mat-icon {
+  margin-right: 0.5rem;
+}

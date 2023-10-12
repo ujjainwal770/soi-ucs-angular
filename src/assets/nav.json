@@ -1,0 +1,172 @@
+[
+    {
+        "module": "Dashboard",
+        "url": "/dashboard",
+        "icon": "../../../../assets/images/svg/nav-menu-dashboard.svg",
+        "iconType": "svg",
+        "access": "all",
+        "name": "dashboard"
+    },
+    {
+        "module": "Users",
+        "url": "app-users",
+        "icon": "../../../../assets/images/svg/nav-menu-users.svg",
+        "iconType": "svg",
+        "access": "Soucsadmin",
+        "name": "users",
+        "child": [
+            {
+                "module": "User List",
+                "url": "/app-users/user-list",
+                "access": "Soucsadmin",
+                "name": "user_list"
+            },
+            {
+                "module": "Report Abuse",
+                "url": "/app-users/report-abuse",
+                "access": "Soucsadmin",
+                "name": "report_abuse"
+            },
+            {
+                "module": "Dismissed Students",
+                "url": "/app-users/dismissed-students",
+                "access": "Soucsadmin",
+                "name": "dismissed_students"
+            }
+        ]
+    },
+    {
+        "module": "School",
+        "url": "/school-management",
+        "icon": "../../../../assets/images/svg/nav-menu-schools.svg",
+        "iconType": "svg",
+        "access": "Soucsadmin",
+        "name": "school"
+    },
+    {
+        "module": "Student",
+        "url": "/manage-students",
+        "icon": "line_style",
+        "iconType": "mat-icon",
+        "access": "SchoolAdmin",
+        "name": "student"
+    },
+    {
+        "module": "Broadcast Message",
+        "url": "/manage-broadcast-message",
+        "icon": "../../../../assets/images/svg/menu_broadcast_message.svg",
+        "iconType": "svg",
+        "access": "SchoolAdmin",
+        "name": "Broadcast messages"
+    },
+    {
+        "module": "Event Calendar",
+        "url": "/manage-events",
+        "icon": "../../../../assets/images/svg/event-calendar_icon.svg",
+        "iconType": "svg",
+        "access": "SchoolAdmin",
+        "name": "Event Calendar"
+    },
+    {
+        "module": "Content",
+        "url": "content-management",
+        "icon": "../../../../assets/images/svg/nav-menu-content.svg",
+        "iconType": "svg",
+        "access": "Soucsadmin",
+        "name": "content",
+        "child": [
+            {
+                "module": "Manage Tag",
+                "url": "/content-management/manage-tags",
+                "access": "Soucsadmin",
+                "name": "manage_tag"
+            },
+            {
+                "module": "Challenge Abuse",
+                "url": "/content-management/challenge-abuse",
+                "access": "Soucsadmin",
+                "name": "challenge_abuse"
+            },
+            {
+                "module": "Canned Messages",
+                "url": "/content-management/canned-messages",
+                "access": "Soucsadmin",
+                "name": "canned_messages"
+            }
+        ]
+    },
+    {
+        "module": "Rewards",
+        "url": "/rewards",
+        "icon": "../../../../assets/images/svg/nav-menu-rewards.svg",
+        "iconType": "svg",
+        "access": "Soucsadmin",
+        "name": "rewards",
+        "child": [
+            {
+                "module": "Rewards List",
+                "url": "/rewards/rewards-list",
+                "access": "Soucsadmin",
+                "name": "rewards_list"
+            },
+            {
+                "module": "Winner List",
+                "url": "/rewards/winner-list",
+                "access": "Soucsadmin",
+                "name": "winner_list"
+            },
+            {
+                "module": "Archive Rewards",
+                "url": "/rewards/archive-rewards",
+                "access": "Soucsadmin",
+                "name": "archive_rewards"
+            }
+        ]
+    },
+    {
+        "module": "Crowdsource Gallery",
+        "url": "crowdsource-gallary",
+        "icon": "../../../../assets/images/svg/nav-menu-crowdsource-gallery.svg",
+        "iconType": "svg",
+        "access": "Soucsadmin",
+        "name": "crowdsource",
+        "child": [
+            {
+                "module": "Crowdsource List",
+                "url": "/crowdsource-gallery",
+                "access": "Soucsadmin",
+                "name": "crowdsource_list"
+            }
+        ]
+    },
+    {
+        "module": "Reports",
+        "url": "reports",
+        "icon": "../../../../assets/images/svg/nav-menu-reports.svg",
+        "iconType": "svg",
+        "access": "all",
+        "name": "reports"
+    },
+    {
+        "module": "Admin",
+        "url": "admin",
+        "icon": "../../../../assets/images/svg/nav-menu-admin.svg",
+        "iconType": "svg",
+        "access": "Soucsadmin",
+        "name": "admin",
+        "child": [
+            {
+                "module": "Admin List",
+                "url": "/admin/admin-list",
+                "access": "Soucsadmin",
+                "name": "admin_list"
+            },
+            {
+                "module": "Admin Roles",
+                "url": "/admin/admin-roles",
+                "access": "Soucsadmin",
+                "name": "admin_roles"
+            }
+        ]
+    }
+]

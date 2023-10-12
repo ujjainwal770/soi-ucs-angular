@@ -1,0 +1,130 @@
+<div class="container-fluid">
+    <div class="row inner-header-row">
+        <div class="col-lg-12">
+            <div class="row">
+                <div class="col-6">
+                    <h3>
+                        <mat-icon class="cursor-p" routerLink="/app-users/user-list">arrow_back</mat-icon> User Details
+                    </h3>
+                </div>
+
+                <div class="col-6 edit-btn-container" *ngIf="isEditable">
+                    <span class="edit-btn cursor-p" (click)="gotoUserEdit()">
+                        <img src="../../../../assets/images/svg/edit_icon.svg" alt=''>
+                        Edit
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row sub-container">
+        <div class="row">
+            <div class="col-md-12">
+                <mat-card class="card-details">
+                    <mat-card-content>
+                        <div class="row">
+
+                            <div class="col-md-6">
+                                <div>User Name</div>
+                                <div class="normal-txt"> {{userDetails?.full_name}}</div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div>DOB (MM/DD/YYYY)</div>
+                                <div class="normal-txt"> {{userDetails?.date_of_birth |convertToLocalDate }}</div>
+                            </div>
+
+                            <div class="gutter-space-small"></div>
+                            <div class="col-md-6">
+                                <div>User Email</div>
+                                <div class="normal-txt"> {{userDetails?.email}}</div>
+                            </div>
+                            <div class="col-md-6">
+                                <div>User Type</div>
+                                <div class="normal-txt"> {{userDetails?.ucs_status?.toLowerCase() === 'yes' ? 'UCS user'
+                                    : 'Public User'}}</div>
+                            </div>
+
+                            <div class="gutter-space-small"></div>
+                            <div class="col-md-6">
+                                <div>Registered On </div>
+                                <div class="normal-txt"> {{userDetails?.creation_time | date: 'MM/dd/y'}}</div>
+                            </div>
+                            <div class="col-md-6">
+                                <div>Account Status</div>
+                                <div class="normal-txt user-status">
+                                    <span *ngIf="userDetails?.account_status" class="status-text" [ngClass]="{'status-active' : (userDetails?.account_status === 'active'),
+                                         'status-deactive' : userDetails?.account_status=='deactivated'}">
+                                        {{userDetails?.account_status === 'deactivated' ? 'Inactive' : 'Active'}}
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="gutter-space-small"></div>
+                            <div class="col-md-6">
+                                <div>Total Badge Earned </div>
+                                <div class="normal-txt"> {{userDetails?.totalbadge}}</div>
+                            </div>
+                            <div class="col-md-6">
+                                <div>Total Points</div>
+                                <div class="normal-txt"> {{userDetails?.totalpoints}}</div>
+                            </div>
+
+                            <div class="gutter-space-small"></div>
+                            <div class="col-md-6">
+                                <div>Total number of Inclusion Played </div>
+                                <div class="normal-txt"> {{userDetails?.inclusioncount}}</div>
+                            </div>
+                            <div class="col-md-6">
+                                <div>Recent Inclusion Result</div>
+                                <div class="normal-txt"> {{userDetails?.inclusionResult || 'N/A'}}</div>
+                            </div>
+
+                            <!-- Only for UCS User -->
+                            <ng-container *ngIf="userDetails?.ucs_status?.toLowerCase() === 'yes'">
+                                <div class="gutter-space-small"></div>
+
+                                <div class="col-md-12" *ngIf="userDetails?.reqSchoolId > 0">
+                                    <div class="alert alert-info school-migration-info">
+                                        <mat-icon>info_outline</mat-icon>
+                                        <span>School Migration request to {{userDetails?.reqSchoolName}} is under pending status and will be updated here
+                                            once the School Admin approves it.</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div>School Name </div>
+                                    <div class="normal-txt"> {{userDetails?.schoolName}}</div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div>School Address</div>
+                                    <div class="normal-txt"> {{userDetails?.schoolAddress}}</div>
+                                </div>
+
+                                <div class="gutter-space-small"></div>
+                                <div class="col-md-6">
+                                    <div>NCES ID </div>
+                                    <div class="normal-txt"> {{userDetails?.nces}}</div>
+                                </div>
+                            </ng-container>
+
+                            <!-- Only for Public user -->
+                            <ng-container *ngIf="userDetails?.ucs_status?.toLowerCase() === 'no'">
+                                <div class="gutter-space-small"></div>
+                                <div class="col-md-6">
+                                    <div>State </div>
+                                    <div class="normal-txt"> {{userDetails?.stateName}}</div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div>City</div>
+                                    <div class="normal-txt"> {{userDetails?.cityName}}</div>
+                                </div>
+                            </ng-container>
+
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+</div>

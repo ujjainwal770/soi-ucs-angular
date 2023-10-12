@@ -1,0 +1,53 @@
+@import "/src/app/scss/variables";
+
+table {
+    width: 100%;
+    background: $white 0% 0% no-repeat padding-box;
+    box-shadow: 0px 10px 15px $table-box-shadow-color;
+    border-radius: 5px;
+    opacity: 1;
+    border: none;
+}
+
+table td[class*=col-],
+table th[class*=col-] {
+    position: static;
+    display: table-cell;
+    float: none;
+}
+
+th.mat-sort-header-sorted {
+    color: black;
+}
+
+tr.mat-header-row {
+    background: #E8E8E8 !important;
+}
+
+::ng-deep .mat-header-cell {
+    font-family: 'Ubuntu-Bold', sans-serif;
+    font-size: 0.875rem;
+}
+
+::ng-deep .mat-cell {
+    font-family: 'Ubuntu-Regular', sans-serif;
+    font-size: 0.875rem;
+}
+
+.table-bordered tbody tr:nth-of-type(odd) {
+    background-color: rgba(0, 0, 0, .05);
+}
+
+.table-bordered {
+    border-collapse: collapse;
+    border-bottom: 1px solid #d1d4d6 !important;
+    width: 95%;
+}
+
+.dataTables_length label::after {
+    content: 'Items per page';
+}
+
+.reward-title {
+    cursor: pointer;
+}

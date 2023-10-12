@@ -1,0 +1,147 @@
+<div class="row">
+    <div class="row margin-auto">
+        <div class="col-md-6 div-container first-div">
+            <app-monthly-registration-school></app-monthly-registration-school>
+        </div>
+        <!-- Top 10 Notifications -->
+        <div class="col-md-6 div-container second-div">
+            <app-notification-widget></app-notification-widget>
+        </div>
+    </div>
+
+    <div class="row top-div-container">
+        <!-- Top 10 schools -->
+        <div class="col-md-6 div-container first-div">
+            <h3>Top 10 School Leadership Board</h3>
+            <div class="example-container" id="top10Schools">
+                <table aria-describedby="top10Schools" mat-table [dataSource]="top10schools.dataSource" matSort>
+
+                    <ng-container matColumnDef="sNo">
+                        <th id="sNo" mat-header-cell *matHeaderCellDef></th>
+                        <td mat-cell *matCellDef="let element;let i = index"> {{i + 1}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="schoolName">
+                        <th id="schoolName" mat-header-cell *matHeaderCellDef>School Name </th>
+                        <td mat-cell *matCellDef="let element">
+                            {{element.schoolName.substring(0, 12)}}
+                            <span class="tooltip-hover" mat-raised-button *ngIf="element.schoolName.length > 12"
+                                [matTooltip]="element.schoolName"
+                                aria-label="displays a tooltip when focused or hovered over">....</span>
+                        </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="stateName">
+                        <th id="stateName" mat-header-cell *matHeaderCellDef>State </th>
+                        <td mat-cell *matCellDef="let element"> {{element.stateName}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="cityName">
+                        <th id="cityName" mat-header-cell *matHeaderCellDef>City </th>
+                        <td mat-cell *matCellDef="let element"> {{element.cityName}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="totalpoints">
+                        <th id="totalpoints" mat-header-cell *matHeaderCellDef> Points</th>
+                        <td mat-cell *matCellDef="let element">
+                            <span class="d-flex">
+                                <i aria-hidden="true" class="material-icons">star</i>
+                                <span class="points-sec">{{element.totalpoints}}</span>
+                            </span>
+                        </td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="top10schools.displayedColumns;sticky:true"></tr>
+                    <tr mat-row *matRowDef="let row; columns: top10schools.displayedColumns;let i = index;"></tr>
+                </table>
+                <div *ngIf="!top10schools.dataSource.data.length" class="no-record-found">
+                    No Records Found!
+                </div>
+            </div>
+        </div>
+
+        <!-- Top 10 students -->
+        <div class="col-md-6 div-container second-div">
+            <h3>Top 10 Users</h3>
+            <div class="example-container" id="tagTableInfo">
+                <table aria-describedby="tagTableInfo" mat-table [dataSource]="top10Students.dataSource" matSort>
+
+                    <ng-container matColumnDef="full_name">
+                        <th id="name" mat-header-cell *matHeaderCellDef> Name </th>
+                        <td mat-cell *matCellDef="let element;let i = index"> {{element.full_name}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="email">
+                        <th id="email" mat-header-cell *matHeaderCellDef>Email </th>
+                        <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="totalpoints">
+                        <th id="totalpoints" mat-header-cell *matHeaderCellDef> Points</th>
+                        <td mat-cell *matCellDef="let element">
+                            <span class="d-flex">
+                                <i aria-hidden="true" class="material-icons">star</i>
+                                <span class="points-sec">{{element.totalpoints}}</span>
+                            </span>
+                        </td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="top10Students.displayedColumns;sticky:true"></tr>
+                    <tr mat-row *matRowDef="let row; columns: top10Students.displayedColumns;let i = index;"></tr>
+                </table>
+                <div *ngIf="!top10Students.dataSource.data.length" class="no-record-found">
+                    No Records Found!
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Top 10 rewards and top 10 rewards applicants -->
+    <app-rewards-widget></app-rewards-widget>
+
+    <div class="row top-div-container">
+        <!-- Badges Earned Percentage -->
+        <div class="col-md-6 div-container first-div">
+            <h3>Badges Earned Percentage</h3>
+            <div class="chart">
+                <canvas baseChart #chart [data]="pieChartData" [labels]="pieChartLabels" [chartType]="pieChartType"
+                    [options]="pieChartOptions" [plugins]="pieChartPlugins" [colors]="pieChartColor"
+                    [legend]="pieChartLegend">
+                </canvas>
+            </div>
+        </div>
+
+        <!-- Top 10 challengs -->
+        <div class="col-md-6 div-container second-div">
+            <h3>Top Challenges</h3>
+            <div class="example-container" id="tagTableInfo">
+                <table aria-describedby="tagTableInfo" mat-table [dataSource]="top10Challengs.dataSource" matSort>
+
+                    <ng-container matColumnDef="title">
+                        <th id="title" mat-header-cell *matHeaderCellDef> Title
+                        </th>
+                        <td mat-cell *matCellDef="let element;let i = index"> {{element.title}}
+                        </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="participants">
+                        <th id="participants" mat-header-cell *matHeaderCellDef>Participants </th>
+                        <td mat-cell *matCellDef="let element"> {{element.count}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="category">
+                        <th id="category" mat-header-cell *matHeaderCellDef>Category </th>
+                        <td mat-cell *matCellDef="let element"> {{element.categoryname}} </td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="top10Challengs.displayedColumns;sticky:true"></tr>
+                    <tr mat-row *matRowDef="let row; columns: top10Challengs.displayedColumns;let i = index;"></tr>
+                </table>
+
+                <div *ngIf="!top10Challengs.dataSource.data.length" class="no-record-found">
+                    No Records Found!
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

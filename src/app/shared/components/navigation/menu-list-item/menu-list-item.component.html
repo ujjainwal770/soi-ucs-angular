@@ -1,0 +1,22 @@
+<a mat-list-item [ngStyle]="{'padding-left': (depth * 12) + 'px'}" (click)="onItemSelected(item)"
+  [ngClass]="{'active': item.url ? router.isActive(item.url, true): false, 'expanded': expanded}"
+  class="menu-list-item">
+
+  <!-- When icon type is 'svg, jpg, png etc' -->
+  <img *ngIf="item.iconType !== 'mat-icon'" class="routeIcon" src="{{item.icon}}" />
+
+  <!-- When there is a default material icon i.e mat-icon -->
+  <mat-icon *ngIf="!item.iconType || item.iconType === 'mat-icon'" class="material-icons-outlined routeIcon">{{item.icon}}</mat-icon>
+
+  {{item.module}}
+  <span fxFlex *ngIf="item.child && item.child.length">
+    <span fxFlex></span>
+    <mat-icon class="expand-icon" [@indicatorRotate]="expanded ? 'expanded': 'collapsed'">
+      arrow_drop_down
+    </mat-icon>
+  </span>
+</a>
+<div *ngIf="expanded" class="has-child">
+  <app-menu-list-item *ngFor="let childs of item.child" [item]="childs" [depth]="depth+1">
+  </app-menu-list-item>
+</div>

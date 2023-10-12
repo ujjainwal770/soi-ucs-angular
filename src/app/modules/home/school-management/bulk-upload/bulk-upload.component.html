@@ -1,0 +1,47 @@
+<div class="container-fluid">
+    <div class="row inner-header-row">
+        <div class="col-lg-12">
+            <h3>
+                <mat-icon class="cursor-p" routerLink="/school-management">arrow_back</mat-icon> School Management
+            </h3>
+        </div>
+        <div class="col-lg-12 header-text">
+            Bulk Upload
+        </div>
+        <form [formGroup]="bulkForm">
+            <div class="container-wrapper">
+                <div class="col-lg-12 col-xs-12 file-sub-container">
+                    <div class="col-lg-8 file-upload-container">
+                        <input type="file" class="file-input" [accept]="requiredFileType"
+                            (change)="onFileSelected($event)" #fileUpload  (click)="handleClick($event)">
+                        <img [src]="localUrl" *ngIf="localUrl" class="imgPlaceholder" alt=''>
+                        <div class="file-upload">
+                            <button class="upload-btn" (click)="fileUpload.click()" *ngIf="displayField">
+                                Browse...
+                            </button>
+                            {{fileName || "No files selected."}} 
+                        </div>
+                    </div>
+                    <div class="col-lg-4 button-container">
+                        <button class="app-btn unfilled green-b cancel-btn" (click)="cancel()">Cancel</button>
+                        <button class="app-btn filled green-bg cancel-btn" [disabled]="!fileName || isUploadLoaderRunning" (click)="upload()">Upload</button>
+
+                    </div>
+                </div>
+                <div class="note-text mt-4">
+                    Please download the latest template from the given link.
+                    <span>
+                        
+                        <a href="{{containerurl}}/template/School-Template.csv">School Data Template</a> and please check the 
+                        <a href="{{containerurl}}/template/Guide-To-Update-The-Template.xlsx">Guide to Update the Template</a>
+                    </span>
+
+                </div>
+            </div>
+        </form>
+        <div class="gutter-space"></div>
+        <div class="col-lg-12">
+            <app-bulk-upload-list></app-bulk-upload-list>
+        </div>
+    </div>
+</div>

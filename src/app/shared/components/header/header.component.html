@@ -1,0 +1,84 @@
+<mat-toolbar>
+    <ng-content></ng-content>
+    <span>
+        <img alt="logo" routerLink="/dashboard" src="/assets/images/Header-logo.svg" class="img-responsive soucs-logo"
+            alt="SOUCS" />
+    </span>
+    <span class="spacer"></span>
+
+    <!-- <div *ngIf="currentPushMessage?.data?.title" class="notification-message">
+        <span>{{currentPushMessage?.data?.title}}</span>
+    </div> -->
+
+    <div class="bell-icon notification-icon" aria-label="icon-button with heart icon">
+        <mat-icon matBadge="{{notificationCount}}" matBadgeColor="warn"
+            routerLink="/push-notification">notifications_none</mat-icon>
+    </div>
+
+    <div class="user-detail">
+        <div class="user">
+            <div class="role">
+                <!-- Soucs Admin -->
+                <span *ngIf="!isSchoolAdmin && soucsAdminDetails?.roleName">
+                    {{soucsAdminDetails?.roleName}}
+                </span>
+                <!-- School Admin -->
+                <span *ngIf="isSchoolAdmin">
+                    Admin
+                </span>
+            </div>
+
+            <div class=" name">
+
+                <!-- Soucs Admin -> Admin name -->
+                <span *ngIf="!isSchoolAdmin">
+                    <span *ngIf="soucsAdminDetails?.firstName">
+                        <span>{{(soucsAdminDetails?.firstName + ' ' + soucsAdminDetails?.lastName)?.substring(0,
+                            25)}}</span>
+                        <span class="pointer" mat-raised-button
+                            *ngIf="(soucsAdminDetails?.firstName + ' ' + soucsAdminDetails?.lastName).length > 25"
+                            [matTooltip]="soucsAdminDetails?.firstName + ' ' + soucsAdminDetails?.lastName"
+                            aria-label="displays a tooltip when focused or hovered over">
+                            ...
+                        </span>
+                    </span>
+                </span>
+
+                <!-- School Admin -> school name -->
+                <span *ngIf="isSchoolAdmin">
+                    {{schoolName?.substring(0, 25)}}
+                    <span class="pointer" mat-raised-button *ngIf="schoolName.length > 25" [matTooltip]="schoolName"
+                        aria-label="displays a tooltip when focused or hovered over">
+                        ...
+                    </span>
+                </span>
+            </div>
+        </div>
+        <div>
+            <mat-icon [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                <img alt="user" src="../../../../assets/images/user-avatar-filled.svg">
+            </mat-icon>
+
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item routerLinkActive="active" (click)="viewProfile()">
+                    <mat-icon>person_outline</mat-icon>
+                    <span>View Profile</span>
+                </button>
+                <button mat-menu-item routerLinkActive="active" (click)="switchSchool()" *ngIf="isSchoolAdmin">
+                    <mat-icon>repeat</mat-icon>
+                    <span>Switch School</span>
+                </button>
+                <button mat-menu-item routerLinkActive="active" (click)="onChangePassClicked()" *ngIf="isSchoolAdmin">
+                    <mat-icon>lock_outline</mat-icon>
+                    <span>Change Password</span>
+                </button>
+                <button mat-menu-item routerLinkActive="active" class="logout-btn"
+                    *ngIf="((authStateService.authState$ | async).isAuthenticated) || isLoggedIn "
+                    (click)="deactivatePushNotificationOnServer()">
+                    <mat-icon>logout</mat-icon>
+                    <span>Logout</span>
+                </button>
+            </mat-menu>
+        </div>
+    </div>
+</mat-toolbar>

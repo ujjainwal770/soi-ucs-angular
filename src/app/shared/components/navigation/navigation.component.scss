@@ -1,0 +1,63 @@
+@import "/src/app/scss/variables";
+
+.mat-sidenav-content{
+  display: contents;
+}
+.hamburger-icon {
+  color: #fff;
+}
+.displayProp {
+  display: none;
+}
+
+.mat-list-base {
+.mat-list-item {
+  color: $white;
+  border-radius: 22px;
+  margin: 0.5rem;
+  width: 90%;
+  height: auto;
+  padding: 0.5rem 0;
+  transition: background-color 0.3s ease-in-out;
+  &.active, &:hover {
+    background-color: $pink;
+    transition: background-color 0.3s ease-in-out;
+  }
+  .mat-icon {
+    margin-right: 0.4rem;
+  }
+  
+}
+} 
+
+
+.mat-list-item-content {
+width: 100% !important;
+} 
+
+// .mat-toolbar.mat-primary {
+//   position: sticky;
+//   top: 0;
+//   z-index: 1;
+// }
+
+
+
+// .mat-list-base .mat-list-item {
+//   color: $white;
+//   border-radius: 22px;
+//   margin-left: 10px;
+// }
+
+// .mat-toolbar.mat-primary {
+//   position: sticky;
+//   top: 0;
+//   z-index: 1;
+// }
+// .mat-list-item.active,.mat-list-item:hover {
+//   background-color: $pink;
+//   color: $white ;
+//   border-radius: 22px;
+//   margin-left: 10px;
+// }
+ 

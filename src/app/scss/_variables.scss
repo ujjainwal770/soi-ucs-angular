@@ -1,0 +1,149 @@
+$black: #000;
+$white: #FFFFFF;
+$gray: #cccccc;
+$green:#29856C;
+$pink:#E00087;
+$purple:#170236;
+$gray-note:#757575;
+$light-gray:#747474;
+$dark-gray: #E8E8E8;
+$darker-gray:#666;
+$red:#d8232a;
+$red-second : #E61E25;
+$lightRed: #E61E25;
+$landing-pg-box : #34234B;
+$landing-pg-box-border:#68508D;
+
+$table-box-shadow-color:#76828f48;
+
+$shadow-color: rgba(207, 217, 227, 0.28);
+$box-shadow: 0px 10px 15px $shadow-color;
+$buttonBoxShadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.4);
+
+$primary: #00b0f0;
+$dark-blue: #203764;
+$dark-black:#1B1B1B;
+$dark-black-100:#2A2A2A;
+$dark-black-200:#252525;
+
+$bg-color: #F4F6F8;
+$main-bg-color:#FFFFFF;
+
+$light-blue: #DDFDF4;
+$dark-green: #267D66;
+
+// Grid columns
+//
+// Set the number of columns and specify the width of the gutters.
+$grid-gutter-width:           20px;
+
+$border-radius:               0px;
+$border-radius-lg:            0px;
+$border-radius-sm:            0px;
+
+
+$input-btn-font-size: 14px;
+
+// Header Color
+$header-bg-color: $white;
+
+
+// Navbar color
+$navbar-bg-color: $purple;
+$nav-item-bg-color: $pink;
+$nav-item-text-color:$white;
+// $navbar-border-color: #808080;
+
+
+// Main Page Heading Color
+$page-heading-bg-color: $white;
+$page-heading-text-color: $dark-blue;
+$page-heading-border-color: $gray;
+
+// Login Form Color
+$login-form-bg-color: #F2F2F2;
+$login-form-label-color: $black;
+$login-form-text-color: $black;
+$login-form-control-bg-color: #F2F2F2;
+$login-form-text-color: $black;
+$login-form-heading-color: $black;
+
+// Page Main Wrapper
+$page-main-wrapper-bg-color:#BFBFBF;
+$page-content-inner-bg-color: #F2F2F2;
+
+// LMS Card Color
+$lms-card-bg-color: $white;
+$lms-card-text-color: #3A3838;
+$lms-card-heading-color: $primary;
+$lms-card-heading-size: 16px;
+$lms-card-text-size: 14px;
+$lms-card-padding: 12px 16px;
+
+// Button Color
+$btn-help-text-color: #3A3838;
+$btn-help-text-size: 12px;
+
+$btn-add-new-bg-color: #F2F2F2;
+$btn-add-new-border-color: #cccccc;
+
+
+// Form Control Color
+$form-control-bg-color: #F2F2F2;
+$form-control-text-color: #3A3838;
+$form-control-border-color: $primary;
+$form-control-text-size: 14px;
+
+
+
+/*----------------------------
+  Dark Mode Theme Color
+------------------------------*/
+// Header Color
+$dark-header-bg-color: $dark-black;
+
+// Menubar Color
+$dark-menubar-bg-color: $dark-black;
+
+// Navbar Color
+$dark-navbar-bg-color: $dark-black;
+$dark-nav-item-bg-color: #262626;
+$dark-nav-item-text-color:$white;
+$dark-navbar-border-color: #CCCCCC;
+
+// Footer Color
+$dark-footer-bg-color: $dark-black-200;
+
+// Main Page Heading Color
+$dark-page-heading-bg-color: $dark-black-100;
+$dark-page-heading-text-color: $white;
+$dark-page-heading-border-color: #cccccc;
+
+// Login Form Color
+$dark-login-form-bg-color: #f2f2f2;
+$dark-login-form-label-color: $black;
+$dark-login-form-text-color: $black;
+$dark-login-form-control-bg-color: #F2F2F2;
+$dark-login-form-text-color: $black;
+$dark-login-form-heading-color: $black;
+
+// Page Main Wrapper
+$dark-page-main-wrapper-bg-color:#565656;
+$dark-page-content-inner-bg-color: #262626;
+
+// LMS Card Color
+$dark-lms-card-bg-color: #404040;
+$dark-lms-card-text-color: $white;
+$dark-lms-card-heading-color: $primary;
+
+// Button Color
+$dark-btn-help-text-color: $white;
+$dark-btn-add-new-bg-color: #404040;
+
+// Form Control Color
+$dark-form-control-bg-color: #3A3838;
+$dark-form-control-text-color: $white;
+
+
+$ubuntu-regular: 'Ubuntu-Regular';
+$ubuntu-bold: 'Ubuntu-Bold';

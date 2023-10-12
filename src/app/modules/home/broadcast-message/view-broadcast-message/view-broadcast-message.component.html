@@ -1,0 +1,83 @@
+<div class="container-fluid">
+    <div class="row inner-header-row">
+        <div class="col-lg-12">
+            <h3>
+                <mat-icon class="cursor-p" routerLink="/manage-broadcast-message">arrow_back</mat-icon> Broadcast Message Details
+            </h3>
+        </div>
+    </div>
+    <div class="row sub-container">
+        <div class="row">
+            <div class="col-md-12">
+                <mat-card class="card-details">
+                    <mat-card-content>
+                         <div class="row">
+
+                            <div class="col-md-8">
+                                <div>Message</div><br>
+                               
+                            </div>
+                            <div class="col-md-4" >
+                                <div class="float-end normal-txt">Status <span class="m-2 status-active status-padding" *ngIf="messageDetails.status === 'Active'">
+                                    Active
+                                </span>
+                                <span class="m-2 status-deactive status-padding" *ngIf="messageDetails.status !== 'Active'">
+                                    Expired
+                                </span></div><br>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="normal-txt p"> {{messageDetails?.message}}</div>
+                            </div>
+
+                        </div>
+                    </mat-card-content>
+                    <mat-card-actions >
+                        <div class="row m-2 p-3" style="background-color: #F7F7F7;">
+
+                            <div class="col-md-2 d-flex align-items-center">
+                                <div>
+                                    <div class="normal-txt">Date of Publish</div>
+                                <div class="normal-txt mt-1"> {{messageDetails?.publish_date | date: 'MM/dd/y'}}</div>
+                                </div>
+                                
+                            </div>
+                            <div class="col-md-2 d-flex align-items-center">
+                                <div>
+                                    <div class="normal-txt">Expiration Date</div>
+                                    <div class="normal-txt mt-1"> {{messageDetails?.expiration_date | date: 'MM/dd/y'}}</div>
+                                </div>
+                            </div>
+                            <div class="col-md-2 d-flex align-items-center" >
+                                <div *ngIf="messageDetails?.is_archive==1">
+                                    <div class="normal-txt">Date of Archive</div>
+                                    <div class="normal-txt mt-1"> {{messageDetails?.archive_at | date: 'MM/dd/y'}}</div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 ">
+                               
+                                <div class="p-4 float-end" *ngIf="messageDetails?.is_archive!=1"> 
+                                    <div class="col-6 edit-btn-container" *ngIf="isEditable">
+                                    <span class="archive-btn cursor-p" (click)="archieveMessage()">
+                                    <img src="../../../../assets/images/svg/archive_icon.svg" alt=''>
+                                    Archive
+                                </span></div>
+                            </div>
+                            <div class="p-4 float-end d-flex">
+                                <div class="col-6 edit-btn-container" *ngIf="isEditable && messageDetails?.is_archive!=1">
+                                <span class="edit-btn cursor-p" (click)="gotoMessageEdit()">
+                                    <img src="../../../../assets/images/svg/edit_icon.svg" alt=''>
+                                    Edit
+                                </span>
+                                
+                              </div>
+                           </div>
+                        </div>
+                        </div>
+                    </mat-card-actions>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+</div>

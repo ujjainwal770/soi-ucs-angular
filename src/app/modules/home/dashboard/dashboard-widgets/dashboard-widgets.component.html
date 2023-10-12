@@ -1,0 +1,73 @@
+<mat-grid-list cols="3" rowHeight="150px">
+    <mat-grid-tile colspan="1" rowspan="1">
+        <mat-card class="dashboard-card">
+            <mat-card-title-group>
+                <img mat-card-sm-image src="../../assets/images/school_icon.png" class="card-images school_icon"
+                    alt="UCS Schools">
+                <mat-card-title class="card-title">
+                    Current (Active)
+                    <!-- <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+                        <mat-icon>more_vert</mat-icon>
+                    </button>
+                    <mat-menu #menu="matMenu" xPosition="before">
+                        <button mat-menu-item>Expand</button>
+                        <button mat-menu-item>Remove</button>
+                    </mat-menu> -->
+                </mat-card-title>
+                <mat-card-subtitle class="card-subtitle">UCS Schools</mat-card-subtitle>
+
+
+            </mat-card-title-group>
+            <mat-card-content class="dashboard-card-content">
+                <div>{{card1Content}}</div>
+            </mat-card-content>
+
+        </mat-card>
+    </mat-grid-tile>
+    <mat-grid-tile colspan="1" rowspan="1">
+        <mat-card class="dashboard-card">
+            <mat-card-title-group>
+                <mat-card-title class="card-title">
+                    Total (Active)
+                    <!-- <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+                        <mat-icon>more_vert</mat-icon>
+                    </button>
+                    <mat-menu #menu="matMenu" xPosition="before">
+                        <button mat-menu-item>Expand</button>
+                        <button mat-menu-item>Remove</button>
+                    </mat-menu> -->
+                </mat-card-title>
+                <mat-card-subtitle class="card-subtitle">Users</mat-card-subtitle>
+                <img mat-card-sm-image src="../../assets/images/users-icon.png" class="card-images users-icon"
+                    alt="Users">
+
+            </mat-card-title-group>
+            <mat-card-content class="dashboard-card-content">
+                <span style="padding-right: 10px;">
+                    <span class="content-title">UCS User:</span>
+                    <span class="content-value">{{card2contentValue1}}</span>
+                </span>
+                <span style="display: inline-flex;">
+                    <span class="content-title">Public User:</span>
+                    <span class="content-value">{{card2contentValue2}}</span>
+                </span>
+            </mat-card-content>
+        </mat-card>
+    </mat-grid-tile>
+    <!-- <mat-grid-tile colspan="1" rowspan="1">
+        <mat-card class="dashboard-card">
+            <mat-card-title-group>
+                <mat-card-title class="card-title">
+                    Total
+                </mat-card-title>
+                <mat-card-subtitle class="card-subtitle">Downloads</mat-card-subtitle>
+                <img mat-card-sm-image src="../../assets/images/download_icon.png" class="card-images download_icon" alt="Downloads">
+
+            </mat-card-title-group>
+            <mat-card-content class="dashboard-card-content">
+                <div>{{card3Content}}</div>
+            </mat-card-content>
+
+        </mat-card>
+    </mat-grid-tile> -->
+</mat-grid-list>

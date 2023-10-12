@@ -1,0 +1,10 @@
+<svg id="list-view-selected" xmlns="http://www.w3.org/2000/svg" width="20" height="16" viewBox="0 0 20 16">
+  <g id="Group_20227" data-name="Group 20227">
+    <circle id="Ellipse_1027" data-name="Ellipse 1027" cx="1" cy="1" r="1" fill="#29856c"/>
+    <circle id="Ellipse_1028" data-name="Ellipse 1028" cx="1" cy="1" r="1" transform="translate(0 14)" fill="#29856c"/>
+    <circle id="Ellipse_1029" data-name="Ellipse 1029" cx="1" cy="1" r="1" transform="translate(0 7)" fill="#29856c"/>
+    <rect id="Rectangle_12101" data-name="Rectangle 12101" width="15" height="2" rx="1" transform="translate(5)" fill="#29856c"/>
+    <rect id="Rectangle_12102" data-name="Rectangle 12102" width="15" height="2" rx="1" transform="translate(5 7)" fill="#29856c"/>
+    <rect id="Rectangle_12103" data-name="Rectangle 12103" width="15" height="2" rx="1" transform="translate(5 14)" fill="#29856c"/>
+  </g>
+</svg>

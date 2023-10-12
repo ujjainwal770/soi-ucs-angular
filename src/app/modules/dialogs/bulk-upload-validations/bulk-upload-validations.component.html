@@ -1,0 +1,21 @@
+<div class="container-fluid">
+    <div class="row float-right">
+        <mat-icon (click)="cancel()">close</mat-icon>
+    </div>
+    <div class="row">
+        <div class="col-md-12 d-flex justify-content-center">
+            <span class="font-weight-bold heading-font">{{pgtitle}}</span>
+        </div>
+        <div class="gutter-space"></div>
+        <div class="col-md-12 d-flex">
+           <ul>
+               <li><strong>First Name</strong>      - 50 characters, Mandatory</li>
+               <li><strong>Last Name</strong>       - 50 characters, Mandatory</li>
+               <li><strong>Email</strong>           - Regex Validations, Mandatory</li>
+               <li><strong>Date Format</strong>     - MM/DD/YYYY, Mandatory</li>
+               <li><strong>Phone Number</strong>    - 10 digit number, Not Mandatory</li>
+           </ul>
+        </div>
+    </div>
+    <div class="gutter-space"></div>
+</div>

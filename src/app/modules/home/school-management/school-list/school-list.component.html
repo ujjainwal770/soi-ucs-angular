@@ -1,0 +1,196 @@
+<div class="container-fluid">
+    <div class="row header-row">
+        <div class="col-lg-12">
+            <div class="header-cont">
+                <h2>School List</h2>
+                <span class="mass-resend-info">
+                    <mat-icon>error_outline</mat-icon>
+                    Mass Resend Email to Pending School Admins</span>
+                <button class="app-btn filled green-bg large ml-10" (click)="openConfrmDlg()">Resend Invite</button>
+                <button [matMenuTriggerFor]="menu" class="app-btn filled green-bg large ml-20">Add School <mat-icon>
+                        arrow_drop_down</mat-icon></button>
+                <mat-menu #menu="matMenu">
+                    <button mat-menu-item routerLinkActive="active" [routerLink]="['school-add']">
+                        <span>Individual</span>
+                    </button>
+                    <button mat-menu-item routerLinkActive="active" [routerLink]="['bulk-upload']">
+                        <span>Bulk Upload</span>
+                    </button>
+                </mat-menu>
+            </div>
+        </div>
+    </div>
+    <div class="sub-container">
+        <div class="row">
+            <div class="col-lg-12">
+                <app-school-filter (searchTxt)="applyFilter($event)" [filterData]="searchOptionsData">
+                </app-school-filter>
+            </div>
+        </div>
+        <div class="gutter-space"></div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="filter-result">
+                    <div  id="schoolDetail">
+
+                        <!-- Zip code alert popup template -->
+                        <ng-template #zipCodePopTemplate>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <span class="invalid-zip-message">
+                                        The entered zip code is invalid. Please correct.
+                                    </span>
+                                </div>
+                            </div>
+                        </ng-template>
+                        <div class="data-table-container">
+                         <table aria-describedby="schoolDetail" mat-table [dataSource]="dataSource" matSort>
+                           <ng-container matColumnDef="isValidUsZipCode"  sticky>
+                                <th class="table-column-50"   id="isValidUsZipCode" mat-header-cell *matHeaderCellDef> </th>
+                                <td  class="table-column-50 mat-zip-sticky "  mat-cell *matCellDef="let element; let i = index" [attr.id]="'error-' + i">
+                                    <mat-icon type="button" *ngIf="!element.isValidUsZipCode"
+                                        class="zip-code-error-mat-icon" [popover]="zipCodePopTemplate"
+                                        [adaptivePosition]="true"
+                                        placement="right">error_outline</mat-icon>
+                                </td>
+                            </ng-container>
+
+                            <!-- Checkbox Column -->
+                            <ng-container matColumnDef="id" sticky >
+                                <th  class="table-column-50"  id="id" mat-header-cell *matHeaderCellDef >
+                                    <mat-checkbox (change)="$event ? masterToggle() : null"
+                                        [checked]="isAllSelected"
+                                        [indeterminate]="(isAllSelected && selected.length!=0)"
+                                        [aria-label]="checkboxLabel()"
+                                        [disabled]="searchOptionsData.filter === 'active' || searchOptionsData.filter === 'inactive'">
+                                    </mat-checkbox>
+                                </th>
+                                <td  class="table-column-50 mat-column-sticky"   mat-cell *matCellDef="let row;let i = index" [attr.id]="'id-' + i">
+                                    <mat-checkbox (click)="$event.stopPropagation()"
+                                        (change)="OnChange(row.id)"
+                                        [aria-label]="checkboxLabel()"
+                                        [checked]="(row.school_admin_status === 'Pending') && (isAllSelected || (!isAllSelected && isSelected(row.id)))"
+                                         [disabled]="row.school_admin_status !== 'Pending'">
+                                    </mat-checkbox>
+                                </td>
+                            </ng-container>
+
+                            <!--School Name Column -->
+                            <ng-container matColumnDef="schoolName" >
+                                <th class="table-column-150" id="schoolName" mat-header-cell *matHeaderCellDef mat-sort-header (click)="customSorting('schoolName')"> School Name </th>
+                                <td class="table-column-150" mat-cell *matCellDef="let element; let i = index" [attr.id]="'schoolName-' + i">
+                                    <span class="a-link" (click)="userAction({path:'view'},element)">
+                                        <span>{{element.schoolName?.substring(0, 17) || 'N/A'}}</span>
+                                        <span mat-raised-button *ngIf="element.schoolName.length > 17"
+                                            [matTooltip]="element.schoolName | titlecase"
+                                            aria-label="displays a tooltip when focused or hovered over">
+                                            ...
+                                        </span>
+                                    </span>
+                                </td>
+                            </ng-container>
+                              <!-- type Column -->
+                              <ng-container matColumnDef="type">
+                                <th class="table-column-80" id="type" mat-header-cell *matHeaderCellDef mat-sort-header (click)="customSorting('type')"> Type </th>
+                                <td class="table-column-80" mat-cell *matCellDef="let element; let i = index" [attr.id]="'type-' + i"> {{element.type}} </td>
+                            </ng-container>
+
+                            <!-- State Column -->
+                            <ng-container matColumnDef="stateName">
+                                <th class="table-column-80" id="stateName" mat-header-cell *matHeaderCellDef mat-sort-header (click)="customSorting('stateName')"> State </th>
+                                <td class="table-column-80" mat-cell *matCellDef="let element; let i = index" [attr.id]="'stateName-' + i"> {{element.stateName}} </td>
+                            </ng-container>
+
+                            <!-- Date Created column -->
+                            <!-- <ng-container matColumnDef="creationTime">
+                                <th class="table-column-130" id="creationTime"  mat-header-cell *matHeaderCellDef mat-sort-header (click)="customSorting('creationTime')"> Date Created
+                                </th>
+                                <td class="table-column-130" mat-cell  *matCellDef="let element; let i = index" [attr.id]="'creationTime-' + i"> {{element.creationTime | date: 'MM/dd/y'}} </td>
+                            </ng-container> -->
+                             <!-- # of Active Student column -->
+                             <ng-container matColumnDef="activeStudent">
+                                <th class="table-column-120 align-center" id="activeStudent" mat-header-cell *matHeaderCellDef mat-sort-header (click)="customSorting('activeStudent')"> # of Active Students
+                                </th>
+                                <td class="table-column-120 align-center" mat-cell *matCellDef="let element; let i = index" [attr.id]="'activeStudent-' + i"> {{element.activeStudent }} </td>
+                            </ng-container>
+                            <!-- # of pending Student column -->
+                            <ng-container matColumnDef="pendingStudent">
+                                <th class="table-column-120 align-center" id="pendingStudent" mat-header-cell *matHeaderCellDef mat-sort-header (click)="customSorting('pendingStudent')"> # of Pending Students
+                                </th>
+                                <td class="table-column-120 align-center" mat-cell *matCellDef="let element; let i = index" [attr.id]="'pendingStudent-' + i"> {{element.pendingStudent }} </td>
+                            </ng-container>
+
+
+                            <ng-container matColumnDef="school_admin_status">
+                                <th class="table-column-100" id="school_admin_status" mat-header-cell *matHeaderCellDef mat-sort-header="school_admin_status" (click)="customSorting('school_admin_status')">
+                                   Admin Status </th>
+                                <td class="table-column-100" mat-cell *matCellDef="let element; let i = index" [attr.id]="'school_admin_status-' + i">
+                                    <button class="no-pointer-cursor" [ngClass]="{'status-active' : (element.school_admin_status=='Active'),
+                                        'status-pending' : (element.school_admin_status=='Pending'),
+                                         'status-deactive' : element.school_admin_status=='Inactive'}">
+                                        {{element.school_admin_status}}
+                                    </button>
+                                </td>
+                            </ng-container>
+                            <!-- status Column -->
+                            <ng-container matColumnDef="status_text">
+                                <th class="table-column-100" id="status_text" mat-header-cell *matHeaderCellDef mat-sort-header="status_text" (click)="customSorting('status_text')">
+                                    Status </th>
+                                <td class="table-column-100" mat-cell *matCellDef="let element; let i = index" [attr.id]="'status_text-' + i">
+                                    <button class="no-pointer-cursor" [ngClass]="{'status-active' : (element.status_text=='Active'),
+                                        'status-pending' : (element.status_text=='Pending'),
+                                         'status-deactive' : element.status_text=='Inactive'}">
+                                        {{element.status_text}}
+                                    </button>
+                                </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="actions" stickyEnd>
+                                <th class="table-column-50" id="actions" mat-header-cell *matHeaderCellDef class="action-cell"> Actions </th>
+                                <td class="table-column-50" mat-cell *matCellDef="let row ; let i = index" [attr.id]="'actions-' + i">
+                                    <button mat-icon-button [matMenuTriggerFor]="menu"
+                                        aria-label="Example icon-button with a menu">
+                                        <mat-icon>more_vert</mat-icon>
+                                    </button>
+                                    <mat-menu #menu="matMenu">
+                                        <button mat-menu-item *ngFor="let item of actionMenu"
+                                            (click)="userAction(item, row)">
+                                            <mat-icon>{{item['icon']}}</mat-icon>
+                                            <span>{{item['name']}}</span>
+                                        </button>
+                                        <button mat-menu-item (click)="changeStatus(row.id,'active')"
+                                            *ngIf="row.status=='inactive'">
+                                            <mat-icon>check_circle_outline</mat-icon>
+                                            <span>Activate</span>
+                                        </button>
+                                        <button mat-menu-item
+                                            (click)="reasonDeclaration('Inactive',{'schoolId': row.id})"
+                                            *ngIf="(row.status=='active' && row.adminActiveStatus=='yes')">
+                                            <mat-icon>not_interested</mat-icon>
+                                            <span>Inactive</span>
+                                        </button>
+                                    </mat-menu>
+
+                                </td>
+                            </ng-container>
+                            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                        </table>
+                    </div>
+
+                        <div class="align-center" *ngIf="!dataSource.data.length">
+                            <span class="no-record-found">
+                                <img alt='' src="../../assets/images/svg/record_not_found_info_icon.svg">
+                                There are no records here at the moment.
+                            </span>
+                        </div>
+
+                        <mat-paginator #paginator [pageSizeOptions]="pageSizes" showFirstLastButtons [length]="count"
+                            (page)="handlePage($event)" aria-label="Select page of periodic elements">
+                        </mat-paginator>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

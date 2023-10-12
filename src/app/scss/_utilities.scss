@@ -1,0 +1,80 @@
+.no-padd {
+  padding: 0;
+}
+
+.no-margin {
+  margin: 0;
+}
+
+.normal-font {
+  font-weight: normal;
+  font-family: "Ubuntu-Regular", sans-serif;
+}
+
+.align-c {
+  text-align: center;
+}
+.align-r {
+  text-align: right;
+}
+
+.cursor-p {
+  cursor: pointer;
+}
+
+.action-btn {
+    &.btw-gutter-space {
+      button {
+          margin: auto 5px;
+      }
+    }
+} 
+
+// Button
+.btn-150{
+  min-width: 150px;
+}
+.btn-auto{
+  width: auto;
+}
+.btn-full{
+  width: 100%;
+}
+@include media-breakpoint-up(sm){
+  .btn-md-auto{
+    width: auto;
+  }
+  .btn-md-full{
+    width: 100%;
+  }
+}
+@include media-breakpoint-up(md){
+  .btn-md-auto{
+    width: auto;
+  }
+  .btn-md-full{
+    width: 100%;
+  }
+}
+@include media-breakpoint-up(lg){
+  .btn-lg-auto{
+    width: auto;
+  }
+  .btn-lg-full{
+    width: 100%;
+  }
+}
+@include media-breakpoint-up(xl){
+  .btn-xl-auto{
+    width: auto;
+  }
+  .btn-xl-full{
+    width: 100%;
+  }
+}
+.text-underline{
+  text-decoration: underline !important;
+  &:hover{
+    text-decoration: none !important;
+  }
+}

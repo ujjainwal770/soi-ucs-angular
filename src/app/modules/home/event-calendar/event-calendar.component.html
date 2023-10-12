@@ -1,0 +1,207 @@
+<div class="container-fluid" *ngIf="!viewEventList">
+    <div class="row header-row">
+        <div class="col-lg-12">
+            <div class="header-cont">
+                <h2>Event Calendar</h2>
+
+                <button class="app-btn filled green-bg" routerLinkActive="active" [routerLink]="['/manage-events/add-event']">Add Event</button>
+                <mat-button-toggle-group appearance="legacy" name="fontStyle" aria-label="Font Style" [value]="eventView">
+                  <mat-button-toggle value="calender" (click)="updateView('calender')">
+                    <svg *ngIf="eventView=='calender'" xmlns="http://www.w3.org/2000/svg" width="19.5" height="21.5" viewBox="0 0 19.5 21.5">
+                      <path id="Vector" d="M8.5,4.222H7.6a5.658,5.658,0,0,0-2.372.242,2.235,2.235,0,0,0-.983.971A5.46,5.46,0,0,0,4,7.778v.889M8.5,4.222h9m-9,0V2m9,2.222h.9a5.65,5.65,0,0,1,2.371.242,2.238,2.238,0,0,1,.984.971A5.449,5.449,0,0,1,22,7.774v.892M17.5,4.222V2M4,8.667v9.778a5.455,5.455,0,0,0,.245,2.342,2.236,2.236,0,0,0,.983.971A5.647,5.647,0,0,0,7.6,22H18.4a5.642,5.642,0,0,0,2.367-.242,2.239,2.239,0,0,0,.984-.971A5.445,5.445,0,0,0,22,18.448V8.667m-18,0H22m-4.5,8.889h0v0h0Zm-4.5,0h0v0h0Zm-4.5,0h0v0h0Zm9-4.444v0h0v0Zm-4.5,0h0v0h0Zm-4.5,0h0v0h0Z" transform="translate(-3.25 -1.25)" fill="none" stroke="#29856C" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+                    </svg>
+                    <svg *ngIf="eventView!='calender'"xmlns="http://www.w3.org/2000/svg" width="17.5" height="19.5" viewBox="0 0 17.5 19.5">
+                      <path id="calendar" d="M8,4H7.2a4.971,4.971,0,0,0-2.108.218,2,2,0,0,0-.874.874A4.971,4.971,0,0,0,4,7.2V8M8,4h8M8,4V2m8,2h.8a4.964,4.964,0,0,1,2.107.218,2,2,0,0,1,.875.874A4.962,4.962,0,0,1,20,7.2V8M16,4V2M4,8v8.8a4.967,4.967,0,0,0,.218,2.108,2,2,0,0,0,.874.874A4.962,4.962,0,0,0,7.2,20H16.8a4.957,4.957,0,0,0,2.1-.218,2,2,0,0,0,.875-.874A4.957,4.957,0,0,0,20,16.8V8M4,8H20m-4,8h0v0h0Zm-4,0h0v0h0ZM8,16H8v0H8Zm8-4v0h0v0Zm-4,0h0v0h0ZM8,12H8v0H8Z" transform="translate(-3.25 -1.25)" fill="none" stroke="#969696" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+                    </svg>
+                    
+                    
+                  </mat-button-toggle>
+                  <mat-button-toggle value="list" (click)="updateView('list')">
+                    <svg *ngIf="eventView!='list'"xmlns="http://www.w3.org/2000/svg" width="20" height="16" viewBox="0 0 20 16">
+                      <g id="list-view" transform="translate(15231 12391)">
+                        <circle id="Ellipse_1027" data-name="Ellipse 1027" cx="1" cy="1" r="1" transform="translate(-15231 -12391)" fill="#969696"/>
+                        <circle id="Ellipse_1028" data-name="Ellipse 1028" cx="1" cy="1" r="1" transform="translate(-15231 -12377)" fill="#969696"/>
+                        <circle id="Ellipse_1029" data-name="Ellipse 1029" cx="1" cy="1" r="1" transform="translate(-15231 -12384)" fill="#969696"/>
+                        <rect id="Rectangle_12101" data-name="Rectangle 12101" width="15" height="2" rx="1" transform="translate(-15226 -12391)" fill="#969696"/>
+                        <rect id="Rectangle_12102" data-name="Rectangle 12102" width="15" height="2" rx="1" transform="translate(-15226 -12384)" fill="#969696"/>
+                        <rect id="Rectangle_12103" data-name="Rectangle 12103" width="15" height="2" rx="1" transform="translate(-15226 -12377)" fill="#969696"/>
+                      </g>
+                    </svg>
+                    <svg *ngIf="eventView=='list'" id="list-view-selected" xmlns="http://www.w3.org/2000/svg" width="20" height="16" viewBox="0 0 20 16">
+                      <g id="Group_20227" data-name="Group 20227">
+                        <circle id="Ellipse_1027" data-name="Ellipse 1027" cx="1" cy="1" r="1" fill="#29856c"/>
+                        <circle id="Ellipse_1028" data-name="Ellipse 1028" cx="1" cy="1" r="1" transform="translate(0 14)" fill="#29856c"/>
+                        <circle id="Ellipse_1029" data-name="Ellipse 1029" cx="1" cy="1" r="1" transform="translate(0 7)" fill="#29856c"/>
+                        <rect id="Rectangle_12101" data-name="Rectangle 12101" width="15" height="2" rx="1" transform="translate(5)" fill="#29856c"/>
+                        <rect id="Rectangle_12102" data-name="Rectangle 12102" width="15" height="2" rx="1" transform="translate(5 7)" fill="#29856c"/>
+                        <rect id="Rectangle_12103" data-name="Rectangle 12103" width="15" height="2" rx="1" transform="translate(5 14)" fill="#29856c"/>
+                      </g>
+                    </svg>
+                    
+                    
+                  </mat-button-toggle>
+                </mat-button-toggle-group>
+            </div>
+        </div>
+    </div>
+    <div class="sub-container event-heading" *ngIf="eventView == 'calender' ">
+        <div class="row ">
+            <div class="col-2">
+                <div
+                class="btn btn-lg"
+                mwlCalendarPreviousView
+                  [(viewDate)]="viewDate"
+                  [view]="view"
+                  (viewDateChange)="DateChange(viewDate)"
+                >
+              <mat-icon class="icon-display">keyboard_arrow_left</mat-icon>
+              </div>
+            </div>
+            <div class="col-8 text-center">
+
+                <h3>{{ viewDate | calendarDate: view + 'ViewTitle' }}</h3>
+
+            </div>
+            <div class="col-2 text-end">
+                <div
+                class="btn btn-lg"
+                mwlCalendarNextView
+                  [(viewDate)]="viewDate"
+                  [view]="view"
+                  (viewDateChange)="DateChange(viewDate)">
+                <mat-icon class="icon-display">keyboard_arrow_right</mat-icon></div>
+            </div>
+          </div>
+          <ng-template #customCellTemplate let-day="day" let-locale="locale">
+            <div class="cal-cell-top">
+              <span class="cal-day-number"
+                >{{ day.date | calendarDate:'monthViewDayNumber':locale }}</span
+              >
+              <span *ngFor="let event of day.events; let index = index">
+                  <span (click)="openModal(template,event)" class="cal-day-badge event-badge" [ngClass]="event.is_completed==1?'grey-badge':'pink-badge'" *ngIf="index === 0 || day.events.length === 2">
+                    {{event.title}}
+                  </span>
+                  <span (click)="openModal(template,event)" class="cal-day-badge event-badge-second" [ngClass]="event.is_completed==1?'grey-badge':'pink-badge'" *ngIf="index ===1  && day.events.length > 2">
+                    {{event.title}}
+                  </span>
+                <span class="cal-day-badge event-badge-count" *ngIf="index == 2" (click)="openEventList(day.date)">
+                   + {{day.events.length - 2}}
+                </span>
+              </span>
+              
+            </div>
+          </ng-template>
+      
+    <div class="row m-2" >
+            <div class="col-lg-12">
+        
+                <div>
+                    <mwl-calendar-month-view
+                    [refresh]="refresh"
+                    [viewDate]="viewDate"
+                    [events]="events"
+                    (dayClicked)="clickedDate = $event.day.date"
+                    [cellTemplate]="customCellTemplate"
+                  >  </mwl-calendar-month-view>
+
+                  </div>
+                
+            </div>
+        </div>
+        
+    </div>
+   
+</div>
+<div class="row sub-container" *ngIf="eventView == 'list' ">
+ <app-event-list  (viewDetails)="openModal(template,$event)" (eventAction)="action()"></app-event-list>
+</div>
+<div *ngIf="listDate">
+  <app-event-list [viewDate]="listDate" (viewDetails)="openModal(template,$event)" (eventAction)="action()"></app-event-list>
+</div>
+
+
+<ng-template #template>
+  
+    <div class="modal-header headerColor">
+      <h4 class="modal-title pull-left m-1">{{selectedEvent.title}}</h4>
+      <div class="pull-right">
+        <button class="btn" (click)="modalRef?.hide();copyEvent(selectedEvent.id)">
+          <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 34 34">
+            <g id="duplicate_icon" transform="translate(-897 -307)">
+              <circle id="Ellipse_1030" data-name="Ellipse 1030" cx="17" cy="17" r="17" transform="translate(897 307)" fill="#fff" opacity="0.198"/>
+              <g id="replicate" transform="translate(902.5 312.5)">
+                <g id="Group_20295" data-name="Group 20295" transform="translate(4.5 4.5)">
+                  <path id="Path_36532" data-name="Path 36532" d="M56.143,7.714h1.071V5.571A1.073,1.073,0,0,0,56.143,4.5H54V5.571h2.143Z" transform="translate(-42.214 -4.5)" fill="#fff"/>
+                  <path id="Path_36533" data-name="Path 36533" d="M38.25,4.5h2.143V5.571H38.25Z" transform="translate(-30.214 -4.5)" fill="#fff"/>
+                  <path id="Path_36534" data-name="Path 36534" d="M63,24.75h1.071v2.143H63Z" transform="translate(-49.071 -19.929)" fill="#fff"/>
+                  <path id="Path_36535" data-name="Path 36535" d="M18.429,13.071v2.143H16.286V8.786a1.072,1.072,0,0,0-1.071-1.071H8.786V5.571h2.143V4.5H8.786A1.072,1.072,0,0,0,7.714,5.571V7.714H5.571A1.073,1.073,0,0,0,4.5,8.786v9.643A1.073,1.073,0,0,0,5.571,19.5h9.643a1.073,1.073,0,0,0,1.071-1.071V16.286h2.143A1.073,1.073,0,0,0,19.5,15.214V13.071Zm-3.214,5.357H5.571V8.786h9.643Z" transform="translate(-4.5 -4.5)" fill="#fff"/>
+                </g>
+              </g>
+            </g>
+          </svg>
+          
+        </button>
+        <button *ngIf="selectedEvent.is_completed!=1" class="btn" (click)="modalRef?.hide();editEvent(selectedEvent.id)">
+          <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 34 34">
+            <g id="edit_icon" transform="translate(-941 -307)">
+              <circle id="Ellipse_1031" data-name="Ellipse 1031" cx="17" cy="17" r="17" transform="translate(941 307)" fill="#fff" opacity="0.198"/>
+              <path id="border_color_FILL0_wght400_GRAD0_opsz48" d="M81.125-858.635a1.093,1.093,0,0,1-.795-.325,1.056,1.056,0,0,1-.33-.781,1.025,1.025,0,0,1,.336-.774,1.134,1.134,0,0,1,.808-.318H93.875a1.1,1.1,0,0,1,.795.321,1.038,1.038,0,0,1,.33.772,1.048,1.048,0,0,1-.336.778,1.117,1.117,0,0,1-.808.327Zm.975-4.123a.554.554,0,0,1-.4-.157.519.519,0,0,1-.162-.388v-1.653a.528.528,0,0,1,.037-.2.54.54,0,0,1,.131-.185l6.825-6.611,2.494,2.415L84.2-862.921a.562.562,0,0,1-.192.127.579.579,0,0,1-.2.036Zm.562-1.09h.844l5.906-5.721-.844-.817-5.906,5.721Zm9.188-6.484-2.494-2.416,1.575-1.526a.643.643,0,0,1,.469-.245.728.728,0,0,1,.525.245l1.462,1.417a.694.694,0,0,1,.244.5.75.75,0,0,1-.206.5ZM82.662-863.847Z" transform="translate(871 1190.518)" fill="#fff"/>
+            </g>
+          </svg>
+          
+        </button>
+        <button *ngIf="selectedEvent.is_completed!=1" class="btn" (click)="modalRef?.hide();deleteEvent(selectedEvent.id) ">
+          <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 34 34">
+            <g id="delete_event_circle" transform="translate(-986 -307)">
+              <circle id="Ellipse_1032" data-name="Ellipse 1032" cx="17" cy="17" r="17" transform="translate(986 307)" fill="#fff" opacity="0.198"/>
+              <path id="delete_FILL0_wght400_GRAD0_opsz48-2" d="M162.209-824.25a1.259,1.259,0,0,1-.919-.394,1.259,1.259,0,0,1-.394-.919v-12.469h-.241a.633.633,0,0,1-.468-.19.641.641,0,0,1-.189-.47.628.628,0,0,1,.189-.466.64.64,0,0,1,.468-.186h3.456a.633.633,0,0,1,.189-.47.64.64,0,0,1,.468-.186h4.463a.635.635,0,0,1,.468.189.635.635,0,0,1,.189.468h3.456a.633.633,0,0,1,.468.19.641.641,0,0,1,.189.47.628.628,0,0,1-.189.466.64.64,0,0,1-.468.186H173.1v12.469a1.259,1.259,0,0,1-.394.919,1.259,1.259,0,0,1-.919.394Zm0-13.781v12.469h9.581v-12.469Zm2.319,9.931a.633.633,0,0,0,.19.467.64.64,0,0,0,.47.189.628.628,0,0,0,.467-.189.639.639,0,0,0,.186-.467v-7.416a.633.633,0,0,0-.19-.468.64.64,0,0,0-.47-.189.628.628,0,0,0-.466.189.64.64,0,0,0-.186.468Zm3.631,0a.633.633,0,0,0,.19.467.641.641,0,0,0,.47.189.628.628,0,0,0,.466-.189.639.639,0,0,0,.186-.467v-7.416a.633.633,0,0,0-.19-.468.64.64,0,0,0-.47-.189.628.628,0,0,0-.466.189.64.64,0,0,0-.186.468Zm-5.95-9.931v0Z" transform="translate(836 1156)" fill="#fff"/>
+            </g>
+          </svg>
+          
+        </button>
+        <button class="btn" (click)="modalRef?.hide()">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+            <g id="close_icon" transform="translate(0.707 0.707)">
+              <rect id="Rectangle_1505" data-name="Rectangle 1505" width="25.175" height="1.049" transform="translate(0.763 0.021) rotate(45)" fill="#fff"/>
+              <path id="Rectangle_1505_-_Outline" data-name="Rectangle 1505 - Outline" d="M.515,0H25.69l.515.515V1.564l-.515.515H.515L0,1.564V.515Zm24.66,1.03H1.03v.019H25.175Z" transform="translate(0.763 -0.707) rotate(45)" fill="#fff"/>
+              <rect id="Rectangle_1506" data-name="Rectangle 1506" width="25.175" height="1.049" transform="translate(0.021 17.823) rotate(-45)" fill="#fff"/>
+              <path id="Rectangle_1506_-_Outline" data-name="Rectangle 1506 - Outline" d="M.515,0H25.69l.515.515V1.564l-.515.515H.515L0,1.564V.515Zm24.66,1.03H1.03v.019H25.175Z" transform="translate(-0.707 17.823) rotate(-45)" fill="#fff"/>
+            </g>
+          </svg>
+        </button>
+      </div>
+      
+
+    </div>
+    <div class="modal-body">
+      <div>
+        <div class="time-container-inline mb-4">
+          <div class="time-container">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="20" viewBox="0 0 18 20">
+              <path id="date_icon" d="M124.65-867.85a.968.968,0,0,1-.713-.288.967.967,0,0,1-.287-.712.968.968,0,0,1,.287-.713.968.968,0,0,1,.713-.287.968.968,0,0,1,.713.287.968.968,0,0,1,.287.713.967.967,0,0,1-.287.712A.968.968,0,0,1,124.65-867.85Zm4.425,0a.968.968,0,0,1-.712-.288.968.968,0,0,1-.288-.712.968.968,0,0,1,.288-.713.968.968,0,0,1,.712-.287.968.968,0,0,1,.713.287.968.968,0,0,1,.287.713.967.967,0,0,1-.287.712A.968.968,0,0,1,129.075-867.85Zm4.25,0a.968.968,0,0,1-.712-.288.968.968,0,0,1-.288-.712.968.968,0,0,1,.288-.713.968.968,0,0,1,.712-.287.968.968,0,0,1,.713.287.968.968,0,0,1,.287.713.967.967,0,0,1-.287.712A.968.968,0,0,1,133.325-867.85ZM121.5-860a1.439,1.439,0,0,1-1.05-.45,1.439,1.439,0,0,1-.45-1.05V-877a1.439,1.439,0,0,1,.45-1.05,1.439,1.439,0,0,1,1.05-.45h1.625v-.7a.774.774,0,0,1,.23-.57.774.774,0,0,1,.57-.23.811.811,0,0,1,.588.23.762.762,0,0,1,.237.57v.7h8.5v-.7a.774.774,0,0,1,.23-.57.774.774,0,0,1,.57-.23.811.811,0,0,1,.588.23.762.762,0,0,1,.237.57v.7H136.5a1.439,1.439,0,0,1,1.05.45A1.439,1.439,0,0,1,138-877v15.5a1.439,1.439,0,0,1-.45,1.05,1.439,1.439,0,0,1-1.05.45Zm0-1.5h15v-10.75h-15Zm0-12.25h15V-877h-15Zm0,0v0Z" transform="translate(-120 880)"/>
+            </svg>&nbsp;
+            <span class="time-text"> {{selectedEvent.start| date:'MMMM d, yyyy'}}</span>
+          </div>
+          <div class="time-container">
+            <mat-icon class="cursor-p">access_time</mat-icon>
+            
+            &nbsp; <span class="time-text"> ({{selectedEvent.start| date: 'h:mm a'}} - {{selectedEvent.end| date: 'h:mm a'}})</span>
+          </div>
+        </div>
+        <div class="alert alert-primary dotted-alert" role="alert">
+          Events times will be shown in user's local time zone.
+        </div>
+        <span>
+          {{selectedEvent.description}}
+        </span>
+        <div class="mt-2" *ngIf="firstTwoParticipants">
+          <svg class = "mr-2" xmlns="http://www.w3.org/2000/svg" width="18" height="9" viewBox="0 0 18 9">
+            <path id="attendees_icon" d="M.563-711a.544.544,0,0,1-.4-.162.544.544,0,0,1-.162-.4v-.431a1.336,1.336,0,0,1,.773-1.186,4.064,4.064,0,0,1,2.039-.446q.225,0,.441.014t.422.042a3.143,3.143,0,0,0-.225.654,3.269,3.269,0,0,0-.075.715v1.2Zm4.5,0a.544.544,0,0,1-.4-.162.544.544,0,0,1-.162-.4v-.638a2.26,2.26,0,0,1,1.247-1.978A6.189,6.189,0,0,1,9-714.937a6.179,6.179,0,0,1,3.263.759A2.261,2.261,0,0,1,13.5-712.2v.638a.544.544,0,0,1-.162.4.544.544,0,0,1-.4.162Zm9.563,0v-1.2a3.269,3.269,0,0,0-.075-.715,3.256,3.256,0,0,0-.225-.659,3.765,3.765,0,0,1,.422-.042q.216-.009.442-.009a4.066,4.066,0,0,1,2.033.446A1.335,1.335,0,0,1,18-711.994v.431a.544.544,0,0,1-.162.4.544.544,0,0,1-.4.162ZM9-713.812a5.548,5.548,0,0,0-2.447.459q-.928.459-.928,1.153v.075h6.75v-.094q0-.675-.928-1.134A5.548,5.548,0,0,0,9-713.812Zm-6.189-.375a1.26,1.26,0,0,1-.926-.386A1.268,1.268,0,0,1,1.5-715.5a1.26,1.26,0,0,1,.386-.926,1.268,1.268,0,0,1,.928-.384,1.26,1.26,0,0,1,.926.386,1.268,1.268,0,0,1,.384.928,1.26,1.26,0,0,1-.386.926,1.268,1.268,0,0,1-.928.384Zm12.375,0a1.26,1.26,0,0,1-.926-.386,1.268,1.268,0,0,1-.384-.928,1.26,1.26,0,0,1,.386-.926,1.268,1.268,0,0,1,.928-.384,1.26,1.26,0,0,1,.926.386,1.268,1.268,0,0,1,.384.928,1.26,1.26,0,0,1-.386.926A1.268,1.268,0,0,1,15.186-714.187ZM9-715.5a2.17,2.17,0,0,1-1.594-.656,2.17,2.17,0,0,1-.656-1.594,2.17,2.17,0,0,1,.656-1.594A2.17,2.17,0,0,1,9-720a2.17,2.17,0,0,1,1.594.656,2.17,2.17,0,0,1,.656,1.594,2.17,2.17,0,0,1-.656,1.594A2.17,2.17,0,0,1,9-715.5Zm0-3.375a1.088,1.088,0,0,0-.8.323,1.088,1.088,0,0,0-.323.8,1.089,1.089,0,0,0,.323.8,1.088,1.088,0,0,0,.8.323,1.088,1.088,0,0,0,.8-.323,1.089,1.089,0,0,0,.323-.8,1.088,1.088,0,0,0-.323-.8A1.088,1.088,0,0,0,9-718.875ZM9-712.125ZM9-717.75Z" transform="translate(0 720)"/>
+          </svg>
+          &nbsp; {{firstTwoParticipants}} <span *ngIf="others">and</span>  <span class="a-link" *ngIf="others" (click)="goToParticipantsList(selectedEvent.id)">  {{others}}</span>
+        </div>
+      </div>
+     
+    </div>
+  
+</ng-template>

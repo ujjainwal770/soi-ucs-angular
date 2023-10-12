@@ -1,0 +1,31 @@
+<div class="heading-label">Top Challenges
+</div>
+<div class="example-container" id="tagTableInfo">
+    <table aria-describedby="tagTableInfo" mat-table [dataSource]="datasource" matSort>
+
+        <ng-container matColumnDef="title">
+            <th id="title" mat-header-cell *matHeaderCellDef> Title
+            </th>
+            <td mat-cell *matCellDef="let element;let i = index"> {{element.title}}
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="participants">
+            <th id="participants" mat-header-cell *matHeaderCellDef>Participants </th>
+            <td  mat-cell *matCellDef="let element"> {{element.count}} </td>
+
+        </ng-container>
+        <ng-container matColumnDef="category">
+            <th id="category" mat-header-cell *matHeaderCellDef>Category </th>
+            <td mat-cell *matCellDef="let element"> {{element.categoryname}} </td>
+
+        </ng-container>
+
+
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns;sticky:true"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;let i = index;"></tr>
+    </table>
+    <div *ngIf="!datasource.data.length" class="no-record-found">
+        No Records Found!
+    </div>
+</div>

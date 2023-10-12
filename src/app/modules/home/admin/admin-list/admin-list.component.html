@@ -1,0 +1,185 @@
+<div class="container-fluid">
+    <div class="row header-row">
+        <div class="col-lg-12">
+            <div class="header-cont">
+                <h2>Admin List</h2>
+                <button class="app-btn filled green-bg large cat-btn" routerLink="/admin/add-new-admin">Add New User
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="sub-container">
+        <div class="row">
+            <div class="col-lg-12">
+                <!-- Filter Section-->
+                <div class="filter-block box-radius">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <form [formGroup]='adminUsersFormGroup'>
+                                <div class="row">
+                                    <div class="col-lg-3">
+                                        <mat-form-field class="filter-by-status">
+                                            <mat-label>Filter by status</mat-label>
+                                            <mat-select formControlName="filterByStatus"
+                                                (selectionChange)="resetFilter()">
+                                                <mat-option *ngFor="let option of filterByStatusOptionList"
+                                                    value="{{option.query}}">
+                                                    {{option.text}}
+                                                </mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <mat-form-field class="search-by">
+                                            <mat-label>Search by</mat-label>
+                                            <mat-select formControlName="searchBy" (selectionChange)="getSearch()">
+                                                <mat-option *ngFor="let option of searchOptions"
+                                                    value="{{option.query}}">
+                                                    {{option.text}} </mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-lg-5">
+                                        <mat-form-field class="search-txtbox">
+                                            <mat-label>Enter {{getSearchTxt()}}</mat-label>
+                                            <input matInput placeholder="Enter {{getSearchTxt()}}" #searchTxtBox
+                                                formControlName="searchText" name="search-by">
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+                <!-- Filter Section end-->
+            </div>
+        </div>
+        <div class="gutter-space"></div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="filter-result">
+                    <div class="data-table-container" id="adminUserList">
+
+                        <table aria-describedby="adminUserList" mat-table [dataSource]="dataSource" matSort>
+                            <!--Name Column -->
+                            <ng-container matColumnDef="fullName">
+                                <th id="name" mat-header-cell *matHeaderCellDef (click)="customSorting('fullName')" mat-sort-header> Name </th>
+                                <td mat-cell *matCellDef="let element; let i = index" [attr.id]="'name-' + i">
+                                    {{element.fullName }}
+                                </td>
+                            </ng-container>
+
+                            <!-- Email Column -->
+                            <ng-container matColumnDef="email">
+                                <th id="email" mat-header-cell *matHeaderCellDef (click)="customSorting('email')" mat-sort-header> Email </th>
+                                <td mat-cell *matCellDef="let element; let i = index" [attr.id]="'email-' + i"> {{element.email.substring(0, 15)}}
+                                    <span mat-raised-button *ngIf="element.email.length > 10"
+                                        [matTooltip]="element.email"
+                                        aria-label="displays a tooltip when focused or hovered over">
+                                        .....
+
+                                    </span>
+
+                                </td>
+                            </ng-container>
+
+                            <!-- Created Date Column -->
+                            <ng-container matColumnDef="creationTime">
+                                <th id="createdDate" mat-header-cell *matHeaderCellDef (click)="customSorting('creationTime')" mat-sort-header> Created Date
+                                </th>
+                                <td mat-cell *matCellDef="let element; let i = index" [attr.id]="'createdDate-' + i"> {{element.creationTime | date: 'MM/dd/y'}} </td>
+                            </ng-container>
+
+                            <!-- Created Date Column -->
+                            <ng-container matColumnDef="created_by_email">
+                                <th id="created_by_email" mat-header-cell *matHeaderCellDef (click)="customSorting('created_by_email')" mat-sort-header> Created By
+                                </th>
+                                <td mat-cell *matCellDef="let element; let i = index" [attr.id]="'created_by_email-' + i"> {{element.created_by_email.substring(0, 15)}}
+                                    <span mat-raised-button *ngIf="element.created_by_email.length > 10"
+                                        [matTooltip]="element.created_by_email"
+                                        aria-label="displays a tooltip when focused or hovered over">
+                                        .....
+
+                                    </span>
+
+                                </td>
+                            </ng-container>
+
+                            <!-- Roles Column -->
+                            <ng-container matColumnDef='roleName'>
+                                <th id='roleName' mat-header-cell *matHeaderCellDef (click)="customSorting('roleName')" mat-sort-header> Roles </th>
+                                <td mat-cell *matCellDef="let element; let i = index" [attr.id]="'roleName-' + i">
+                                    {{element.roleName}}
+                                </td>
+                            </ng-container>
+
+                            <!-- status Column -->
+                            <ng-container matColumnDef="status">
+                                <th id="status" mat-header-cell *matHeaderCellDef (click)="customSorting('status')" mat-sort-header> Status </th>
+                                <td mat-cell *matCellDef="let element; let i = index" [attr.id]="'status-' + i">
+                                    <button class="custom-status" [ngClass]="{'status-active' : (element.status=='active'),
+                                         'status-deactive' : (element.status=='inactive'), 
+                                         'status-pending' : element.status=='PROVISIONED',
+                                         'status-password-expired' : element.status=='PASSWORD_EXPIRED'}">
+                                        {{processElementStatus(element.status)}}
+                                    </button>
+                                </td>
+                            </ng-container>
+
+                            <!-- Action Column -->
+                            <ng-container matColumnDef="actions">
+                                <th id="actions" mat-header-cell *matHeaderCellDef class="action-cell"> Actions </th>
+                                <td mat-cell *matCellDef="let row ; let i = index" [attr.id]="'actions-' + i">
+                                    <button *ngIf="row.status === 'PASSWORD_EXPIRED'; else showMenu" mat-icon-button
+                                         aria-label="Example icon-button with a informative text" matTooltipPosition="right" matTooltip="Please login to OKTA to reset your password"> 
+                                        <mat-icon>info_outline</mat-icon>
+                                    </button>
+                                    <ng-template #showMenu>
+                                        <button mat-icon-button [matMenuTriggerFor]="menu"
+                                            aria-label="Example icon-button with a menu">
+                                            <mat-icon>more_vert</mat-icon>
+                                        </button>
+                                        <mat-menu #menu="matMenu">
+                                            <button (click)="userAction(row.email)" mat-menu-item
+                                                *ngIf="row.status=='active' || row.status=='PROVISIONED'">
+                                                <mat-icon>edit</mat-icon>
+                                                <span>Edit</span>
+                                            </button>
+
+                                        <button (click)="openConfirmationDialog(row.email, row.status)" mat-menu-item
+                                            *ngIf="(row.status==='inactive')">
+                                                <mat-icon>check_circle_outline</mat-icon>
+                                                <span>Active</span>
+                                            </button>
+                                        <button (click)="openConfirmationDialog(row.email, row.status)" mat-menu-item
+                                                *ngIf="(row.status==='active')  && (soucsAdminProfileDetails.email !== row.email)">
+                                                <mat-icon>not_interested</mat-icon>
+                                                <span>Inactive</span>
+                                            </button>
+                                        </mat-menu>
+                                    </ng-template>
+                                </td>
+                            </ng-container>
+
+                            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                        </table>
+
+                        <div *ngIf="!dataSource.data.length" class="no-record-found">
+                            <span style="color: #4C356E; font-style: italic; display: inline-flex;">
+                                <img alt='' style="margin-right: 5px;"
+                                    src="../../assets/images/svg/record_not_found_info_icon.svg">
+                                There are no records here at the moment.
+                            </span>
+                        </div>
+
+                        <mat-paginator #paginator [pageSizeOptions]="pageSizes" showFirstLastButtons [length]="count"
+                            (page)="handlePage($event)" aria-label="Select page of periodic elements">
+                        </mat-paginator>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

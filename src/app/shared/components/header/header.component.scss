@@ -1,0 +1,93 @@
+@import "/src/app/scss/variables";
+
+.spacer {
+    flex: 1 1 auto;
+}
+
+.mat-toolbar {
+    background-color: $white;
+    .bell-icon {
+        font-size: 1.7rem;
+        margin-right: 1.7rem;
+        margin-top: 7px;
+    }
+}
+
+.user-detail {
+    display: flex;
+    margin-right: 20px;
+    align-items: center;
+    .user {
+        font-family: "Ubuntu-Regular", sans-serif;
+        text-align: right;
+        line-height: 17px;
+        font-size: 14px;
+        margin-right: 7px;
+        margin-top: 4px;
+        .name {
+            font-family: "Ubuntu-Bold", sans-serif;
+        }
+        .role {
+            color: $gray-note;
+        }
+    }
+    .mat-icon {
+        cursor: pointer;
+    }
+}
+
+.soucs-logo {
+    height: 3rem;
+    width: auto;
+    cursor: pointer;
+    opacity: 1;
+}
+.soucs-logo-container {
+    outline: none !important;
+}
+.user-details {
+    margin-top: 1em;
+}
+.soucs-user-details {
+    min-width: 180px;
+}
+.soucs-type {
+    text-align: right;
+    color: $gray-note;
+    font-family: "Ubuntu-Regular", sans-serif;
+}
+.soucs-logged {
+    min-width: 175px;
+    justify-content: right;
+}
+.soucs-arrow {
+    width: 50px;
+    cursor: pointer;
+}
+.app-header {
+    height: 10%;
+    position: relative;
+}
+.user-designation {
+    margin-right: 2%;
+}
+.admin-name {
+    font-family: "Ubuntu-Bold", sans-serif;
+    text-align: right;
+}
+.logout-btn .mat-icon {
+    color: $red-second !important;
+}
+.hamburg-icon {
+    margin-left: 12%;
+}
+.bell-icon {
+    // margin-right: 10%;
+    .mat-icon {
+        // font-size: 1.875rem;
+        cursor: pointer;
+    }
+}
+.pointer {
+    cursor: pointer;
+}

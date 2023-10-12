@@ -1,0 +1,258 @@
+<div class="container-fluid" *ngIf="!showParticipants">
+    <div class="row inner-header-row">
+        <div class="col-lg-12">
+            <h3>
+                <mat-icon class="cursor-p" routerLink="/manage-events">arrow_back</mat-icon> {{event_id?'Duplicate Event':'Add Event'}}
+            </h3>
+        </div>
+    </div>
+    <div class="row sub-container">
+        <div class="row">
+            <div class="col-md-12">
+                <mat-card class="add-new-admin">
+                    <mat-card-content>
+                        <form [formGroup]='addEventForm'>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <mat-form-field>
+                                        <input matInput placeholder="Event Title" #title formControlName="title"
+                                            name="title" maxlength="30" />
+                                            <mat-hint align="end" class="font-italic p-1">{{title.value.length}} /
+                                                30</mat-hint>
+                                        <mat-error *ngIf="getFieldR('title')?.invalid && getFieldR('title').touched">
+                                            Please enter title.
+                                        </mat-error>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                         
+
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div>
+                                        <label class="text-strong">Event Date</label>
+                                    </div>
+                                    <div class="row">
+                                        <mat-form-field floatLabel='never' class="col-lg-6">
+                                            <input matInput readonly [matDatepicker]="start_datePicker"
+                                                [min]="minStartDate"  [max]="maxStartDate" (dateChange)="onStartDateChange($event)" placeholder="Select Start Date" #dob
+                                                formControlName="start_date" name="start_date">
+                                            <mat-datepicker-toggle matSuffix
+                                                [for]="start_datePicker"></mat-datepicker-toggle>
+                                            <mat-datepicker #start_datePicker></mat-datepicker>
+                                            <mat-error
+                                                *ngIf="getFieldR('start_date')?.invalid && !getFieldR('start_date')?.hasError('matDatepickerMax') && getFieldR('start_date').touched">
+                                                Please select start date.
+                                            </mat-error>
+                                        </mat-form-field>
+                                        <mat-form-field floatLabel='never' class="col-lg-6">
+                                            <input matInput readonly [matDatepicker]="end_datePicker" [min]="minEndDate" [max]="maxEndDate"
+                                                placeholder="Select End Date" #dob formControlName="end_date" (dateChange)="onEndDateChange($event)"
+                                                name="end_date">
+                                            <mat-datepicker-toggle matSuffix
+                                                [for]="end_datePicker"></mat-datepicker-toggle>
+                                            <mat-datepicker #end_datePicker></mat-datepicker>
+                                            <mat-error
+                                                *ngIf="getFieldR('end_date')?.invalid && !getFieldR('end_date')?.hasError('matDatepickerMax') && getFieldR('end_date').touched">
+                                                Please select end date.
+                                            </mat-error>
+                                        </mat-form-field>
+                                    </div>
+
+                                </div>
+                                
+                                <div class="col-lg-6">
+                                    <div class="sys-gen-nces-link-container">
+                                        <ng-template #popTemplate>
+                                            <span style="width: 100%;">
+                                                Event times will be shown in user's local time zone
+                                            </span>
+                                        </ng-template>
+                                        Event Time <a class="link-info-btn m-1" [popover]="popTemplate" [outsideClick]="true"
+                                            [adaptivePosition]="true" placement="top">
+                                            <img src="../../../../assets/images/svg/info-icon.svg" alt=''>
+                                        </a>
+                                    </div>
+                                    <div class="row">   
+                                        <mat-form-field floatLabel='never' class="col-lg-6">
+                                            <input matInput  formControlName="start_time"  placeholder="Select Start Time"
+                                             (click)="open()" name="start_time">
+                                             <button mat-button mat-icon-button matSuffix (click)="open()">
+                                             <svg  xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" ngxMaterialTimepickerToggleIcon>
+                                                <path id="clock-svgrepo-com-3" d="M7,0a7,7,0,1,0,7,7A7,7,0,0,0,7,0ZM7,13.139A6.132,6.132,0,1,1,13.125,7,6.144,6.144,0,0,1,7,13.139Zm.438-6.317v-4.2a.438.438,0,0,0-.875,0V7a.434.434,0,0,0,.135.315c.007.009.013.018.021.026L8.883,9.506A.438.438,0,1,0,9.5,8.887Z" fill="#757575"/>
+                                              </svg>
+                                            </button>
+                                            <mat-error
+                                            *ngIf="getFieldR('start_time')?.invalid && getFieldR('start_time').touched">
+                                            Please select start time.
+                                        </mat-error>
+                                            
+                                        </mat-form-field>  
+                                        <mat-form-field floatLabel='never' class="col-lg-6">
+                                            <input matInput  formControlName="end_time"  placeholder="Select End Time"
+                                             (click)="openEndTimePicker()" name="end_time">
+                                             <button mat-button mat-icon-button matSuffix (click)="openEndTimePicker()">
+                                             <svg  xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" >
+                                                <path id="clock-svgrepo-com-3" d="M7,0a7,7,0,1,0,7,7A7,7,0,0,0,7,0ZM7,13.139A6.132,6.132,0,1,1,13.125,7,6.144,6.144,0,0,1,7,13.139Zm.438-6.317v-4.2a.438.438,0,0,0-.875,0V7a.434.434,0,0,0,.135.315c.007.009.013.018.021.026L8.883,9.506A.438.438,0,1,0,9.5,8.887Z" fill="#757575"/>
+                                              </svg>
+                                            </button>
+                                            <mat-error
+                                            *ngIf="getFieldR('end_time')?.invalid && getFieldR('end_time').touched">
+                                            Please select end time.
+                                        </mat-error>
+                                            
+                                        </mat-form-field>  
+                                  
+
+                                    </div>
+                                   
+                                </div>
+
+
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <mat-form-field>
+                                        <textarea matInput placeholder="Event Description" #description
+                                            formControlName="description" name="description" maxlength="250"></textarea>
+                                        <mat-hint align="end" class="font-italic p-1">{{description.value.length}} /
+                                            250</mat-hint>
+                                        <mat-error
+                                            *ngIf="getFieldR('description')?.invalid && getFieldR('description').touched">
+                                            Please enter description.
+                                        </mat-error>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <button class=" float-end m-2 app-btn filled green-bg large update-btn" (click)="submit()"
+                    [disabled]="addEventForm.invalid"  >Select Participants
+                    </button>
+                    <button class="m-2 float-end app-btn unfilled green-b large update-btn cancelbtn" routerLink="/manage-events">Cancel
+                    </button>
+
+                </div>
+            </div>
+            </form>
+            </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+</div>
+</div>
+
+
+<div class="container-fluid" *ngIf="showParticipants">
+    <div class="row inner-header-row">
+        <div class="col-lg-8">
+            <h3>
+                <mat-icon class="cursor-p" (click)="showParticipants=false">arrow_back</mat-icon> Select Participants
+            </h3>
+            
+        </div>
+        <div class="col-lg-4 text-end ">
+            <div class="m-right">
+                <mat-checkbox class="m-2" (change)="toggleToSelect()"
+                [indeterminate]="(isAllSelected && selected.length!=0)"
+                [(ngModel)]="isAllSelected"
+                >
+            </mat-checkbox>  Select all students
+            </div>
+                
+        </div>
+    </div>
+    <div class="row sub-container">
+        <div class="row">
+            <div class="col-lg-12">
+              
+                <div class="filter-result">
+                    <div class="data-table-container" id="tableParticipantslist"> 
+                        <table aria-describedby="tableParticipantslist" mat-table [dataSource]="dataSource" matSort>
+                            <ng-container matColumnDef="id">
+                                <th id="id" class="pr-10" mat-header-cell *matHeaderCellDef>
+                                    
+                                </th>
+                                <td mat-cell *matCellDef="let row">
+                                    <mat-checkbox (click)="$event.stopPropagation()"
+                                        (change)="OnChange(row.user_id)"
+                                        [checked]="isAllSelected || (!isAllSelected && isSelected(row.user_id))">
+                                    </mat-checkbox>
+                                </td>
+                            </ng-container>
+                            <!--Name Column -->
+                            <ng-container matColumnDef="full_name" >
+                                <th id="full_name"  mat-header-cell *matHeaderCellDef (click)="customSorting('full_name')" mat-sort-header> Name </th>
+                                <td mat-cell *matCellDef="let element" class="full_name" >
+                                    <span >
+                                        {{(element.full_name).substring(0, 30)}}
+                                        <span mat-raised-button
+                                            *ngIf="(element.full_name).length > 30"
+                                            [matTooltip]="(element.full_name)"
+                                            aria-label="displays a tooltip when focused or hovered over">
+                                            ....
+    
+                                        </span>
+                                    </span>
+                                </td>
+                            </ng-container>
+
+                            <!-- email Column -->
+                            <ng-container matColumnDef="email">
+                                <th id="email" mat-header-cell *matHeaderCellDef (click)="customSorting('email')" mat-sort-header> Email ID
+                                </th>
+                                <td mat-cell *matCellDef="let element">
+                                    {{element.email }}
+                                </td>
+                            </ng-container>
+
+                            <!-- date of birth Column -->
+                            <ng-container matColumnDef="date_of_birth">
+                                <th id="date_of_birth" mat-header-cell *matHeaderCellDef (click)="customSorting('date_of_birth')" mat-sort-header> Date Of Birth
+                                </th>
+                                <td mat-cell *matCellDef="let element">
+                                    {{element.date_of_birth | convertToLocalDate }}
+                                </td>
+                            </ng-container>
+
+                            <!-- date of birth Column -->
+                            <ng-container matColumnDef="phone">
+                                <th id="phone" mat-header-cell *matHeaderCellDef (click)="customSorting('phone')" mat-sort-header> Phone No.
+                                </th>
+                                <td mat-cell *matCellDef="let element">
+                                    {{(element.phone.length > 0) ? (element.phone | phone) : "N/A"}}
+                                </td>
+                            </ng-container>
+
+                            <!-- Status Column -->
+                           
+
+                            
+
+                            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                        </table>
+                        <div *ngIf="!dataSource.data.length" class="no-record-found">
+                            <span style="color: #4C356E; font-style: italic; display: inline-flex;">
+                                <img alt='' style="margin-right: 5px;"
+                                    src="../../assets/images/svg/record_not_found_info_icon.svg">
+                                   No record found.                            </span>
+                        </div>
+                        <mat-paginator *ngIf="dataSource.data.length" #paginator [pageSizeOptions]="pageSizes" showFirstLastButtons [length]="count"
+                        (page)="handlePage($event)" aria-label="Select page of periodic elements">
+                    </mat-paginator>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="gutter-space"></div>
+        <div class="row">
+            <div class="col-lg-12 align-c sticky-action-row">
+                <button class="app-btn unfilled discard-b large" routerLink="/manage-events">Cancel</button>
+                <button class="app-btn filled green-bg large" (click)="addEvent()">Submit</button>
+            </div>
+        </div>
+</div>

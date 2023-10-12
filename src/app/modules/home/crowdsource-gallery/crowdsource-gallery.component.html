@@ -1,0 +1,20 @@
+<div class="container-fluid">
+    <div class="row inner-header-row">
+        <div class="col-lg-11 col-sm-10">
+            <h3> Crowdsource Gallery </h3>
+        </div>
+        <div class="col-lg-1 col-sm-2">
+            <mat-icon class="material-icons-round view-style" [ngClass]="{'active-view': viewStyle === 'grid_view'}" (click)="switchViewStyle('grid_view')">grid_view</mat-icon>
+            <mat-icon class="material-icons-round view-style" [ngClass]="{'active-view': viewStyle === 'list_view'}" (click)="switchViewStyle('list_view')">view_list</mat-icon>
+        </div>
+    </div>
+    <div class="row">
+        <mat-tab-group animationDuration="0ms" [(selectedIndex)]="tabDetails.selectedTabIndex">
+            <mat-tab *ngFor="let tab of tabDetails.tabs" [label]="tab.name">
+                <ng-template matTabContent>
+                    <app-crowdsource-list [tabDetails]="tabDetails" [viewStyle]="viewStyle"></app-crowdsource-list>
+                  </ng-template>
+            </mat-tab>
+        </mat-tab-group>
+    </div>
+</div>

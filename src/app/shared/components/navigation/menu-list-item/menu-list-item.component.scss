@@ -1,0 +1,48 @@
+
+:host {
+    display: flex;
+    flex-direction: column;
+    outline: none;
+    width: 100%;
+  
+    .mat-list-item.active {
+      background-color: #4C356E;
+    }
+    &:hover,
+    &:focus {
+      >.mat-list-item:not(.expanded) {
+        background-color: #4C356E !important;
+      }
+    }
+  }
+  
+  .mat-list-item {
+    padding: 8px 0;
+    display: flex;
+    width: auto;
+    color: #fff;
+    height: auto;
+    margin: 5px 8px;
+    border-radius: 5px;
+    position: relative;
+    .routeIcon {
+      margin-right: 10px;
+    }
+    .expand-icon {
+        position: absolute;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+    }
+  }
+
+.has-child {
+    .menu-list-item {
+        padding-left: 0px !important;
+    }
+}
+
+.active {
+    background-color: #4C356E;
+}

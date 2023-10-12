@@ -1,0 +1,135 @@
+<div class="row top-div-container">
+    <div class="col-md-6 div-container first-div">
+        <h3>Top 10 Schools</h3>
+        <div class="example-container" id="tagTableInfo">
+            <table aria-describedby="tagTableInfo" mat-table [dataSource]="top10SchooldataSource" matSort>
+
+                <ng-container matColumnDef="No">
+                    <th id="No" mat-header-cell *matHeaderCellDef>
+                    </th>
+                    <td mat-cell *matCellDef="let element;let i = index"> {{i + 1}} </td>
+                </ng-container>
+                <ng-container matColumnDef="schoolName">
+                    <th id="schoolName" mat-header-cell *matHeaderCellDef>School Name </th>
+                    <td mat-cell *matCellDef="let element"> {{element.schoolName}} </td>
+
+                </ng-container>
+                <ng-container matColumnDef="stateName">
+                    <th id="stateName" mat-header-cell *matHeaderCellDef>State </th>
+                    <td mat-cell *matCellDef="let element"> {{element.stateName}} </td>
+
+                </ng-container>
+                <ng-container matColumnDef="cityName">
+                    <th id="cityName" mat-header-cell *matHeaderCellDef>City </th>
+                    <td mat-cell *matCellDef="let element"> {{element.cityName}} </td>
+
+                </ng-container>
+                <ng-container matColumnDef="totalpoints">
+                    <th id="totalpoints" mat-header-cell *matHeaderCellDef> Points</th>
+                    <td mat-cell *matCellDef="let element">
+                        <span class="d-flex">
+                            <i aria-hidden="true" class="material-icons">star</i>
+                            <span class="points-sec">{{element.totalpoints}}</span>
+                        </span>
+                    </td>
+
+                </ng-container>
+
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns;sticky:true"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;let i = index;"></tr>
+            </table>
+            <div *ngIf="!top10SchooldataSource.data.length" class="no-record-found">
+                No Records Found!
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 div-container second-div">
+        <div class="heading-label">Top 10 Users
+            <mat-radio-group aria-label="Select an option" name="fieldName" ngDefaultControl [(ngModel)]="selected">
+                <mat-radio-button [value]="1">UCS User</mat-radio-button>
+                <mat-radio-button [value]="2">Public User</mat-radio-button>
+            </mat-radio-group>
+        </div>
+
+
+        <div class="example-container" id="tagTableInfo" *ngIf="selected==1">
+            <table aria-describedby="tagTableInfo" mat-table [dataSource]="top10UsersdataSource" matSort>
+
+                <ng-container matColumnDef="name">
+                    <th id="name" mat-header-cell *matHeaderCellDef> Name
+                    </th>
+                    <td mat-cell *matCellDef="let element;let i = index"> {{element.first_name}} {{element.last_name}}
+                    </td>
+                </ng-container>
+                <ng-container matColumnDef="schoolName">
+                    <th id="schoolName" mat-header-cell *matHeaderCellDef>School Name </th>
+                    <td mat-cell *matCellDef="let element"> {{element.schoolName}} </td>
+
+                </ng-container>
+                <!-- <ng-container matColumnDef="stateName">
+                    <th id="stateName" mat-header-cell *matHeaderCellDef  >State </th>
+                    <td mat-cell *matCellDef="let element"> {{element.stateName}} </td>
+
+                </ng-container> -->
+
+                <ng-container matColumnDef="totalpoints">
+                    <th id="totalpoints" mat-header-cell *matHeaderCellDef> Points</th>
+                    <td mat-cell *matCellDef="let element">
+                        <span class="d-flex">
+                            <i aria-hidden="true" class="material-icons">star</i>
+                            <span class="points-sec">{{element.totalpoints}}</span>
+                        </span>
+                    </td>
+
+                </ng-container>
+
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns2;sticky:true"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns2;let i = index;"></tr>
+            </table>
+            <div *ngIf="!top10UsersdataSource.data.length" class="no-record-found">
+                No Records Found!
+            </div>
+        </div>
+        <div class="example-container" id="tagTableInfo" *ngIf="selected==2">
+            <table aria-describedby="tagTableInfo" mat-table [dataSource]="top10GuestdataSource" matSort>
+
+                <ng-container matColumnDef="name">
+                    <th id="name" mat-header-cell *matHeaderCellDef> Name
+                    </th>
+                    <td mat-cell *matCellDef="let element;let i = index"> {{element.first_name}} {{element.last_name}}
+                    </td>
+                </ng-container>
+                <ng-container matColumnDef="cityName">
+                    <th id="cityName" mat-header-cell *matHeaderCellDef>City </th>
+                    <td mat-cell *matCellDef="let element"> {{element.cityName}} </td>
+
+                </ng-container>
+                <ng-container matColumnDef="stateName">
+                    <th id="stateName" mat-header-cell *matHeaderCellDef>State </th>
+                    <td mat-cell *matCellDef="let element"> {{element.stateName}} </td>
+
+                </ng-container>
+
+                <ng-container matColumnDef="totalpoints">
+                    <th id="totalpoints" mat-header-cell *matHeaderCellDef> Points</th>
+                    <td mat-cell *matCellDef="let element">
+                        <span class="d-flex">
+                            <i aria-hidden="true" class="material-icons" *ngIf="element.totalpoints">star</i>
+                            <span class="points-sec">{{element.totalpoints}}</span>
+                        </span>
+                    </td>
+
+                </ng-container>
+
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns3;sticky:true"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns3;let i = index;"></tr>
+            </table>
+            <div *ngIf="!top10GuestdataSource.data.length" class="no-record-found">
+                No Records Found!
+            </div>
+        </div>
+    </div>
+</div>

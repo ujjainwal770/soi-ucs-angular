@@ -1,0 +1,70 @@
+.container-fluid {
+    max-width: 300px;
+    padding: 0px;
+    .fileTypeField{
+        margin-top: 20px;
+    }
+}
+.heading-text {
+    font-family: 'Ubuntu-Bold';
+    display: contents;
+    font-size: 20px;
+    margin-top: 10%;
+}
+.message-font {
+    font-family: 'Ubuntu-Medium';
+    font-size: 15px;
+}
+.unfilled {
+    margin-right: 25px;
+    width: 8rem;
+
+}
+.filled {
+    width: 5rem;
+}
+.button-div button {  
+    border-radius: 25px;
+}
+
+.cancel-btn {
+    cursor: pointer;
+}
+
+.download-btn {
+    background: #C2EDE1 0% 0% no-repeat padding-box;
+    border-radius: 25px;
+    opacity: 1;
+    border: none;
+    color: #1F6A56;
+    width: auto;
+    display: inline-flex;
+    padding: 7px 20px 5px 20px;
+    .mat-download-icon {
+        margin-left: 5px;
+        font-size: 18px;
+        font-family: 'Material Icons';
+        font-weight: 400;
+    }
+}
+
+::ng-deep.mat-datepicker-content .mat-calendar{
+    width: unset !important;
+    height: unset !important;
+}
+
+// Shift below fields 20px down when a large error message.
+// to prevent the message and label overlapping.
+// mat-form-field.ng-invalid.ng-touched {
+//     animation: shiftDown;
+//     animation-duration: 0.3s;
+//     margin-bottom: 20px;
+//   }
+//   @keyframes shiftDown {
+//     from {
+//       margin-bottom: 0;
+//     }
+//     to {
+//       margin-bottom: 20px;
+//     }
+//   }

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30">
+  <g id="pre_approved_student_successfully_registered" transform="translate(15639 -14110)">
+    <g id="icon_misuse" transform="translate(-10901 15034)">
+      <circle id="Ellipse_490" data-name="Ellipse 490" cx="15" cy="15" r="15" transform="translate(-4738 -924)" fill="#ffe9ce"/>
+      <g id="Group_17062" data-name="Group 17062" transform="translate(10903 -15031.979)">
+        <circle id="Ellipse_1104" data-name="Ellipse 1104" cx="2.992" cy="2.992" r="2.992" transform="translate(-15629.008 14116.979)" fill="none" stroke="#f7941e" stroke-width="1.1"/>
+        <path id="Path_31982" data-name="Path 31982" d="M0,0A6,6,0,0,1,6,6a6,6,0,0,1-6,6" transform="translate(-15632 14128.979) rotate(-90)" fill="none" stroke="#f7941e" stroke-linecap="round" stroke-width="1.1"/>
+      </g>
+      <g id="success-svgrepo-com" transform="translate(-4722 -919)">
+        <rect id="Rectangle_10896" data-name="Rectangle 10896" width="10" height="10" fill="rgba(255,255,255,0.01)"/>
+        <path id="Path_31980" data-name="Path 31980" d="M8.8,4l1.055.769,1.305,0,.4,1.242,1.058.765-.406,1.241.406,1.241-1.058.765-.4,1.242-1.305,0L8.8,12.031l-1.055-.769-1.305,0-.4-1.242L4.979,9.256l.406-1.241L4.979,6.775l1.058-.765.4-1.242,1.305,0Z" transform="translate(-3.979 -3.197)" fill="#0095da" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.5"/>
+        <path id="Path_31981" data-name="Path 31981" d="M17,20l1,1L20.012,19" transform="translate(-13.587 -15.185)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+    </g>
+  </g>
+</svg>

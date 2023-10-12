@@ -1,0 +1,229 @@
+<div class="container-fluid">
+    <div class="row header-row">
+        <div class="col-lg-12">
+            <div class="header-cont">
+                <h2>Account Management</h2>
+            </div>
+        </div>
+    </div>
+    <div class="sub-container">
+        <div class="row">
+            <div class="col-lg-12">
+                <!-- Filter Section-->
+                <div class="filter-block box-radius">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <form [formGroup]='userListForm'>
+                                <div class="row">
+                                    <div class="col-lg-3">
+                                        <mat-form-field class="filter-by-status">
+                                            <mat-label>Filter by user types</mat-label>
+                                            <mat-select formControlName="filterbyusertype"
+                                                (selectionChange)="resetFilter()">
+                                                <mat-option *ngFor="let utype of userTypeOptionList"
+                                                    value="{{utype.query}}">
+                                                    {{utype.text}}
+                                                </mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <mat-form-field class="filter-by-status">
+                                            <mat-label>Filter by Account Status</mat-label>
+                                            <mat-select formControlName="filterbyuserstatus"
+                                                (selectionChange)="resetFilter()">
+                                                <mat-option *ngFor="let utype of userStatusOptionList"
+                                                    value="{{utype.query}}">
+                                                    {{utype.text}}
+                                                </mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-lg-2">
+                                        <mat-form-field class="search-by">
+                                            <mat-label>Search by</mat-label>
+                                            <mat-select formControlName="searchBy" (selectionChange)="getSearch()">
+                                                <mat-option *ngFor="let utype of userSearchByOptionList"
+                                                    value="{{utype.query}}">
+                                                    {{utype.text}}
+                                                </mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <mat-form-field class="search-txtbox">
+                                            <mat-label>Enter {{getSearchTxt()}}</mat-label>
+                                            <input matInput placeholder="Enter {{searchbyTxt}}" (change)="resetFilter()"
+                                                formControlName="searchText" name="search-by">
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+                <!-- Filter Section end-->
+            </div>
+        </div>
+        <div class="gutter-space"></div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="filter-result">
+                    <div class="data-table-container" id="AppUserList">
+
+                        <table aria-describedby="AppUserList" mat-table [dataSource]="dataSource" matSort>
+                            <!--Name Column -->
+                            <ng-container matColumnDef="first_name">
+                                <th id="name" mat-header-cell *matHeaderCellDef (click)="customSorting('first_name')"
+                                    mat-sort-header> Name </th>
+                                <td mat-cell *matCellDef="let element; let i = index" [attr.id]="'name-' + i">
+                                    <span class="a-link" (click)="userAction('view', element)">
+                                        <span title="Report Abuse" *ngIf="element.reportabusecount > 0"><i
+                                                aria-hidden="true"
+                                                class="bi bi-exclamation-triangle app-icon abuse-icon"></i></span>
+                                        <span>{{(element.first_name + ' ' + element.last_name)?.substring(0,
+                                            15)}}</span>
+                                        <span mat-raised-button
+                                            *ngIf="(element.first_name + ' ' + element.last_name)?.length > 15"
+                                            [matTooltip]="(element.first_name + ' '  + element.last_name)"
+                                            aria-label="displays a tooltip when focused or hovered over">
+                                            ...
+                                        </span>
+                                    </span>
+                                </td>
+                            </ng-container>
+
+                            <!-- Email Column -->
+                            <ng-container matColumnDef="email">
+                                <th id="email" mat-header-cell *matHeaderCellDef (click)="customSorting('email')"
+                                    mat-sort-header> Email Id </th>
+                                <td mat-cell *matCellDef="let element; let i = index" [attr.id]="'email-' + i"> {{element.email.substring(0, 10)}}
+                                    <span mat-raised-button *ngIf="element.email.length > 10"
+                                        [matTooltip]="element.email"
+                                        aria-label="displays a tooltip when focused or hovered over">
+                                        ...
+                                    </span>
+
+                                </td>
+                            </ng-container>
+
+                            <!-- Date of birth Column -->
+                            <ng-container matColumnDef="date_of_birth">
+                                <th id="dateofbirth" mat-header-cell *matHeaderCellDef
+                                    (click)="customSorting('date_of_birth')" mat-sort-header> Date of Birth
+                                </th>
+                                <td mat-cell *matCellDef="let element; let i = index" [attr.id]="'dateofbirth-' + i" class="text-center"> {{element.date_of_birth |convertToLocalDate
+                                    }}
+                                </td>
+                            </ng-container>
+
+                            <!--School name Column -->
+                            <ng-container matColumnDef="school_name">
+                                <th id="school_name" mat-header-cell *matHeaderCellDef
+                                    (click)="customSorting('schoolName')" mat-sort-header> School Name
+                                </th>
+                                <td mat-cell *matCellDef="let element; let i = index" [attr.id]="'school_name-' + i" class="text-center">
+                                    {{element.school_name.substring(0, 10)}}
+                                    <span mat-raised-button *ngIf="element.school_name.length > 10"
+                                        [matTooltip]="element.school_name"
+                                        aria-label="displays a tooltip when focused or hovered over">
+                                        ...
+                                    </span>
+
+                                </td>
+                            </ng-container>
+
+                            <!-- User type Column -->
+                            <ng-container matColumnDef="ucs_status">
+                                <th id="ucs_status" mat-header-cell *matHeaderCellDef
+                                    (click)="customSorting('ucs_status')" mat-sort-header> User Type </th>
+                                <td mat-cell *matCellDef="let element; let i = index" [attr.id]="'ucs_status-' + i" class="pl-10">
+                                    {{element.ucs_status === 'yes' ? 'UCS user' : 'Public User'}}
+                                </td>
+                            </ng-container>
+                            <!-- creation_time Column -->
+                            <ng-container matColumnDef="creation_time">
+                                <th id="creation_time" mat-header-cell *matHeaderCellDef
+                                    (click)="customSorting('creation_time')" mat-sort-header>Date Created
+                                </th>
+                                <td mat-cell *matCellDef="let element; let i = index" [attr.id]="'creation_time-' + i" class="text-center">
+                                    {{element.creation_time | date: 'MM/dd/y'}}
+                                </td>
+                            </ng-container>
+
+                            <!-- status Column -->
+                            <ng-container matColumnDef="schoolverifystatus">
+                                <th id="status" mat-header-cell *matHeaderCellDef
+                                    (click)="customSorting('schoolverifystatus')" mat-sort-header> Approval Status </th>
+                                <td mat-cell *matCellDef="let element; let i = index" [attr.id]="'status-' + i" class="text-center">
+                                    {{element.ucs_status === 'yes' ? (element.schoolverifystatus | titlecase) : 'N/A'}}
+                                </td>
+                            </ng-container>
+
+                            <!-- status Column -->
+                            <ng-container matColumnDef="account_status">
+                                <th id="account_status" mat-header-cell *matHeaderCellDef
+                                    (click)="customSorting('account_status')" mat-sort-header> Account
+                                    Status </th>
+                                <td mat-cell *matCellDef="let element; let i = index" [attr.id]="'account_status-' + i" class="pl-20">
+                                    <button [ngClass]="{'status-active' : (element.account_status=='active'),
+                                         'status-deactive' : element.account_status=='deactivated'}">
+                                        {{element.account_status === 'deactivated' ? 'Inactive' : 'Active'}}
+                                    </button>
+                                </td>
+                            </ng-container>
+
+                            <!-- Action Column -->
+                            <ng-container matColumnDef="actions">
+                                <th id="actions" mat-header-cell *matHeaderCellDef class="action-cell"> Actions </th>
+                                <td mat-cell *matCellDef="let row;let i = index" [attr.id]="'actions-' + i">
+                                    <button mat-icon-button [matMenuTriggerFor]="menu"
+                                        aria-label="Example icon-button with a menu">
+                                        <mat-icon>more_vert</mat-icon>
+                                    </button>
+                                    <mat-menu #menu="matMenu" [overlapTrigger]="true">
+                                        <button mat-menu-item (click)="userAction('edit', row)"
+                                            *ngIf="row.account_status == 'active'">
+                                            <mat-icon>edit</mat-icon>
+                                            <span>Edit</span>
+                                        </button>
+                                        <button mat-menu-item (click)="userAction('view', row)">
+                                            <mat-icon>remove_red_eye</mat-icon>
+                                            <span>View Detail</span>
+                                        </button>
+                                        <button (click)="changeStatus(row.user_id,'active')" mat-menu-item
+                                            *ngIf="row.account_status==='deactivated'">
+                                            <mat-icon>check_circle_outline</mat-icon>
+                                            <span>Active</span>
+                                        </button>
+                                        <button (click)="changeStatus(row.user_id,'deactivated')" mat-menu-item
+                                            *ngIf="(row.account_status==='active')">
+                                            <mat-icon>not_interested</mat-icon>
+                                            <span>Inactive</span>
+                                        </button>
+                                    </mat-menu>
+                                </td>
+                            </ng-container>
+
+                            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                        </table>
+
+                        <div *ngIf="!dataSource.data.length" class="no-record-found">
+                            <span style="color: #4C356E; font-style: italic; display: inline-flex;">
+                                <img alt='' style="margin-right: 5px;"
+                                    src="../../assets/images/svg/record_not_found_info_icon.svg">
+                                There are no records here at the moment.
+                            </span>
+                        </div>
+
+                        <mat-paginator #paginator [pageSizeOptions]="pageSizes" showFirstLastButtons [length]="count"
+                            (page)="handlePage($event)" aria-label="Select page of periodic elements">
+                        </mat-paginator>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

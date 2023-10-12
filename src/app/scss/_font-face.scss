@@ -1,0 +1,20 @@
+@font-face {
+    font-family: 'Ubuntu-Regular';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Ubuntu-Regular'), local('Ubuntu-Regular'), url("../../assets/fonts/Ubuntu/Ubuntu-Regular.ttf") format('woff2');
+}
+
+@font-face {
+    font-family: 'Ubuntu-Medium';
+    font-style: normal;
+    font-weight: normal;
+    src: url("../../assets/fonts/Ubuntu/Ubuntu-Medium.ttf") format('woff2');
+}
+
+@font-face {
+    font-family: 'Ubuntu-Bold';
+    font-style: normal;
+    font-weight: normal;
+    src: url("../../assets/fonts/Ubuntu/Ubuntu-Bold.ttf") format('woff2');
+}

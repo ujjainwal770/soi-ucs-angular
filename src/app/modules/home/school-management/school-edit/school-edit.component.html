@@ -1,0 +1,23 @@
+<div class="container-fluid">
+    <div class="row inner-header-row">
+        <div class="col-lg-12">
+               <h3><mat-icon class="cursor-p" (click)="backclicked()">arrow_back</mat-icon> School Management</h3>
+        </div>
+        <div>
+            <mat-chip-list>
+                <mat-chip [selectable]="false" [selected]="selectedType === 'School'" >K12</mat-chip>
+                <mat-chip [selectable]="false" [selected]="selectedType === 'University'">University</mat-chip>
+              </mat-chip-list>
+        </div>
+    </div>
+    <div class="row sub-container">
+        <mat-tab-group animationDuration="0ms" [(selectedIndex)]="editTabIndex">
+            <mat-tab label="{{selectedType}} Details">
+                <app-edit-school-form [formType]="selectedType"></app-edit-school-form>
+            </mat-tab>
+            <mat-tab label="Point of Contact" disabled="disableTab">
+              <app-edit-admin-form></app-edit-admin-form>
+            </mat-tab>
+        </mat-tab-group>
+    </div>
+</div>

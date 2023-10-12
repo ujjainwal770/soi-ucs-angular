@@ -1,0 +1,24 @@
+table {
+    width: 100%;
+    .report-title {
+        width: 80%;
+    }
+}
+
+.download-btn {
+    background: #C2EDE1 0% 0% no-repeat padding-box;
+    border-radius: 25px;
+    opacity: 1;
+    border: none;
+    color: #1F6A56;
+    text-transform: capitalize;
+    width: auto;
+    display: inline-flex;
+    padding: 7px 20px 5px 20px;
+    .mat-download-icon {
+        margin-left: 5px;
+        font-size: 18px;
+        font-family: 'Material Icons';
+        font-weight: 400;
+    }
+}

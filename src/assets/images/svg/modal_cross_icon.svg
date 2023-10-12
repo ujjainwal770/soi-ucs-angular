@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100" height="100" viewBox="0 0 100 100">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Rectangle_12168" data-name="Rectangle 12168" width="100" height="100" rx="50" transform="translate(153 288)" fill="#fff"/>
+    </clipPath>
+  </defs>
+  <g id="delet_account_icon" transform="translate(-153 -288)" clip-path="url(#clip-path)">
+    <g id="Group_20402" data-name="Group 20402" transform="translate(138.27 275.885)">
+      <path id="Polygon_25" data-name="Polygon 25" d="M50.384,0A42.857,42.857,0,0,1,87.4,21.263h0a42.857,42.857,0,0,1,0,43.189h0A42.857,42.857,0,0,1,50.384,85.714h-.768A42.857,42.857,0,0,1,12.6,64.452h0a42.857,42.857,0,0,1,0-43.189h0A42.857,42.857,0,0,1,49.616,0Z" transform="translate(42.857 0) rotate(30)" fill="#d0524e" opacity="0.239"/>
+      <path id="Polygon_26" data-name="Polygon 26" d="M41.57,0A35.714,35.714,0,0,1,72.464,17.8h0a35.714,35.714,0,0,1,0,35.837h0a35.714,35.714,0,0,1-30.894,17.8h-.284a35.714,35.714,0,0,1-30.894-17.8h0a35.714,35.714,0,0,1,0-35.837h0A35.714,35.714,0,0,1,41.287,0Z" transform="translate(46.709 10.472) rotate(30)" fill="#d0524e"/>
+      <g id="Group_20403" data-name="Group 20403" transform="translate(51.873 49.258)">
+        <rect id="Rectangle_584" data-name="Rectangle 584" width="34.911" height="1.455" transform="translate(1.028) rotate(45)" fill="#fff" stroke="#fff" stroke-linecap="round" stroke-width="2"/>
+        <rect id="Rectangle_585" data-name="Rectangle 585" width="34.911" height="1.455" transform="translate(25.714 1.028) rotate(135)" fill="#fff" stroke="#fff" stroke-linecap="round" stroke-width="2"/>
+      </g>
+    </g>
+  </g>
+</svg>

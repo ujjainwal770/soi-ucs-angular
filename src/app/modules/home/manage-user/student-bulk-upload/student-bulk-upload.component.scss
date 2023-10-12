@@ -1,0 +1,75 @@
+@import "/src/app/scss/variables";
+.header-text {
+    background-color: $white;
+    box-shadow: 0px 1px 0px #75757533;
+    border-radius: 5px 5px 0px 0px;
+    height: 60px;
+    font-family: 'Ubuntu-Bold', sans-serif;
+    margin: 0 15px;
+    width: 98%;
+    padding: 17px 12px;
+    @media screen and (max-width:768px) {
+        margin: unset;
+    }
+}
+.container-wrapper {
+    background: #F5F5F5 0% 0% no-repeat padding-box;
+    box-shadow: 0px 10px 10px #DFE3E6BE;
+    border-radius: 0px 0px 5px 5px;
+    margin: 0px 3px;
+    width: 100%;
+    padding: 17px 12px;
+    min-height: 100px;
+    @media screen and (max-width:768px) {
+        margin: unset;
+        padding: 17px 2px;
+
+    }
+}
+.file-sub-container,.button-container {
+    display: flex; 
+    @media screen and (max-width:768px) {
+       // display: unset;
+    }
+}
+.file-upload-container {
+    height: 44px;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 10px 15px #cfd9e32e;
+    border-radius: 5px;
+    padding: 10px;
+}
+.file-input {
+    display: none;
+}
+.upload-btn {
+    background: #EFEFEF 0% 0% no-repeat padding-box;
+    border: 1px solid #A7A7A7;
+    border-radius: 4px;
+}
+.cancel-btn {
+    width: 150px;
+    height: 44px;
+    border-radius: 25px;
+    font-family: 'Ubuntu-Bold', sans-serif;
+    margin-left: 6%;
+    @media screen and (max-width:768px) {
+        width: 70px;
+        padding: 8%;
+        margin-left: 6%;
+    }
+}
+.note-text {
+    font-size: 0.75rem;
+    font-family: 'Ubuntu-Medium';
+    & span a {
+        color: $green !important;
+        text-decoration: none;
+    }
+    & .mat-icon {
+        font-size: 20px;
+    /* text-align: end; */
+        cursor: pointer;
+        font-weight: 600;
+    }
+}

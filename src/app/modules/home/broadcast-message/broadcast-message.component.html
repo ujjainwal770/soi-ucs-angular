@@ -1,0 +1,102 @@
+<div class="container-fluid">
+    <div class="row header-row">
+        <div class="col-lg-12">
+            <div class="header-cont">
+                <h2>Broadcast Message</h2>
+                <button class="app-btn filled green-bg large" routerLinkActive="active" [routerLink]="['/manage-broadcast-message/add-broadcast-message']">Send Broadcast Message</button>
+            </div>
+        </div>
+    </div>
+    <div class="sub-container">
+    <div class="row">
+            <div class="col-lg-12">
+                <div class="filter-result">
+                    <div class="data-table-container" id="tableBroadcastMessage"> 
+                        <table aria-describedby="tableBroadcastMessage" mat-table [dataSource]="dataSource" matSort>
+                            <!--Name Column -->
+                            <ng-container matColumnDef="message" >
+                                <th id="message"  mat-header-cell *matHeaderCellDef (click)="customSorting('message')" mat-sort-header> Message </th>
+                                <td mat-cell *matCellDef="let element" class="message" >
+                                    <span class="a-link" (click)="gotoViewPage(element.id)">
+                                    {{element.message }}
+                                    </span>
+                                </td>
+                            </ng-container>
+
+                            <!-- publish date Column -->
+                            <ng-container matColumnDef="publish_date">
+                                <th id="publish_date" mat-header-cell *matHeaderCellDef (click)="customSorting('publish_date')" mat-sort-header> Date of Publish
+                                </th>
+                                <td mat-cell *matCellDef="let element">
+                                    {{element.publish_date | date: 'MM/dd/y' }}
+                                </td>
+                            </ng-container>
+
+                            <!-- expiration date Column -->
+                            <ng-container matColumnDef="expiration_date">
+                                <th id="expiration_date" mat-header-cell *matHeaderCellDef (click)="customSorting('expiration_date')" mat-sort-header> Expiration Date
+                                </th>
+                                <td mat-cell *matCellDef="let element">
+                                    {{element.expiration_date | date: 'MM/dd/y' }}
+                                </td>
+                            </ng-container>
+
+                            <!-- Status Column -->
+                            <ng-container matColumnDef="status">
+                                <th id="status" class="pl-15" mat-header-cell *matHeaderCellDef (click)="customSorting('status')" mat-sort-header> Status
+                                </th>
+                                <td mat-cell *matCellDef="let element">
+                                    <span class="status-active status-padding" *ngIf="element.status === 'Active'">
+                                        Active
+                                    </span>
+                                    <span class="status-deactive status-padding" *ngIf="element.status !== 'Active'">
+                                        Expired
+                                    </span>
+
+                                    <span></span>
+                                </td>
+                            </ng-container>
+
+                            <!-- Action Column -->
+                            <ng-container matColumnDef="actions">
+                                <th id="actions" mat-header-cell *matHeaderCellDef class="action-cell"> Actions
+                                </th>
+                                <td mat-cell *matCellDef="let row">
+                                    <button mat-icon-button [matMenuTriggerFor]="menu"
+                                        aria-label="Example icon-button with a menu">
+                                        <mat-icon>more_vert</mat-icon>
+                                    </button>
+                                    <mat-menu #menu="matMenu">
+
+                                        <button *ngIf="row.status === 'Active'"
+                                            (click)="gotoEditPage(row.id)" mat-menu-item>
+                                            <mat-icon class="material-icons-outlined">edit</mat-icon>
+                                            <span>Edit</span>
+                                        </button>
+                                        <button mat-menu-item (click)="gotoViewPage(row.id)">
+                                            <mat-icon>remove_red_eye</mat-icon>
+                                            <span>View Detail</span>
+                                        </button>
+                                    </mat-menu>
+                                </td>
+                            </ng-container>
+
+                            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                        </table>
+                        <div *ngIf="!dataSource.data.length" class="no-record-found">
+                            <span style="color: #4C356E; font-style: italic; display: inline-flex;">
+                                <img alt='' style="margin-right: 5px;"
+                                    src="../../assets/images/svg/record_not_found_info_icon.svg">
+                                    No Broadcast Messages here. Send new message and it will appear here.                            </span>
+                        </div>
+                        <mat-paginator *ngIf="dataSource.data.length" #paginator [pageSizeOptions]="pageSizes" showFirstLastButtons [length]="count"
+                        (page)="handlePage($event)" aria-label="Select page of periodic elements">
+                    </mat-paginator>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+   
+</div>

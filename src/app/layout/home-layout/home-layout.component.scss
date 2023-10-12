@@ -1,0 +1,14 @@
+@import "/src/app/scss/variables";
+.drawer-container {
+    width: 100%;
+    background: $bg-color;
+}
+  
+.mat-drawer-inner-container {
+    overflow: hidden !important;
+    background-color: red ;
+}
+
+
+  
+   

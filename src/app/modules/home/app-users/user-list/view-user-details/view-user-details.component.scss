@@ -1,0 +1,31 @@
+.user-status {
+    margin-top: 2px;
+
+    .status-text {
+        padding: 2px 10px 2px 10px;
+    }
+}
+
+.school-migration-info {
+    display: inline-flex;
+    width: 100%;
+
+    span {
+        padding: 2px 5px;
+    }
+}
+
+.edit-btn-container {
+    text-align: right;
+    padding-right: 3%;
+    padding-top: 5px;
+
+    .edit-btn {
+        color: #29856C;
+        display: inline-flex;
+
+        img {
+            margin-right: 10px;
+        }
+    }
+}

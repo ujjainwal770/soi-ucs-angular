@@ -1,0 +1,68 @@
+<div class="container-fluid">
+    <div class="row inner-header-row">
+        <div class="col-lg-12">
+            <h3>
+                <mat-icon class="cursor-p" routerLink="/manage-broadcast-message">arrow_back</mat-icon> Broadcast Message
+            </h3>
+        </div>
+    </div>
+        <div class="row sub-container">
+            <div class="row">
+                <div class="col-md-12">
+                    <mat-card class="add-new-admin">
+                        <mat-card-header>
+                            <mat-card-title>Broadcast Message</mat-card-title>
+                        </mat-card-header>
+                        <mat-card-content>
+                             <form [formGroup]='addBroadcastMessageForm'>
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <mat-form-field>  
+                                            <textarea matInput  [placeholder]="(getFieldR('message')?.invalid && getFieldR('message').touched) || message.value.length ? '' : 'Type your message here'"  #message formControlName="message"
+                                                name="message" maxlength="250"></textarea>
+                                            <mat-hint align="end" class="font-italic p-1">{{message.value.length}} /
+                                                    250</mat-hint>
+                                            <mat-error
+                                                *ngIf="getFieldR('message')?.invalid && getFieldR('message').touched">
+                                                Please enter message.
+                                            </mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+      
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="col-lg-3">
+                                            <label class="text-strong">Expiration Date</label>
+                                            <button mat-icon-button
+                                            aria-label="informative text" matTooltipPosition="right" matTooltip="The message will disappear from the app on this date."> 
+                                            <mat-icon>info_outline</mat-icon>
+                                        </button>
+                                        </div>
+                                        <mat-form-field floatLabel='never' class="col-lg-2">
+                                            <input matInput readonly [matDatepicker]="expiration_datePicker" [min]="minDate"
+                                                placeholder="MM/DD/YYYY" #dob formControlName="expiration_date" name="expiration_date">
+                                            <mat-datepicker-toggle matSuffix [for]="expiration_datePicker"></mat-datepicker-toggle>
+                                            <mat-datepicker #expiration_datePicker></mat-datepicker>
+                                            <mat-error
+                                                *ngIf="getFieldR('expiration_date')?.invalid && !getFieldR('expiration_date')?.hasError('matDatepickerMax') && getFieldR('expiration_date').touched">
+                                                Please enter Expiration date.
+                                            </mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+    
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <button class="app-btn filled green-bg large update-btn" [disabled]="addBroadcastMessageForm.invalid"
+                                            (click)="submit()">Send
+                                        </button>
+                                    </div>
+                                </div>
+                            </form> 
+                        </mat-card-content>
+                    </mat-card>
+                </div>
+            </div>
+        </div> 
+</div>

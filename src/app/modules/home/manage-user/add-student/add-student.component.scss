@@ -1,0 +1,47 @@
+@import "/src/app/scss/variables";
+
+.header-text {
+    background-color: $white;
+    box-shadow: 0px 1px 0px #75757533;
+    border-radius: 5px 5px 0px 0px;
+    height: 60px;
+    font-family: 'Ubuntu-Bold', sans-serif;
+    margin: 0 15px;
+    width: 98%;
+    padding: 19px 12px;
+
+    @media screen and (max-width:768px) {
+        margin: unset;
+    }
+}
+
+.container-wrapper {
+    background: #F5F5F5 0% 0% no-repeat padding-box;
+    box-shadow: 0px 10px 10px #DFE3E6BE;
+    border-radius: 0px 0px 5px 5px;
+    margin: 0px 3px;
+    width: 100%;
+    padding: 17px 12px;
+    min-height: 100px;
+
+    @media screen and (max-width:768px) {
+        margin: unset;
+        padding: 17px 2px;
+
+    }
+}
+
+.update-btn {
+    float: right;
+}
+
+::ng-deep .mat-input-underline {
+    visibility: visible;
+    z-index: -999;
+    display: block;
+}
+
+::ng-deep.mat-datepicker-content .mat-calendar {
+    width: unset !important;
+    height: unset !important;
+}

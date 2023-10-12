@@ -1,0 +1,37 @@
+@import "/src/app/scss/variables";
+
+::ng-deep.canvas-bar-chart.canvas-bar-chart {
+    height: auto;
+    width: auto;
+}
+
+.top-div-container {
+    background: $white;
+    margin-left: 1%;
+    margin-right: 1%;
+    background: $white;
+    // padding: 1%;
+    box-shadow: 0px 10px 15px #cfd9e348;
+}
+
+.heading-label {
+    font-family: 'Ubuntu-Bold';
+    font-size: 1rem;
+}
+
+.filter-icon {
+    height: 35%;
+    width: 35%;
+}
+
+.chartjs-container {
+    margin-bottom: 1%;
+}
+
+.selectd-yr {
+    float: right;
+    margin-top: 9px;
+    color: #757575;
+    font-family: 'Ubuntu-Medium';
+    font-size: 15px;
+}

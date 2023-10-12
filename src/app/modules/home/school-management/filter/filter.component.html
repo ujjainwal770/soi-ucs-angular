@@ -1,0 +1,40 @@
+<div class="filter-block box-radius">
+    <form [formGroup]='schoolFormGroup'>
+        <div class="row">
+            <div class="col-lg-3">
+                <mat-form-field class="filter-by-status">
+                    <mat-label>Filter by Type</mat-label>
+                    <mat-select (selectionChange)="getSearch()"formControlName="filterbytype">
+                        <mat-option  *ngFor="let option of filterByTypeOption"
+                         value="{{option.query}}"> {{option.text}} </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col-lg-3">
+                <mat-form-field class="filter-by-status">
+                    <mat-label>Filter by Status</mat-label>
+                    <mat-select (selectionChange)="getSearch()"formControlName="filterby">
+                        <mat-option  *ngFor="let option of filterByStatusOption"
+                         value="{{option.query}}"> {{option.text}} </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col-lg-2">
+                <mat-form-field class="search-by">
+                    <mat-label>Search By</mat-label>
+                    <mat-select  formControlName="searchBy"  (selectionChange)="clearSearchText();getSearch()">
+                        <mat-option  *ngFor="let option of searchOptions"
+                         value="{{option.query}}"> {{option.text}} </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col-lg-4">
+                <mat-form-field class="search-txtbox">
+                    <mat-label>Enter {{getSearchTxt()}}</mat-label>
+                    <input matInput placeholder="Enter {{getSearchTxt()}}"  (change)="resetFilter()"
+                    formControlName="searchText" name="search-by">
+                </mat-form-field>
+            </div>
+        </div>
+    </form>
+</div>   
